@@ -20,18 +20,16 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void RollShouldSaveValidRandomNumbers()
+        public void NumberShouldSaveValidNumbers()
         {
             for(int i = 1; i <= 6; i += 1) {
-                mock.Setup(m => m.Next(1, 6)).Returns(i);
-                sut.Roll();
+                sut.Number = i;
                 Assert.AreEqual(i, sut.Number);
             }
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException),
-            "Dice tried to save an invalid number.")]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void NumberShouldThrowExceptionIfGivenIllegalLowNumber()
         {
             sut.Number = 0;

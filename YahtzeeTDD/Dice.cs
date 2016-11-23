@@ -31,7 +31,7 @@ namespace YahtzeeTDD
             {
                 if (value < 1)
                 {
-                    throw new ArgumentOutOfRangeException("Dice tried to save an invalid number.");
+                    throw new ArgumentOutOfRangeException(Strings.DiceNumberOutOfRange);
                 }
 
                 _number = value;

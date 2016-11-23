@@ -4,3 +4,5 @@ G:\gitHub\YahtzeeTDD\YahtzeeTDD\bin\Debug\YahtzeeTDD.pdb
 G:\gitHub\YahtzeeTDD\YahtzeeTDD\obj\Debug\YahtzeeTDD.csprojResolveAssemblyReference.cache
 G:\gitHub\YahtzeeTDD\YahtzeeTDD\obj\Debug\YahtzeeTDD.exe
 G:\gitHub\YahtzeeTDD\YahtzeeTDD\obj\Debug\YahtzeeTDD.pdb
+G:\gitHub\YahtzeeTDD\YahtzeeTDD\obj\Debug\YahtzeeTDD.Strings.resources
+G:\gitHub\YahtzeeTDD\YahtzeeTDD\obj\Debug\YahtzeeTDD.csproj.GenerateResource.Cache
