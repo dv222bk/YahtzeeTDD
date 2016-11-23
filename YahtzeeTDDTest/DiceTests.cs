@@ -27,5 +27,13 @@ namespace YahtzeeTDDTest
                 Assert.AreEqual(i, sut.Number);
             }
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+            "Dice tried to save an invalid number.")]
+        public void NumberShouldThrowExceptionIfGivenIllegalLowNumber()
+        {
+            sut.Number = 0;
+        }
     }
 }
