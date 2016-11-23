@@ -41,5 +41,12 @@ namespace YahtzeeTDDTest
         {
             sut.Number = 7;
         }
+
+        [TestMethod]
+        public void NumberShouldContainValidValueWithoutCallingRollFirst()
+        {
+            sut = new Dice(mock.Object);
+            Assert.IsTrue(sut.Number >= 1 && sut.Number <= 6);
+        }
     }
 }
