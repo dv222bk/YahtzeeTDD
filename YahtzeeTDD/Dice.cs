@@ -41,5 +41,7 @@ namespace YahtzeeTDD
                 _number = value;
             }
         }
+
+        public bool Saved { get; set; }
     }
 }
