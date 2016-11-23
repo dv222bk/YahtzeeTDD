@@ -52,5 +52,12 @@ namespace YahtzeeTDDTest
             sut = new Dice(mock.Object);
             Assert.AreEqual(1, sut.Number);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void NumbersShouldNotAcceptNullAsAValidValue()
+        {
+            sut.Number = null;
+        }
     }
 }
