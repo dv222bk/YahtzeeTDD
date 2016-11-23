@@ -9,7 +9,7 @@ namespace YahtzeeTDD
     public class Dice
     {
         private Random random;
-        public object Number;
+        public int Number;
 
         public Dice(Random random)
         {
@@ -18,7 +18,7 @@ namespace YahtzeeTDD
 
         public void Roll()
         {
-            random.Next(1, 6);
+            Number = random.Next(1, 6);
         }
     }
 }
