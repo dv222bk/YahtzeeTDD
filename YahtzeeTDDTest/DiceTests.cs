@@ -34,5 +34,12 @@ namespace YahtzeeTDDTest
         {
             sut.Number = 0;
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void NumberShouldThrowExceptionIfGivenIllegalHighNumber()
+        {
+            sut.Number = 7;
+        }
     }
 }
