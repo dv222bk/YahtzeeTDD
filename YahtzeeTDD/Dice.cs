@@ -33,7 +33,7 @@ namespace YahtzeeTDD
             }
             set
             {
-                if (value < 1 || value > 6)
+                if (value < 1 || value > 6 || value == null)
                 {
                     throw new ArgumentOutOfRangeException(Strings.DiceNumberOutOfRange);
                 }
