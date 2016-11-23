@@ -14,6 +14,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void RollShouldGenerateValidRandomNumbers()
         {
+            mock.Setup(m => m.Next(1, 6)).Returns(1);
             sut.Roll();
             mock.Verify(m => m.Next(1, 6), Times.Once());
         }
