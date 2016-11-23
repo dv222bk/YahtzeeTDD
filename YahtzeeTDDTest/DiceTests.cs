@@ -45,8 +45,9 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void NumberShouldContainValidValueWithoutCallingRollFirst()
         {
+            mock.Setup(m => m.Next(1, 6)).Returns(1);
             sut = new Dice(mock.Object);
-            Assert.IsTrue(sut.Number >= 1 && sut.Number <= 6);
+            Assert.AreEqual(1, sut.Number);
         }
     }
 }
