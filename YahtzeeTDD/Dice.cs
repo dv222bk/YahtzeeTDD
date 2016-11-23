@@ -9,6 +9,7 @@ namespace YahtzeeTDD
     public class Dice
     {
         private Random random;
+        public object Number;
 
         public Dice(Random random)
         {

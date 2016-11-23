@@ -17,5 +17,15 @@ namespace YahtzeeTDDTest
             sut.Roll();
             mock.Verify(m => m.Next(1, 6), Times.Once());
         }
+
+        [TestMethod]
+        public void RollShouldSaveValidRandomNumbers()
+        {
+            for(int i = 1; i <= 6; i += 1) {
+                mock.Setup(m => m.Next(1, 6)).Returns(i);
+                sut.Roll();
+                Assert.AreEqual(i, sut.Number);
+            }
+        }
     }
 }
