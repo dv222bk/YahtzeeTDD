@@ -8,13 +8,12 @@ namespace YahtzeeTDDTest
     [TestClass]
     public class DiceTests
     {
-        private Dice sut = new Dice();
+        private static Mock<Random> mock = new Mock<Random>();
+        private Dice sut = new Dice(mock.Object);
 
         [TestMethod]
         public void RollShouldGenerateValidRandomNumbers()
         {
-            var mock = new Mock<Random>();
-
             sut.Roll();
             mock.Verify(m => m.Next(1, 6), Times.Once());
         }

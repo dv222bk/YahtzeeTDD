@@ -1,0 +1,11 @@
+G:\gitHub\YahtzeeTDD\YahtzeeTDDTest\bin\Debug\YahtzeeTDDTest.dll
+G:\gitHub\YahtzeeTDD\YahtzeeTDDTest\bin\Debug\YahtzeeTDDTest.pdb
+G:\gitHub\YahtzeeTDD\YahtzeeTDDTest\bin\Debug\Castle.Core.dll
+G:\gitHub\YahtzeeTDD\YahtzeeTDDTest\bin\Debug\Moq.dll
+G:\gitHub\YahtzeeTDD\YahtzeeTDDTest\bin\Debug\YahtzeeTDD.exe
+G:\gitHub\YahtzeeTDD\YahtzeeTDDTest\bin\Debug\YahtzeeTDD.pdb
+G:\gitHub\YahtzeeTDD\YahtzeeTDDTest\bin\Debug\Castle.Core.xml
+G:\gitHub\YahtzeeTDD\YahtzeeTDDTest\bin\Debug\Moq.xml
+G:\gitHub\YahtzeeTDD\YahtzeeTDDTest\obj\Debug\YahtzeeTDDTests.csprojResolveAssemblyReference.cache
+G:\gitHub\YahtzeeTDD\YahtzeeTDDTest\obj\Debug\YahtzeeTDDTest.dll
+G:\gitHub\YahtzeeTDD\YahtzeeTDDTest\obj\Debug\YahtzeeTDDTest.pdb

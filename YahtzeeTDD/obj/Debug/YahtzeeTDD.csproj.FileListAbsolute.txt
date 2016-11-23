@@ -1,1 +1,6 @@
 G:\gitHub\YahtzeeTDD\YahtzeeTDD\bin\Debug\YahtzeeTDD.exe.config
+G:\gitHub\YahtzeeTDD\YahtzeeTDD\bin\Debug\YahtzeeTDD.exe
+G:\gitHub\YahtzeeTDD\YahtzeeTDD\bin\Debug\YahtzeeTDD.pdb
+G:\gitHub\YahtzeeTDD\YahtzeeTDD\obj\Debug\YahtzeeTDD.csprojResolveAssemblyReference.cache
+G:\gitHub\YahtzeeTDD\YahtzeeTDD\obj\Debug\YahtzeeTDD.exe
+G:\gitHub\YahtzeeTDD\YahtzeeTDD\obj\Debug\YahtzeeTDD.pdb

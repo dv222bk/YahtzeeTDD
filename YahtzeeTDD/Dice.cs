@@ -8,10 +8,16 @@ namespace YahtzeeTDD
 {
     public class Dice
     {
+        private Random random;
+
+        public Dice(Random random)
+        {
+            this.random = random;
+        }
 
         public void Roll()
         {
-            throw new NotImplementedException();
+            random.Next(1, 6);
         }
     }
 }
