@@ -22,11 +22,12 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void RollAllShouldRollAllDice()
+        public void RollAllShouldUnsaveAndRollAllDice()
         {
             sut.RollAll();
             foreach (Mock<Dice> mock in MockDiceSet)
             {
+                mock.VerifySet(m => m.Saved = false);
                 mock.Verify(m => m.Roll(), Times.Once);
             }
         }
