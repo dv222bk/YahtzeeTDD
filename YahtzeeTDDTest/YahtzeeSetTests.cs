@@ -30,5 +30,15 @@ namespace YahtzeeTDDTest
                 mock.Verify(m => m.Roll(), Times.Once);
             }
         }
+
+        [TestMethod]
+        public void UnsaveAllShouldUnsaveAllDice()
+        {
+            sut.UnsaveAll();
+            foreach (Mock<Dice> mock in MockDiceSet)
+            {
+                mock.VerifySet(m => m.Saved = false);
+            }
+        }
     }
 }

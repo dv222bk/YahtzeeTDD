@@ -21,5 +21,10 @@ namespace YahtzeeTDD
                 dice.Roll();
             }
         }
+
+        public void UnsaveAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
