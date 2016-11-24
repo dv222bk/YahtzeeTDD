@@ -35,7 +35,10 @@ namespace YahtzeeTDD
         {
             foreach (Dice dice in DiceSet)
             {
-                dice.Roll();
+                if (!dice.Saved)
+                {
+                    dice.Roll();
+                }
             }
         }
     }
