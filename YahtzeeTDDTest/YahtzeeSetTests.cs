@@ -45,10 +45,32 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void RollUnsavedShouldRollAllUnsavedDices()
         {
-            sut.RollUnsaved();
-            foreach (Mock<Dice> mock in MockDiceSet)
+            for (int i = 0; i < 5; i += 2)
             {
-                mock.Verify(m => m.Roll(), Times.Once);
+                MockDiceSet[i].SetupGet(m => m.Saved).Returns(true);
+            }
+
+            sut.RollUnsaved();
+
+            for (int i = 1; i < 5; i += 2)
+            {
+                MockDiceSet[i].Verify(m => m.Roll(), Times.Once);
+            }
+        }
+
+        [TestMethod]
+        public void RollUnsavedShouldNotRollSavedDices()
+        {
+            for (int i = 0; i < 5; i += 2)
+            {
+                MockDiceSet[i].SetupGet(m => m.Saved).Returns(true);
+            }
+
+            sut.RollUnsaved();
+
+            for (int i = 0; i < 5; i += 2)
+            {
+                MockDiceSet[i].Verify(m => m.Roll(), Times.Never);
             }
         }
     }
