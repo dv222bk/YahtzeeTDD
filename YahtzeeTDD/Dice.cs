@@ -42,6 +42,6 @@ namespace YahtzeeTDD
             }
         }
 
-        public bool Saved { get; set; }
+        public virtual bool Saved { get; set; }
     }
 }
