@@ -16,7 +16,7 @@ namespace YahtzeeTDD
             this.random = random;
         }
 
-        public void Roll()
+        public virtual void Roll()
         {
             Number = random.Next(1, 6);
         }

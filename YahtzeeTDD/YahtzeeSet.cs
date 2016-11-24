@@ -16,7 +16,10 @@ namespace YahtzeeTDD
 
         public void RollAll()
         {
-            throw new NotImplementedException();
+            foreach (Dice dice in DiceSet)
+            {
+                dice.Roll();
+            }
         }
     }
 }
