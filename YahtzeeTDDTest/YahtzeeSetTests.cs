@@ -1,0 +1,34 @@
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using YahtzeeTDD;
+
+namespace YahtzeeTDDTest
+{
+    [TestClass]
+    public class YahtzeeSetTests
+    {
+        private Mock<Dice>[] MockDiceSet = new Mock<Dice>[5];
+        private Dice[] DiceSet = new Dice[5];
+        private YahtzeeSet sut;
+
+        public YahtzeeSetTests()
+        {
+            for(int i = 0; i < 5; i += 1) {
+                MockDiceSet[i] = new Mock<Dice>(new Random());
+                DiceSet[i] = MockDiceSet[i].Object;
+            }
+            sut = new YahtzeeSet(DiceSet);
+        }
+
+        [TestMethod]
+        public void RollAllShouldRollAllDice()
+        {
+            sut.RollAll();
+            foreach (Mock<Dice> mock in MockDiceSet)
+            {
+                mock.Verify(m => m.Roll(), Times.Once);
+            }
+        }
+    }
+}

@@ -49,6 +49,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="YahtzeeSet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
