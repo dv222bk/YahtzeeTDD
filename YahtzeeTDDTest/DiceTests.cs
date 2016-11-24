@@ -23,6 +23,11 @@ namespace YahtzeeTDDTest
             mock.Verify(m => m.Next(1, 6), Times.Once());
         }
 
+        // Due to how ExpectedException works, I cannot combine the following three tests
+        // Had I used a different unittest framework, I could've checked for exceptions in the code instead using
+        // something like an assert.
+        // I could've also used two try/catches, but that seems like even more of a waste.
+
         [TestMethod]
         public void NumberShouldSaveValidNumbers()
         {
