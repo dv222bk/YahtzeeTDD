@@ -22,7 +22,7 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void RollAllShouldUnsaveAndRollAllDice()
+        public void RollAllShouldUnsaveAndRollAllDices()
         {
             sut.RollAll();
             foreach (Mock<Dice> mock in MockDiceSet)
@@ -33,12 +33,22 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void UnsaveAllShouldUnsaveAllDice()
+        public void UnsaveAllShouldUnsaveAllDices()
         {
             sut.UnsaveAll();
             foreach (Mock<Dice> mock in MockDiceSet)
             {
                 mock.VerifySet(m => m.Saved = false);
+            }
+        }
+
+        [TestMethod]
+        public void RollUnsavedShouldRollAllUnsavedDices()
+        {
+            sut.RollUnsaved();
+            foreach (Mock<Dice> mock in MockDiceSet)
+            {
+                mock.Verify(m => m.Roll(), Times.Once);
             }
         }
     }

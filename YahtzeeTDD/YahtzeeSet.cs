@@ -30,5 +30,10 @@ namespace YahtzeeTDD
                 dice.Saved = false;
             }
         }
+
+        public void RollUnsaved()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
