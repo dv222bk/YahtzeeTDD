@@ -33,7 +33,10 @@ namespace YahtzeeTDD
 
         public void RollUnsaved()
         {
-            throw new NotImplementedException();
+            foreach (Dice dice in DiceSet)
+            {
+                dice.Roll();
+            }
         }
     }
 }
