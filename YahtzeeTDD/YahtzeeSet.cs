@@ -16,6 +16,7 @@ namespace YahtzeeTDD
 
         public void RollAll()
         {
+            UnsaveAll();
             foreach (Dice dice in DiceSet)
             {
                 dice.Roll();
