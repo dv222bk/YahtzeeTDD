@@ -56,17 +56,6 @@ namespace YahtzeeTDDTest
             {
                 MockDiceSet[i].Verify(m => m.Roll(), Times.Once);
             }
-        }
-
-        [TestMethod]
-        public void RollUnsavedShouldNotRollSavedDices()
-        {
-            for (int i = 0; i < 5; i += 2)
-            {
-                MockDiceSet[i].SetupGet(m => m.Saved).Returns(true);
-            }
-
-            sut.RollUnsaved();
 
             for (int i = 0; i < 5; i += 2)
             {

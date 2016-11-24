@@ -8,17 +8,17 @@ namespace YahtzeeTDD
 {
     public class Dice
     {
-        private Random random;
+        private Random Random;
         private int? _number;
 
         public Dice(Random random)
         {
-            this.random = random;
+            Random = random;
         }
 
         public virtual void Roll()
         {
-            Number = random.Next(1, 6);
+            Number = Random.Next(1, 6);
         }
 
         public int? Number
