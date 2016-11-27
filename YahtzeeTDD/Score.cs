@@ -13,7 +13,7 @@ namespace YahtzeeTDD
         public int? twos;
         public int? threes;
         public int? fours;
-        public object fives;
+        public int? fives;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -83,7 +83,14 @@ namespace YahtzeeTDD
 
         public bool saveFives()
         {
-            throw new NotImplementedException();
+            if (fives != null)
+            {
+                return false;
+            }
+
+            fives = countDiceNumberScore(5);
+
+            return true;
         }
     }
 }
