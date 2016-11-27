@@ -39,7 +39,7 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void AcesShouldCountAllDiceWithOnesAndSaveSum()
+        public void SaveAcesShouldCountAllDiceWithOnesAndSaveSum()
         {
             SetupDice(new int[] { 1, 2, 3, 1, 4 });
 
@@ -57,6 +57,27 @@ namespace YahtzeeTDDTest
             sut.saveAces();
 
             Assert.AreEqual(0, sut.aces);
+        }
+
+        [TestMethod]
+        public void SaveTwosShouldCountAllDiceWithTwosAndSaveSum()
+        {
+            SetupDice(new int[] { 2, 3, 2, 2, 4 });
+
+            sut.saveTwos();
+
+            foreach (Mock<Dice> mockDice in MockDiceSet)
+            {
+                mockDice.VerifyGet(m => m.Number);
+            }
+
+            Assert.AreEqual(6, sut.twos);
+
+            SetupDice(new int[] { 5, 5, 5, 5, 5 });
+
+            sut.saveTwos();
+
+            Assert.AreEqual(0, sut.twos);
         }
     }
 }

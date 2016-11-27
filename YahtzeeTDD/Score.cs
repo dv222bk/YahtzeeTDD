@@ -10,6 +10,7 @@ namespace YahtzeeTDD
     {
         public YahtzeeSet YahtzeeSet;
         public int aces;
+        public int twos;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -28,6 +29,11 @@ namespace YahtzeeTDD
             }
 
             aces = score;
+        }
+
+        public void saveTwos()
+        {
+            throw new NotImplementedException();
         }
     }
 }
