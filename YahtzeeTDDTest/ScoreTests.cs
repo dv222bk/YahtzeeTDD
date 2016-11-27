@@ -30,14 +30,18 @@ namespace YahtzeeTDDTest
             sut = new Score(mock.Object);
         }
 
+        public void SetupDice(int[] diceValues)
+        {
+            for (int i = 0; i < 5; i += 1)
+            {
+                MockDiceSet[i].SetupGet(m => m.Number).Returns(diceValues[i]);
+            }
+        }
+
         [TestMethod]
         public void AcesShouldCountAllDiceWithOnesAndSaveSum()
         {
-            MockDiceSet[0].SetupGet(m => m.Number).Returns(1);
-            MockDiceSet[1].SetupGet(m => m.Number).Returns(2);
-            MockDiceSet[2].SetupGet(m => m.Number).Returns(3);
-            MockDiceSet[3].SetupGet(m => m.Number).Returns(1);
-            MockDiceSet[4].SetupGet(m => m.Number).Returns(4);
+            SetupDice(new int[] { 1, 2, 3, 1, 4 });
 
             sut.saveAces();
 
