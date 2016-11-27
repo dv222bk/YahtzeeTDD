@@ -40,9 +40,10 @@ namespace YahtzeeTDDTest
             MockDiceSet[4].SetupGet(m => m.Number).Returns(4);
 
             sut.saveAces();
-            for (int i = 0; i < 5; i += 1)
+            mock.VerifyGet(m => m.DiceSet);
+            foreach(Mock<Dice> mockDice in MockDiceSet)
             {
-                mock.VerifyGet(m => m.DiceSet[i].Number);
+                mockDice.VerifyGet(m => m.Number);
             }
             Assert.AreEqual(2, sut.aces);
         }
