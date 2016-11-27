@@ -318,5 +318,13 @@ namespace YahtzeeTDDTest
 
             Assert.AreEqual(155, score);
         }
+
+        [TestMethod]
+        public void UpperScoreShouldReturnZeroIfNoScore()
+        {
+            int score = sut.UpperScore;
+
+            Assert.AreEqual(0, score);
+        }
     }
 }
