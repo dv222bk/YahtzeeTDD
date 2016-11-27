@@ -14,7 +14,7 @@ namespace YahtzeeTDD
         public int? threes;
         public int? fours;
         public int? fives;
-        public object sixes;
+        public int? sixes;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -96,7 +96,14 @@ namespace YahtzeeTDD
 
         public bool saveSixes()
         {
-            throw new NotImplementedException();
+            if (sixes != null)
+            {
+                return false;
+            }
+
+            sixes = countDiceNumberScore(6);
+
+            return true;
         }
     }
 }
