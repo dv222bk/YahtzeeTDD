@@ -18,12 +18,15 @@ namespace YahtzeeTDD
 
         public void RollAll()
         {
-            UnsaveAll();
-            foreach (Dice dice in DiceSet)
+            if (CurrentRoll <= MaxRolls)
             {
-                dice.Roll();
-            }
-            CurrentRoll += 1;
+                UnsaveAll();
+                foreach (Dice dice in DiceSet)
+                {
+                    dice.Roll();
+                }
+                CurrentRoll += 1;
+            } 
         }
 
         public void UnsaveAll()
