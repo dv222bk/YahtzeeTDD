@@ -110,7 +110,7 @@ namespace YahtzeeTDD
         {
             get
             {
-                int?[] upperScores = new int?[] {aces, twos, threes, fours, fives, sixes};
+                int?[] upperScores = new int?[] { aces, twos, threes, fours, fives, sixes };
                 if (upperScores.Sum() >= 63)
                 {
                     return 50;
@@ -119,6 +119,12 @@ namespace YahtzeeTDD
             }
         }
 
-        public int UpperScore { get; set; }
+        public int UpperScore {
+            get
+            {
+                int?[] upperScores = new int?[] { aces, twos, threes, fours, fives, sixes };
+                return (int)(upperScores.Sum() + UpperBonus);
+            }
+        }
     }
 }

@@ -310,13 +310,13 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void UpperScoreShouldReturnTheTotalUpperScore()
+        public void UpperScoreShouldReturnTheTotalUpperScorePlusBonus()
         {
             FillUpperScore();
 
             int score = sut.UpperScore;
 
-            Assert.AreEqual(105, score);
+            Assert.AreEqual(155, score);
         }
     }
 }
