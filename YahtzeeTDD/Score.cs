@@ -123,7 +123,7 @@ namespace YahtzeeTDD
             get
             {
                 int?[] upperScores = new int?[] { aces, twos, threes, fours, fives, sixes };
-                return (upperScores.Sum() + UpperBonus) ?? 0;
+                return Convert.ToInt32(upperScores.Sum()) + Convert.ToInt32(UpperBonus);
             }
         }
     }
