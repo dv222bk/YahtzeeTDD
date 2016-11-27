@@ -21,6 +21,16 @@ namespace YahtzeeTDDTest
             sut = new YahtzeeSet(DiceSet);
         }
 
+        public void AssertRollMethodsDoNothing()
+        {
+            foreach (Mock<Dice> mock in MockDiceSet)
+            {
+                mock.VerifySet(m => m.Saved = false, Times.Never);
+                mock.Verify(m => m.Roll(), Times.Never);
+            }
+            Assert.AreEqual(4, sut.CurrentRoll);
+        }
+
         [TestMethod]
         public void RollAllShouldUnsaveAndRollAllDices()
         {
@@ -44,12 +54,7 @@ namespace YahtzeeTDDTest
         {
             sut.CurrentRoll = 4;
             sut.RollAll();
-            foreach (Mock<Dice> mock in MockDiceSet)
-            {
-                mock.VerifySet(m => m.Saved = false, Times.Never);
-                mock.Verify(m => m.Roll(), Times.Never);
-            }
-            Assert.AreEqual(4, sut.CurrentRoll);
+            AssertRollMethodsDoNothing();
         }
 
         [TestMethod]
@@ -95,11 +100,7 @@ namespace YahtzeeTDDTest
         {
             sut.CurrentRoll = 4;
             sut.RollUnsaved();
-            foreach (Mock<Dice> mock in MockDiceSet)
-            {
-                mock.Verify(m => m.Roll(), Times.Never);
-            }
-            Assert.AreEqual(4, sut.CurrentRoll);
+            AssertRollMethodsDoNothing();
         }
     }
 }
