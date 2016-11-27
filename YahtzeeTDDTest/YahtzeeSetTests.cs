@@ -35,7 +35,6 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void RollAllShouldIncreaseCurrentRollByOne()
         {
-            sut.CurrentRoll = 1;
             sut.RollAll();
             Assert.AreEqual(2, sut.CurrentRoll);
         }
@@ -82,6 +81,13 @@ namespace YahtzeeTDDTest
             {
                 MockDiceSet[i].Verify(m => m.Roll(), Times.Never);
             }
+        }
+
+        [TestMethod]
+        public void RollUnsavedShouldIncreaseCurrentRollByOne()
+        {
+            sut.RollUnsaved();
+            Assert.AreEqual(2, sut.CurrentRoll);
         }
     }
 }
