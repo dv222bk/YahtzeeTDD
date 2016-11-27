@@ -12,7 +12,7 @@ namespace YahtzeeTDD
         public int? aces;
         public int? twos;
         public int? threes;
-        public object fours;
+        public int? fours;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -70,7 +70,14 @@ namespace YahtzeeTDD
 
         public bool saveFours()
         {
-            throw new NotImplementedException();
+            if (fours != null)
+            {
+                return false;
+            }
+
+            fours = countDiceNumberScore(4);
+
+            return true;
         }
     }
 }
