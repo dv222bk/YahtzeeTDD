@@ -326,5 +326,15 @@ namespace YahtzeeTDDTest
 
             Assert.AreEqual(0, score);
         }
+
+        [TestMethod]
+        public void UpperScoreShouldReturnTotalEvenIfOnlyOneValueIsSet()
+        {
+            sut.threes = 6;
+
+            int score = sut.UpperScore;
+
+            Assert.AreEqual(6, score);
+        }
     }
 }
