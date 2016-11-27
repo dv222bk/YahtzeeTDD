@@ -51,5 +51,10 @@ namespace YahtzeeTDD
                 CurrentRoll += 1;
             }
         }
+
+        public void Reset()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

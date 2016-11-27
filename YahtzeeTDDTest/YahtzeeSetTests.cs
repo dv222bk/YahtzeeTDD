@@ -102,5 +102,18 @@ namespace YahtzeeTDDTest
             sut.RollUnsaved();
             AssertRollMethodsDoNothing();
         }
+
+        [TestMethod]
+        public void ResetShouldResetCurrentRollAndRerollAllDices()
+        {
+            sut.CurrentRoll = 4;
+            sut.Reset();
+            foreach (Mock<Dice> mock in MockDiceSet)
+            {
+                mock.VerifySet(m => m.Saved = false);
+                mock.Verify(m => m.Roll(), Times.Once);
+            }
+            Assert.AreEqual(1, sut.CurrentRoll);
+        }
     }
 }
