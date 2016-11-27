@@ -19,6 +19,11 @@ namespace YahtzeeTDD
 
         public bool saveAces()
         {
+            if (aces != null)
+            {
+                return false;
+            }
+
             int score = 0;
             foreach (Dice dice in YahtzeeSet.DiceSet)
             {
