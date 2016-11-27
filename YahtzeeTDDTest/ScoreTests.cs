@@ -47,6 +47,7 @@ namespace YahtzeeTDDTest
             }
         }
 
+        // ACES
         [TestMethod]
         public void SaveAcesShouldCountAllDiceWithOnesAndSaveSum()
         {
@@ -85,6 +86,7 @@ namespace YahtzeeTDDTest
             Assert.IsFalse(result);
         }
 
+        // TWOS
         [TestMethod]
         public void SaveTwosShouldCountAllDiceWithTwosAndSaveSum()
         {
@@ -109,6 +111,18 @@ namespace YahtzeeTDDTest
 
             Assert.IsTrue(result);
             Assert.AreEqual(0, sut.twos);
+        }
+
+        [TestMethod]
+        public void SaveTwosShouldReturnFalseIfValueAlreadyExists()
+        {
+            bool result = sut.saveTwos();
+
+            Assert.IsTrue(result);
+
+            result = sut.saveTwos();
+
+            Assert.IsFalse(result);
         }
     }
 }
