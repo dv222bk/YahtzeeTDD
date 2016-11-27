@@ -295,8 +295,9 @@ namespace YahtzeeTDDTest
         public void UpperBonusShouldReturn35IfUpperScoresEquals63OrMore()
         {
             FillUpperScore();
+            sut.threes = null;
 
-            int score = sut.UpperBonus;
+            int? score = sut.UpperBonus;
 
             Assert.AreEqual(35, score);
         }
