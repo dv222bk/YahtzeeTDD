@@ -27,6 +27,7 @@ namespace YahtzeeTDDTest
                 MockDiceSet[3].Object, 
                 MockDiceSet[4].Object
             };
+            SetupDice(new int[] { 1, 2, 3, 4, 5 }); // default dice setup in case values does not matter
             sut = new Score(mock.Object);
         }
 
@@ -70,6 +71,18 @@ namespace YahtzeeTDDTest
 
             Assert.IsTrue(result);
             Assert.AreEqual(0, sut.aces);
+        }
+
+        [TestMethod]
+        public void SaveAcesShouldReturnFalseIfValueAlreadyExists()
+        {
+            bool result = sut.saveAces();
+
+            Assert.IsTrue(result);
+
+            result = sut.saveAces();
+
+            Assert.IsFalse(result);
         }
 
         [TestMethod]
