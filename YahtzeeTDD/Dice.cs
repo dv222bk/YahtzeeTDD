@@ -21,7 +21,7 @@ namespace YahtzeeTDD
             Number = Random.Next(1, 6);
         }
 
-        public int? Number
+        public virtual int? Number
         {
             get
             {
