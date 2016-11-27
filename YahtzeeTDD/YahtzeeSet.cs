@@ -8,6 +8,8 @@ namespace YahtzeeTDD
     public class YahtzeeSet
     {
         public Dice[] DiceSet;
+        public const int MaxRolls = 3;
+        public int CurrentRoll = 1;
 
         public YahtzeeSet(Dice[] diceSet)
         {

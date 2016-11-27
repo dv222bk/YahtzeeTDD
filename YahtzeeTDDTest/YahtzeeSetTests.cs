@@ -33,6 +33,14 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
+        public void RollAllShouldIncreaseCurrentRollByOne()
+        {
+            sut.CurrentRoll = 1;
+            sut.RollAll();
+            Assert.AreEqual(2, sut.CurrentRoll);
+        }
+
+        [TestMethod]
         public void UnsaveAllShouldUnsaveAllDices()
         {
             sut.UnsaveAll();
