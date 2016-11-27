@@ -89,5 +89,17 @@ namespace YahtzeeTDDTest
             sut.RollUnsaved();
             Assert.AreEqual(2, sut.CurrentRoll);
         }
+
+        [TestMethod]
+        public void RollUnsavedShouldNotDoAnythingIfCurrentRollExceedesMaxRolls()
+        {
+            sut.CurrentRoll = 4;
+            sut.RollUnsaved();
+            foreach (Mock<Dice> mock in MockDiceSet)
+            {
+                mock.Verify(m => m.Roll(), Times.Never);
+            }
+            Assert.AreEqual(4, sut.CurrentRoll);
+        }
     }
 }
