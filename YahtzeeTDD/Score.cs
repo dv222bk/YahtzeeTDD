@@ -17,6 +17,19 @@ namespace YahtzeeTDD
             YahtzeeSet = yahtzeeSet;
         }
 
+        private int countDiceNumberScore(int number)
+        {
+            int score = 0;
+            foreach (Dice dice in YahtzeeSet.DiceSet)
+            {
+                if (dice.Number == number)
+                {
+                    score += number;
+                }
+            }
+            return score;
+        }
+
         public bool saveAces()
         {
             if (aces != null)
@@ -24,16 +37,7 @@ namespace YahtzeeTDD
                 return false;
             }
 
-            int score = 0;
-            foreach (Dice dice in YahtzeeSet.DiceSet)
-            {
-                if (dice.Number == 1)
-                {
-                    score += 1;
-                }
-            }
-
-            aces = score;
+            aces = countDiceNumberScore(1);
 
             return true;
         }
@@ -45,16 +49,7 @@ namespace YahtzeeTDD
                 return false;
             }
 
-            int score = 0;
-            foreach (Dice dice in YahtzeeSet.DiceSet)
-            {
-                if (dice.Number == 2)
-                {
-                    score += 2;
-                }
-            }
-
-            twos = score;
+            twos = countDiceNumberScore(2);
 
             return true;
         }
