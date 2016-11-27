@@ -9,7 +9,7 @@ namespace YahtzeeTDD
     public class Score
     {
         public YahtzeeSet YahtzeeSet;
-        public int? aces;
+        public int aces;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -18,7 +18,16 @@ namespace YahtzeeTDD
 
         public void saveAces()
         {
-            throw new NotImplementedException();
+            int score = 0;
+            foreach (Dice dice in YahtzeeSet.DiceSet)
+            {
+                if (dice.Number == 1)
+                {
+                    score += 1;
+                }
+            }
+
+            aces = score;
         }
     }
 }
