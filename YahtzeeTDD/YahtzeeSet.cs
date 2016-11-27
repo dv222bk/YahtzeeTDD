@@ -18,7 +18,7 @@ namespace YahtzeeTDD
 
         public void RollAll()
         {
-            if (CurrentRoll <= MaxRolls)
+            if (CurrentRoll < MaxRolls)
             {
                 UnsaveAll();
                 foreach (Dice dice in DiceSet)
@@ -39,7 +39,7 @@ namespace YahtzeeTDD
 
         public void RollUnsaved()
         {
-            if (CurrentRoll <= MaxRolls)
+            if (CurrentRoll < MaxRolls)
             {
                 foreach (Dice dice in DiceSet)
                 {

@@ -28,18 +28,23 @@ namespace YahtzeeTDDTest
                 mock.VerifySet(m => m.Saved = false, Times.Never);
                 mock.Verify(m => m.Roll(), Times.Never);
             }
-            Assert.AreEqual(4, sut.CurrentRoll);
+            Assert.AreEqual(3, sut.CurrentRoll);
+        }
+
+        public void AssertRollAll()
+        {
+            foreach (Mock<Dice> mock in MockDiceSet)
+            {
+                mock.VerifySet(m => m.Saved = false);
+                mock.Verify(m => m.Roll(), Times.Once);
+            }
         }
 
         [TestMethod]
         public void RollAllShouldUnsaveAndRollAllDices()
         {
             sut.RollAll();
-            foreach (Mock<Dice> mock in MockDiceSet)
-            {
-                mock.VerifySet(m => m.Saved = false);
-                mock.Verify(m => m.Roll(), Times.Once);
-            }
+            AssertRollAll();
         }
 
         [TestMethod]
@@ -50,9 +55,9 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void RollAllShouldNotDoAnythingIfCurrentRollExceedesMaxRolls()
+        public void RollAllShouldNotDoAnythingIfCurrentRollEqualsMaxRolls()
         {
-            sut.CurrentRoll = 4;
+            sut.CurrentRoll = 3;
             sut.RollAll();
             AssertRollMethodsDoNothing();
         }
@@ -96,9 +101,9 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void RollUnsavedShouldNotDoAnythingIfCurrentRollExceedesMaxRolls()
+        public void RollUnsavedShouldNotDoAnythingIfCurrentRollEqualsMaxRolls()
         {
-            sut.CurrentRoll = 4;
+            sut.CurrentRoll = 3;
             sut.RollUnsaved();
             AssertRollMethodsDoNothing();
         }
@@ -106,13 +111,9 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void ResetShouldResetCurrentRollAndRerollAllDices()
         {
-            sut.CurrentRoll = 4;
+            sut.CurrentRoll = 3;
             sut.Reset();
-            foreach (Mock<Dice> mock in MockDiceSet)
-            {
-                mock.VerifySet(m => m.Saved = false);
-                mock.Verify(m => m.Roll(), Times.Once);
-            }
+            AssertRollAll();
             Assert.AreEqual(1, sut.CurrentRoll);
         }
     }
