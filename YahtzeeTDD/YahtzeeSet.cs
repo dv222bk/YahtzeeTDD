@@ -23,6 +23,7 @@ namespace YahtzeeTDD
             {
                 dice.Roll();
             }
+            CurrentRoll += 1;
         }
 
         public void UnsaveAll()
