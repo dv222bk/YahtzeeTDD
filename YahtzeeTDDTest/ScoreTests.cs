@@ -47,6 +47,16 @@ namespace YahtzeeTDDTest
             }
         }
 
+        public void FillUpperScore()
+        {
+            sut.sixes = 30;
+            sut.fives = 25;
+            sut.fours = 20;
+            sut.threes = 15;
+            sut.twos = 10;
+            sut.aces = 5;
+        }
+
         // ACES
         [TestMethod]
         public void SaveAcesShouldCountAllDiceWithOnesAndSaveSum()
@@ -279,6 +289,16 @@ namespace YahtzeeTDDTest
             result = sut.saveSixes();
 
             Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void UpperBonusShouldReturn35IfUpperScoresEquals63OrMore()
+        {
+            FillUpperScore();
+
+            int score = sut.UpperBonus;
+
+            Assert.AreEqual(35, score);
         }
     }
 }

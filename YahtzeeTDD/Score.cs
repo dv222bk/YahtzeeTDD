@@ -105,5 +105,7 @@ namespace YahtzeeTDD
 
             return true;
         }
+
+        public int UpperBonus { get; set; }
     }
 }
