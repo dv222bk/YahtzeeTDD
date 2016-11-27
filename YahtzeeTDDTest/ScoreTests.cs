@@ -292,14 +292,31 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void UpperBonusShouldReturn35IfUpperScoresEquals63OrMore()
+        public void UpperBonusShouldReturn50IfUpperScoreEquals63OrMore()
         {
             FillUpperScore();
             sut.threes = null;
 
             int? score = sut.UpperBonus;
 
-            Assert.AreEqual(35, score);
+            Assert.AreEqual(50, score);
+        }
+
+        [TestMethod]
+        public void UpperBonusShouldReturnNullIfUpperScoreEquals62OrLess()
+        {
+            int? score = sut.UpperBonus;
+            Assert.IsNull(score);
+        }
+
+        [TestMethod]
+        public void UpperScoreShouldReturnTheTotalUpperScore()
+        {
+            FillUpperScore();
+
+            int score = sut.UpperScore;
+
+            Assert.AreEqual(105, score);
         }
     }
 }
