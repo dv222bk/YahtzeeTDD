@@ -39,14 +39,17 @@ namespace YahtzeeTDD
 
         public void RollUnsaved()
         {
-            foreach (Dice dice in DiceSet)
+            if (CurrentRoll <= MaxRolls)
             {
-                if (!dice.Saved)
+                foreach (Dice dice in DiceSet)
                 {
-                    dice.Roll();
+                    if (!dice.Saved)
+                    {
+                        dice.Roll();
+                    }
                 }
+                CurrentRoll += 1;
             }
-            CurrentRoll += 1;
         }
     }
 }
