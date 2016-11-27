@@ -163,5 +163,44 @@ namespace YahtzeeTDDTest
 
             Assert.IsFalse(result);
         }
+
+        // FOURS
+        [TestMethod]
+        public void SaveFoursShouldCountAllDiceWithTwosAndSaveSum()
+        {
+            SetupDice(new int[] { 4, 4, 2, 2, 4 });
+
+            bool result = sut.saveFours();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(12, sut.fours);
+        }
+
+        [TestMethod]
+        public void SaveFoursShouldSaveZeroIfNoOnes()
+        {
+            SetupDice(new int[] { 5, 5, 5, 5, 5 });
+
+            bool result = sut.saveFours();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(0, sut.fours);
+        }
+
+        [TestMethod]
+        public void SaveFoursShouldReturnFalseIfValueAlreadyExists()
+        {
+            bool result = sut.saveFours();
+
+            Assert.IsTrue(result);
+
+            result = sut.saveFours();
+
+            Assert.IsFalse(result);
+        }
     }
 }
