@@ -46,6 +46,7 @@ namespace YahtzeeTDD
                     dice.Roll();
                 }
             }
+            CurrentRoll += 1;
         }
     }
 }
