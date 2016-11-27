@@ -11,6 +11,7 @@ namespace YahtzeeTDD
         public YahtzeeSet YahtzeeSet;
         public int? aces;
         public int? twos;
+        public object threes;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -52,6 +53,11 @@ namespace YahtzeeTDD
             twos = countDiceNumberScore(2);
 
             return true;
+        }
+
+        public bool saveThrees()
+        {
+            throw new NotImplementedException();
         }
     }
 }
