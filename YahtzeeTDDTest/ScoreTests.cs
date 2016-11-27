@@ -127,7 +127,7 @@ namespace YahtzeeTDDTest
 
         // THREES
         [TestMethod]
-        public void SaveThreesShouldCountAllDiceWithTwosAndSaveSum()
+        public void SaveThreesShouldCountAllDiceWithThreesAndSaveSum()
         {
             SetupDice(new int[] { 3, 3, 2, 2, 4 });
 
@@ -166,7 +166,7 @@ namespace YahtzeeTDDTest
 
         // FOURS
         [TestMethod]
-        public void SaveFoursShouldCountAllDiceWithTwosAndSaveSum()
+        public void SaveFoursShouldCountAllDiceWithFoursAndSaveSum()
         {
             SetupDice(new int[] { 4, 4, 2, 2, 4 });
 
@@ -205,7 +205,7 @@ namespace YahtzeeTDDTest
 
         // FIVES
         [TestMethod]
-        public void SaveFivesShouldCountAllDiceWithTwosAndSaveSum()
+        public void SaveFivesShouldCountAllDiceWithFivesAndSaveSum()
         {
             SetupDice(new int[] { 5, 5, 2, 5, 4 });
 
@@ -238,6 +238,45 @@ namespace YahtzeeTDDTest
             Assert.IsTrue(result);
 
             result = sut.saveFives();
+
+            Assert.IsFalse(result);
+        }
+
+        // SIXES
+        [TestMethod]
+        public void SaveSixesShouldCountAllDiceWithSixesAndSaveSum()
+        {
+            SetupDice(new int[] { 6, 5, 2, 5, 4 });
+
+            bool result = sut.saveSixes();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(6, sut.sixes);
+        }
+
+        [TestMethod]
+        public void SaveSixesShouldSaveZeroIfNoOnes()
+        {
+            SetupDice(new int[] { 1, 1, 1, 1, 1 });
+
+            bool result = sut.saveSixes();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(0, sut.sixes);
+        }
+
+        [TestMethod]
+        public void SaveSixesShouldReturnFalseIfValueAlreadyExists()
+        {
+            bool result = sut.saveSixes();
+
+            Assert.IsTrue(result);
+
+            result = sut.saveSixes();
 
             Assert.IsFalse(result);
         }
