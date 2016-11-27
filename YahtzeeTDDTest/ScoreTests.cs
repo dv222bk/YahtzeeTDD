@@ -38,24 +38,37 @@ namespace YahtzeeTDDTest
             }
         }
 
+        public void VerifyDiceNumberGet()
+        {
+            foreach (Mock<Dice> mockDice in MockDiceSet)
+            {
+                mockDice.VerifyGet(m => m.Number);
+            }
+        }
+
         [TestMethod]
         public void SaveAcesShouldCountAllDiceWithOnesAndSaveSum()
         {
             SetupDice(new int[] { 1, 2, 3, 1, 4 });
 
-            sut.saveAces();
+            bool result = sut.saveAces();
 
-            foreach(Mock<Dice> mockDice in MockDiceSet)
-            {
-                mockDice.VerifyGet(m => m.Number);
-            }
+            VerifyDiceNumberGet();
 
+            Assert.IsTrue(result);
             Assert.AreEqual(2, sut.aces);
+        }
 
+        [TestMethod]
+        public void SaveAcesShouldSaveZeroIfNoOnes()
+        {
             SetupDice(new int[] { 5, 5, 5, 5, 5 });
 
-            sut.saveAces();
+            bool result = sut.saveAces();
 
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
             Assert.AreEqual(0, sut.aces);
         }
 
@@ -64,19 +77,24 @@ namespace YahtzeeTDDTest
         {
             SetupDice(new int[] { 2, 3, 2, 2, 4 });
 
-            sut.saveTwos();
+            bool result = sut.saveTwos();
 
-            foreach (Mock<Dice> mockDice in MockDiceSet)
-            {
-                mockDice.VerifyGet(m => m.Number);
-            }
+            VerifyDiceNumberGet();
 
+            Assert.IsTrue(result);
             Assert.AreEqual(6, sut.twos);
+        }
 
+        [TestMethod]
+        public void SaveTwosShouldSaveZeroIfNoOnes()
+        {
             SetupDice(new int[] { 5, 5, 5, 5, 5 });
 
-            sut.saveTwos();
+            bool result = sut.saveTwos();
 
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
             Assert.AreEqual(0, sut.twos);
         }
     }

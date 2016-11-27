@@ -9,15 +9,15 @@ namespace YahtzeeTDD
     public class Score
     {
         public YahtzeeSet YahtzeeSet;
-        public int aces;
-        public int twos;
+        public int? aces;
+        public int? twos;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
             YahtzeeSet = yahtzeeSet;
         }
 
-        public void saveAces()
+        public bool saveAces()
         {
             int score = 0;
             foreach (Dice dice in YahtzeeSet.DiceSet)
@@ -29,9 +29,11 @@ namespace YahtzeeTDD
             }
 
             aces = score;
+
+            return true;
         }
 
-        public void saveTwos()
+        public bool saveTwos()
         {
             int score = 0;
             foreach (Dice dice in YahtzeeSet.DiceSet)
@@ -43,6 +45,8 @@ namespace YahtzeeTDD
             }
 
             twos = score;
+
+            return true;
         }
     }
 }
