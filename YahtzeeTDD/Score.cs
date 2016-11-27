@@ -40,6 +40,11 @@ namespace YahtzeeTDD
 
         public bool saveTwos()
         {
+            if (twos != null)
+            {
+                return false;
+            }
+
             int score = 0;
             foreach (Dice dice in YahtzeeSet.DiceSet)
             {
