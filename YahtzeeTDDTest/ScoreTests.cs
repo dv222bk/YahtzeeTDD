@@ -49,7 +49,14 @@ namespace YahtzeeTDDTest
             {
                 mockDice.VerifyGet(m => m.Number);
             }
+
             Assert.AreEqual(2, sut.aces);
+
+            SetupDice(new int[] { 5, 5, 5, 5, 5 });
+
+            sut.saveAces();
+
+            Assert.AreEqual(0, sut.aces);
         }
     }
 }
