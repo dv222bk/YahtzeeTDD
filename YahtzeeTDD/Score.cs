@@ -33,7 +33,16 @@ namespace YahtzeeTDD
 
         public void saveTwos()
         {
-            throw new NotImplementedException();
+            int score = 0;
+            foreach (Dice dice in YahtzeeSet.DiceSet)
+            {
+                if (dice.Number == 2)
+                {
+                    score += 2;
+                }
+            }
+
+            twos = score;
         }
     }
 }
