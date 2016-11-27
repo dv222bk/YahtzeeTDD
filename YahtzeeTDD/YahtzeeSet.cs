@@ -54,7 +54,8 @@ namespace YahtzeeTDD
 
         public void Reset()
         {
-            throw new NotImplementedException();
+            CurrentRoll = 0;
+            RollAll();
         }
     }
 }
