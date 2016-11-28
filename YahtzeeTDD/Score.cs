@@ -15,7 +15,7 @@ namespace YahtzeeTDD
         public int? fours;
         public int? fives;
         public int? sixes;
-        public object onePair;
+        public int? onePair;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -33,6 +33,16 @@ namespace YahtzeeTDD
                 }
             }
             return score;
+        }
+
+        private Dice[] sortDices()
+        {
+            Dice[] sortedDice = YahtzeeSet.DiceSet;
+            Array.Sort<Dice>(sortedDice,
+                    new Comparison<Dice>(
+                            (d1, d2) => d1.Number.Value.CompareTo(d2.Number.Value)
+                    ));
+            return sortedDice;
         }
 
         public bool saveAces()
@@ -130,7 +140,26 @@ namespace YahtzeeTDD
 
         public bool saveOnePair()
         {
-            throw new NotImplementedException();
+            if (onePair != null)
+            {
+                return false;
+            }
+
+            Dice[] sortedDice = sortDices();
+
+            int score = 0;
+            for (int i = 0; i < YahtzeeSet.DiceSet.Length - 1; i += 1)
+            {
+                if (YahtzeeSet.DiceSet[i].Number == YahtzeeSet.DiceSet[i + 1].Number)
+                {
+                    score = (int)YahtzeeSet.DiceSet[i].Number * 2;
+                    i += 1;
+                }
+            }
+
+            onePair = score;
+
+            return true;
         }
     }
 }
