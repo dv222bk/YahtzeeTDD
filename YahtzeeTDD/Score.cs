@@ -15,6 +15,7 @@ namespace YahtzeeTDD
         public int? fours;
         public int? fives;
         public int? sixes;
+        public object onePair;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -125,6 +126,11 @@ namespace YahtzeeTDD
                 int?[] upperScores = new int?[] { aces, twos, threes, fours, fives, sixes };
                 return Convert.ToInt32(upperScores.Sum()) + Convert.ToInt32(UpperBonus);
             }
+        }
+
+        public bool saveOnePair()
+        {
+            throw new NotImplementedException();
         }
     }
 }

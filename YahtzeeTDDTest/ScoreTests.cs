@@ -291,6 +291,7 @@ namespace YahtzeeTDDTest
             Assert.IsFalse(result);
         }
 
+        // UPPER BONUS
         [TestMethod]
         public void UpperBonusShouldReturn50IfUpperScoreEquals63OrMore()
         {
@@ -309,6 +310,7 @@ namespace YahtzeeTDDTest
             Assert.IsNull(score);
         }
 
+        // UPPER SCORE
         [TestMethod]
         public void UpperScoreShouldReturnTheTotalUpperScorePlusBonus()
         {
@@ -335,6 +337,19 @@ namespace YahtzeeTDDTest
             int score = sut.UpperScore;
 
             Assert.AreEqual(6, score);
+        }
+
+        [TestMethod]
+        public void SaveOnePairShouldCountTheHighestPairOfDiceAndSaveSum()
+        {
+            SetupDice(new int[] { 6, 5, 2, 5, 6 });
+
+            bool result = sut.saveOnePair();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(12, sut.onePair);
         }
     }
 }
