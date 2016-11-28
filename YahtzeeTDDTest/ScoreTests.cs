@@ -111,7 +111,7 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void SaveTwosShouldSaveZeroIfNoOnes()
+        public void SaveTwosShouldSaveZeroIfNoTwos()
         {
             SetupDice(new int[] { 5, 5, 5, 5, 5 });
 
@@ -150,7 +150,7 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void SaveThreesShouldSaveZeroIfNoOnes()
+        public void SaveThreesShouldSaveZeroIfNoThrees()
         {
             SetupDice(new int[] { 5, 5, 5, 5, 5 });
 
@@ -189,7 +189,7 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void SaveFoursShouldSaveZeroIfNoOnes()
+        public void SaveFoursShouldSaveZeroIfNoFours()
         {
             SetupDice(new int[] { 5, 5, 5, 5, 5 });
 
@@ -228,7 +228,7 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void SaveFivesShouldSaveZeroIfNoOnes()
+        public void SaveFivesShouldSaveZeroIfNoFives()
         {
             SetupDice(new int[] { 1, 1, 1, 1, 1 });
 
@@ -267,7 +267,7 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void SaveSixesShouldSaveZeroIfNoOnes()
+        public void SaveSixesShouldSaveZeroIfNoSixes()
         {
             SetupDice(new int[] { 1, 1, 1, 1, 1 });
 
@@ -350,6 +350,29 @@ namespace YahtzeeTDDTest
 
             Assert.IsTrue(result);
             Assert.AreEqual(12, sut.onePair);
+        }
+
+        [TestMethod]
+        public void SaveOnePairShouldSaveZeroIfNoPair()
+        {
+            bool result = sut.saveOnePair();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(0, sut.onePair);
+        }
+
+        [TestMethod]
+        public void SaveOnePairShouldReturnFalseIfValueAlreadyExists()
+        {
+            bool result = sut.saveOnePair();
+
+            Assert.IsTrue(result);
+
+            result = sut.saveOnePair();
+
+            Assert.IsFalse(result);
         }
     }
 }
