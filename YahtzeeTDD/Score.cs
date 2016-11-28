@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,12 +39,37 @@ namespace YahtzeeTDD
 
         private Dice[] sortDices()
         {
-            Dice[] sortedDice = YahtzeeSet.DiceSet;
+            Dice[] sortedDice = (Dice[])YahtzeeSet.DiceSet.Clone();
             Array.Sort<Dice>(sortedDice,
                     new Comparison<Dice>(
                             (d1, d2) => d1.Number.Value.CompareTo(d2.Number.Value)
                     ));
             return sortedDice;
+        }
+
+        private int findPairScore(int pairs)
+        {
+            Dice[] sortedDice = sortDices();
+            int score = 0;
+            int foundPairs = 0;
+            for (int i = sortedDice.Length - 1; i > 0; i -= 1)
+            {
+                if (sortedDice[i].Number == sortedDice[i - 1].Number)
+                {
+                    score += (int)sortedDice[i].Number * 2;
+
+                    foundPairs += 1;
+
+                    if (foundPairs == pairs)
+                    {
+                        break;
+                    }
+
+                    i -= 1;
+                }
+            }
+
+            return foundPairs == pairs ? score : 0;
         }
 
         public bool saveAces()
@@ -146,19 +172,7 @@ namespace YahtzeeTDD
                 return false;
             }
 
-            Dice[] sortedDice = sortDices();
-
-            int score = 0;
-            for (int i = 0; i < YahtzeeSet.DiceSet.Length - 1; i += 1)
-            {
-                if (YahtzeeSet.DiceSet[i].Number == YahtzeeSet.DiceSet[i + 1].Number)
-                {
-                    score = (int)YahtzeeSet.DiceSet[i].Number * 2;
-                    i += 1;
-                }
-            }
-
-            onePair = score;
+            onePair = findPairScore(1);
 
             return true;
         }
@@ -170,21 +184,7 @@ namespace YahtzeeTDD
                 return false;
             }
 
-            Dice[] sortedDice = sortDices();
-
-            int score = 0;
-            int foundPairs = 0;
-            for (int i = 0; i < YahtzeeSet.DiceSet.Length - 1; i += 1)
-            {
-                if (YahtzeeSet.DiceSet[i].Number == YahtzeeSet.DiceSet[i + 1].Number)
-                {
-                    score += (int)YahtzeeSet.DiceSet[i].Number * 2;
-                    foundPairs += 1;
-                    i += 1;
-                }
-            }
-
-            twoPair = foundPairs == 2 ? score : 0;
+            twoPair = findPairScore(2);
 
             return true;
         }

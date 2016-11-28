@@ -339,6 +339,7 @@ namespace YahtzeeTDDTest
             Assert.AreEqual(6, score);
         }
 
+        // ONE PAIR
         [TestMethod]
         public void SaveOnePairShouldCountTheHighestPairOfDiceAndSaveSum()
         {
@@ -375,6 +376,7 @@ namespace YahtzeeTDDTest
             Assert.IsFalse(result);
         }
 
+        // TWO PAIR
         [TestMethod]
         public void SaveTwoPairShouldCountTwoPairsOfDiceAndSaveSum()
         {
@@ -386,6 +388,30 @@ namespace YahtzeeTDDTest
 
             Assert.IsTrue(result);
             Assert.AreEqual(22, sut.twoPair);
+        }
+
+        [TestMethod]
+        public void SaveTwoPairShouldSaveZeroIfNotEnoughPair()
+        {
+            SetupDice(new int[] { 6, 5, 2, 3, 6 });
+            bool result = sut.saveTwoPair();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(0, sut.twoPair);
+        }
+
+        [TestMethod]
+        public void SaveTwoPairShouldReturnFalseIfValueAlreadyExists()
+        {
+            bool result = sut.saveTwoPair();
+
+            Assert.IsTrue(result);
+
+            result = sut.saveTwoPair();
+
+            Assert.IsFalse(result);
         }
     }
 }
