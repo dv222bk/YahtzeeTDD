@@ -374,5 +374,18 @@ namespace YahtzeeTDDTest
 
             Assert.IsFalse(result);
         }
+
+        [TestMethod]
+        public void SaveTwoPairShouldCountTwoPairsOfDiceAndSaveSum()
+        {
+            SetupDice(new int[] { 6, 5, 2, 5, 6 });
+
+            bool result = sut.saveTwoPair();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(22, sut.twoPair);
+        }
     }
 }
