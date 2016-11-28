@@ -16,7 +16,7 @@ namespace YahtzeeTDD
         public int? fives;
         public int? sixes;
         public int? onePair;
-        public object twoPair;
+        public int? twoPair;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -165,7 +165,28 @@ namespace YahtzeeTDD
 
         public bool saveTwoPair()
         {
-            throw new NotImplementedException();
+            if (twoPair != null)
+            {
+                return false;
+            }
+
+            Dice[] sortedDice = sortDices();
+
+            int score = 0;
+            int foundPairs = 0;
+            for (int i = 0; i < YahtzeeSet.DiceSet.Length - 1; i += 1)
+            {
+                if (YahtzeeSet.DiceSet[i].Number == YahtzeeSet.DiceSet[i + 1].Number)
+                {
+                    score += (int)YahtzeeSet.DiceSet[i].Number * 2;
+                    foundPairs += 1;
+                    i += 1;
+                }
+            }
+
+            twoPair = foundPairs == 2 ? score : 0;
+
+            return true;
         }
     }
 }
