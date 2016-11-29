@@ -18,7 +18,7 @@ namespace YahtzeeTDD
         public int? sixes;
         public int? onePair;
         public int? twoPair;
-        public object toak;
+        public int? toak; // two of a kind
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -71,6 +71,31 @@ namespace YahtzeeTDD
             }
 
             return foundPairs == pairs ? score : 0;
+        }
+
+        private int findXOfAKindScore(int amount)
+        {
+            Dice[] sortedDice = sortDices();
+            int score = 0;
+            for (int i = sortedDice.Length - 1; i >= amount - 1; i -= 1)
+            {
+                for (int k = 1; k <= i && k < amount; k += 1)
+                {
+                    if (sortedDice[i].Number != sortedDice[i - k].Number)
+                    {
+                        score = 0;
+                        break;
+                    }
+                    score += (int)sortedDice[i].Number;
+                }
+                if (score != 0)
+                {
+                    score += (int)sortedDice[i].Number;
+                    break;
+                }
+            }
+
+            return score;
         }
 
         public bool saveAces()
@@ -192,7 +217,14 @@ namespace YahtzeeTDD
 
         public bool saveToaK()
         {
-            throw new NotImplementedException();
+            if (toak != null)
+            {
+                return false;
+            }
+
+            toak = findXOfAKindScore(3);
+
+            return true;
         }
     }
 }
