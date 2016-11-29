@@ -413,5 +413,18 @@ namespace YahtzeeTDDTest
 
             Assert.IsFalse(result);
         }
+
+        // THREE OF A KIND
+        [TestMethod]
+        public void SaveToaKShouldCountThreeDiceWithTheSameValueAndSaveSum()
+        {
+            SetupDice(new int[] { 5, 2, 5, 3, 5 });
+            bool result = sut.saveToaK();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(15, sut.toak);
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace YahtzeeTDD
         public int? sixes;
         public int? onePair;
         public int? twoPair;
+        public object toak;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -187,6 +188,11 @@ namespace YahtzeeTDD
             twoPair = findPairScore(2);
 
             return true;
+        }
+
+        public bool saveToaK()
+        {
+            throw new NotImplementedException();
         }
     }
 }
