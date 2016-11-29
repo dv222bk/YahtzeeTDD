@@ -426,5 +426,30 @@ namespace YahtzeeTDDTest
             Assert.IsTrue(result);
             Assert.AreEqual(15, sut.toak);
         }
+
+        [TestMethod]
+        public void SaveToaKShouldSaveZeroIfNotEnoughIdenticalDice()
+        {
+            SetupDice(new int[] { 6, 5, 2, 3, 6 });
+            bool result = sut.saveToaK();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(0, sut.toak);
+        }
+
+        [TestMethod]
+        public void SaveToaKShouldReturnFalseIfValueAlreadyExists()
+        {
+            SetupDice(new int[] { 6, 6, 6, 6, 6 });
+            bool result = sut.saveToaK();
+
+            Assert.IsTrue(result);
+
+            result = sut.saveToaK();
+
+            Assert.IsFalse(result);
+        }
     }
 }
