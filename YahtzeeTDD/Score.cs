@@ -334,6 +334,13 @@ namespace YahtzeeTDD
             return true;
         }
 
-        public int TotalScore { get; set; }
+        public int TotalScore {
+            get
+            {
+                int?[] totalScores = new int?[] { UpperScore, onePair, twoPair, toak, foak, smallStraight, 
+                                                largeStraight, fullHouse, chance, yahtzee };
+                return Convert.ToInt32(totalScores.Sum());
+            }
+        }
     }
 }
