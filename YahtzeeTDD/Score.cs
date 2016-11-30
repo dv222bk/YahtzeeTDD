@@ -20,6 +20,7 @@ namespace YahtzeeTDD
         public int? twoPair;
         public int? toak; // three of a kind
         public int? foak; // four of a kind
+        public object smallStraight;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -238,6 +239,11 @@ namespace YahtzeeTDD
             foak = findXOfAKindScore(4);
 
             return true;
+        }
+
+        public bool saveSmallStraight()
+        {
+            throw new NotImplementedException();
         }
     }
 }

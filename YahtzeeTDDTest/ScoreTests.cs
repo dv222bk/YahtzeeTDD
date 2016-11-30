@@ -442,7 +442,6 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveToaKShouldReturnFalseIfValueAlreadyExists()
         {
-            SetupDice(new int[] { 6, 6, 6, 6, 6 });
             bool result = sut.saveToaK();
 
             Assert.IsTrue(result);
@@ -480,12 +479,48 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveFoaKShouldReturnFalseIfValueAlreadyExists()
         {
-            SetupDice(new int[] { 6, 6, 6, 6, 6 });
             bool result = sut.saveFoaK();
 
             Assert.IsTrue(result);
 
             result = sut.saveFoaK();
+
+            Assert.IsFalse(result);
+        }
+
+        // SMALL STRAIGHT
+        [TestMethod]
+        public void SaveSmallStraightShouldCheckForSmallStraightThanSave15()
+        {
+            SetupDice(new int[] { 1, 3, 2, 5, 4 });
+            bool result = sut.saveSmallStraight();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(0, sut.smallStraight);
+        }
+
+        [TestMethod]
+        public void SaveSmallStraightShouldSaveZeroIfNoSmallStraightExists()
+        {
+            SetupDice(new int[] { 1, 3, 2, 4, 6 });
+            bool result = sut.saveSmallStraight();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(0, sut.smallStraight);
+        }
+
+        [TestMethod]
+        public void SaveSmallStraightShouldReturnFalseIfValueAlreadyExists()
+        {
+            bool result = sut.saveSmallStraight();
+
+            Assert.IsTrue(result);
+
+            result = sut.saveSmallStraight();
 
             Assert.IsFalse(result);
         }
