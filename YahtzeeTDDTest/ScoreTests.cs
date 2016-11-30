@@ -498,7 +498,7 @@ namespace YahtzeeTDDTest
             VerifyDiceNumberGet();
 
             Assert.IsTrue(result);
-            Assert.AreEqual(0, sut.smallStraight);
+            Assert.AreEqual(15, sut.smallStraight);
         }
 
         [TestMethod]
