@@ -21,6 +21,7 @@ namespace YahtzeeTDD
         public int? toak; // three of a kind
         public int? foak; // four of a kind
         public int? smallStraight;
+        public object largeStraight;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -262,6 +263,11 @@ namespace YahtzeeTDD
             smallStraight = score;
 
             return true;
+        }
+
+        public bool SaveLargeStraight()
+        {
+            throw new NotImplementedException();
         }
     }
 }

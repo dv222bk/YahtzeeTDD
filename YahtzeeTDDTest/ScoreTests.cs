@@ -490,7 +490,7 @@ namespace YahtzeeTDDTest
 
         // SMALL STRAIGHT
         [TestMethod]
-        public void SaveSmallStraightShouldCheckForSmallStraightThanSave15()
+        public void SaveSmallStraightShouldCheckForSmallStraightThenSave15()
         {
             SetupDice(new int[] { 1, 3, 2, 5, 4 });
             bool result = sut.SaveSmallStraight();
@@ -521,6 +521,43 @@ namespace YahtzeeTDDTest
             Assert.IsTrue(result);
 
             result = sut.SaveSmallStraight();
+
+            Assert.IsFalse(result);
+        }
+
+        // LARGE STRAIGHT
+        [TestMethod]
+        public void SaveLargeStraightShouldCheckForLargeStraightThenSave15()
+        {
+            SetupDice(new int[] { 6, 3, 2, 5, 4 });
+            bool result = sut.SaveLargeStraight();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(20, sut.largeStraight);
+        }
+
+        [TestMethod]
+        public void SaveLargeStraightShouldSaveZeroIfNoLargeStraightExists()
+        {
+            SetupDice(new int[] { 1, 3, 2, 4, 6 });
+            bool result = sut.SaveLargeStraight();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(0, sut.largeStraight);
+        }
+
+        [TestMethod]
+        public void SaveLargeStraightShouldReturnFalseIfValueAlreadyExists()
+        {
+            bool result = sut.SaveLargeStraight();
+
+            Assert.IsTrue(result);
+
+            result = sut.SaveLargeStraight();
 
             Assert.IsFalse(result);
         }
