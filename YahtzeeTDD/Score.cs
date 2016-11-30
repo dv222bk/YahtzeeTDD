@@ -22,7 +22,7 @@ namespace YahtzeeTDD
         public int? foak; // four of a kind
         public int? smallStraight;
         public int? largeStraight;
-        public object fullHouse;
+        public int? fullHouse;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -286,7 +286,26 @@ namespace YahtzeeTDD
 
         public bool SaveFullHouse()
         {
-            throw new NotImplementedException();
+            if (fullHouse != null)
+            {
+                return false;
+            }
+
+            Dice[] diceSet = (Dice[])YahtzeeSet.DiceSet.Clone();
+            var numberGroups = diceSet.GroupBy(dice => dice.Number);
+
+            int score = 0;
+            if (numberGroups.Count() == 2)
+            {
+                foreach (var number in numberGroups)
+                {
+                    score += (int)(number.Key * number.Count());
+                }
+            }
+
+            fullHouse = score;
+
+            return true;
         }
     }
 }
