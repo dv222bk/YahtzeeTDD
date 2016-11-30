@@ -717,16 +717,18 @@ namespace YahtzeeTDDTest
 
             sut.ResetScore();
 
-            // Get each relevant field from the sut class, check it's value in the sut, and make sure it's null
-            Type sutType = typeof(Score);
-            FieldInfo[] fields = sutType.GetFields(BindingFlags.Public 
-                | BindingFlags.Instance);
+            // Get each field from the sut, check it's value, and make sure all relevant values are null
+            var fields = sut.GetType().GetFields();
             
             foreach (FieldInfo field in fields) 
             {
                 if (field.Name != "YahtzeeSet")
                 {
                     Assert.IsNull(field.GetValue(sut));
+                }
+                else
+                {
+                    Assert.IsNotNull(field.GetValue(sut));
                 }
             }
         }

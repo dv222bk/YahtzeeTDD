@@ -345,7 +345,15 @@ namespace YahtzeeTDD
 
         public void ResetScore()
         {
-            throw new NotImplementedException();
+            var fields = this.GetType().GetFields();
+
+            foreach (var field in fields)
+            {
+                if (field.Name != "YahtzeeSet")
+                {
+                    field.SetValue(this, null);
+                }
+            }
         }
     }
 }
