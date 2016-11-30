@@ -23,7 +23,7 @@ namespace YahtzeeTDD
         public int? smallStraight;
         public int? largeStraight;
         public int? fullHouse;
-        public object chance;
+        public int? chance;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -311,7 +311,14 @@ namespace YahtzeeTDD
 
         public bool SaveChance()
         {
-            throw new NotImplementedException();
+            if (chance != null)
+            {
+                return false;
+            }
+
+            chance = YahtzeeSet.DiceSet.Sum(dice => dice.Number);
+
+            return true;
         }
     }
 }
