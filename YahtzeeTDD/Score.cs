@@ -21,7 +21,7 @@ namespace YahtzeeTDD
         public int? toak; // three of a kind
         public int? foak; // four of a kind
         public int? smallStraight;
-        public object largeStraight;
+        public int? largeStraight;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -99,6 +99,23 @@ namespace YahtzeeTDD
             }
 
             return score;
+        }
+
+        private bool CheckForStraight(int start)
+        {
+            Dice[] sortedDice = SortDices();
+            for (int i = 0; i < sortedDice.Length - 1; i += 1)
+            {
+                if (
+                    (i == 0 && sortedDice[i].Number != start) || 
+                    (sortedDice[i].Number != sortedDice[i + 1].Number - 1)
+                   )
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public bool SaveAces()
@@ -249,25 +266,21 @@ namespace YahtzeeTDD
                 return false;
             }
 
-            Dice[] sortedDice = SortDices();
-            int score = 15;
-            for (int i = 0; i < sortedDice.Length - 1; i += 1)
-            {
-                if (sortedDice[i].Number != sortedDice[i + 1].Number - 1)
-                {
-                    score = 0;
-                    break;
-                }
-            }
-
-            smallStraight = score;
+            smallStraight = CheckForStraight(1) ? 15 : 0;
 
             return true;
         }
 
         public bool SaveLargeStraight()
         {
-            throw new NotImplementedException();
+            if (largeStraight != null)
+            {
+                return false;
+            }
+
+            largeStraight = CheckForStraight(2) ? 20 : 0;
+
+            return true;
         }
     }
 }
