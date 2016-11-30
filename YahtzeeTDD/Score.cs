@@ -349,7 +349,7 @@ namespace YahtzeeTDD
 
             foreach (var field in fields)
             {
-                if (field.Name != "YahtzeeSet")
+                if (field.FieldType == typeof(Nullable<Int32>))
                 {
                     field.SetValue(this, null);
                 }

@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using YahtzeeTDD;
-using System.Reflection;
 
 namespace YahtzeeTDDTest
 {
@@ -82,12 +81,10 @@ namespace YahtzeeTDDTest
         public void SaveAcesShouldCountAllDiceWithOnesAndSaveSum()
         {
             SetupDice(new int[] { 1, 2, 3, 1, 4 });
-
-            bool result = sut.SaveAces();
+            Assert.IsTrue(sut.SaveAces());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(2, sut.aces);
         }
 
@@ -95,25 +92,18 @@ namespace YahtzeeTDDTest
         public void SaveAcesShouldSaveZeroIfNoOnes()
         {
             SetupDice(new int[] { 5, 5, 5, 5, 5 });
-
-            bool result = sut.SaveAces();
+            Assert.IsTrue(sut.SaveAces());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(0, sut.aces);
         }
 
         [TestMethod]
         public void SaveAcesShouldReturnFalseIfValueAlreadyExists()
         {
-            bool result = sut.SaveAces();
-
-            Assert.IsTrue(result);
-
-            result = sut.SaveAces();
-
-            Assert.IsFalse(result);
+            Assert.IsTrue(sut.SaveAces());
+            Assert.IsFalse(sut.SaveAces());
         }
 
         // TWOS
@@ -121,12 +111,10 @@ namespace YahtzeeTDDTest
         public void SaveTwosShouldCountAllDiceWithTwosAndSaveSum()
         {
             SetupDice(new int[] { 2, 3, 2, 2, 4 });
-
-            bool result = sut.SaveTwos();
+            Assert.IsTrue(sut.SaveTwos());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(6, sut.twos);
         }
 
@@ -134,25 +122,18 @@ namespace YahtzeeTDDTest
         public void SaveTwosShouldSaveZeroIfNoTwos()
         {
             SetupDice(new int[] { 5, 5, 5, 5, 5 });
-
-            bool result = sut.SaveTwos();
+            Assert.IsTrue(sut.SaveTwos());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(0, sut.twos);
         }
 
         [TestMethod]
         public void SaveTwosShouldReturnFalseIfValueAlreadyExists()
         {
-            bool result = sut.SaveTwos();
-
-            Assert.IsTrue(result);
-
-            result = sut.SaveTwos();
-
-            Assert.IsFalse(result);
+            Assert.IsTrue(sut.SaveTwos());
+            Assert.IsFalse(sut.SaveTwos());
         }
 
         // THREES
@@ -160,12 +141,10 @@ namespace YahtzeeTDDTest
         public void SaveThreesShouldCountAllDiceWithThreesAndSaveSum()
         {
             SetupDice(new int[] { 3, 3, 2, 2, 4 });
-
-            bool result = sut.SaveThrees();
+            Assert.IsTrue(sut.SaveThrees());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(6, sut.threes);
         }
 
@@ -173,25 +152,18 @@ namespace YahtzeeTDDTest
         public void SaveThreesShouldSaveZeroIfNoThrees()
         {
             SetupDice(new int[] { 5, 5, 5, 5, 5 });
-
-            bool result = sut.SaveThrees();
+            Assert.IsTrue(sut.SaveThrees());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(0, sut.threes);
         }
 
         [TestMethod]
         public void SaveThreesShouldReturnFalseIfValueAlreadyExists()
         {
-            bool result = sut.SaveThrees();
-
-            Assert.IsTrue(result);
-
-            result = sut.SaveThrees();
-
-            Assert.IsFalse(result);
+            Assert.IsTrue(sut.SaveThrees());
+            Assert.IsFalse(sut.SaveThrees());
         }
 
         // FOURS
@@ -199,12 +171,10 @@ namespace YahtzeeTDDTest
         public void SaveFoursShouldCountAllDiceWithFoursAndSaveSum()
         {
             SetupDice(new int[] { 4, 4, 2, 2, 4 });
-
-            bool result = sut.SaveFours();
+            Assert.IsTrue(sut.SaveFours());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(12, sut.fours);
         }
 
@@ -212,25 +182,18 @@ namespace YahtzeeTDDTest
         public void SaveFoursShouldSaveZeroIfNoFours()
         {
             SetupDice(new int[] { 5, 5, 5, 5, 5 });
-
-            bool result = sut.SaveFours();
+            Assert.IsTrue(sut.SaveFours());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(0, sut.fours);
         }
 
         [TestMethod]
         public void SaveFoursShouldReturnFalseIfValueAlreadyExists()
         {
-            bool result = sut.SaveFours();
-
-            Assert.IsTrue(result);
-
-            result = sut.SaveFours();
-
-            Assert.IsFalse(result);
+            Assert.IsTrue(sut.SaveFours());
+            Assert.IsFalse(sut.SaveFours());
         }
 
         // FIVES
@@ -238,12 +201,10 @@ namespace YahtzeeTDDTest
         public void SaveFivesShouldCountAllDiceWithFivesAndSaveSum()
         {
             SetupDice(new int[] { 5, 5, 2, 5, 4 });
-
-            bool result = sut.SaveFives();
+            Assert.IsTrue(sut.SaveFives());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(15, sut.fives);
         }
 
@@ -251,25 +212,18 @@ namespace YahtzeeTDDTest
         public void SaveFivesShouldSaveZeroIfNoFives()
         {
             SetupDice(new int[] { 1, 1, 1, 1, 1 });
-
-            bool result = sut.SaveFives();
+            Assert.IsTrue(sut.SaveFives());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(0, sut.fives);
         }
 
         [TestMethod]
         public void SaveFivesShouldReturnFalseIfValueAlreadyExists()
         {
-            bool result = sut.SaveFives();
-
-            Assert.IsTrue(result);
-
-            result = sut.SaveFives();
-
-            Assert.IsFalse(result);
+            Assert.IsTrue(sut.SaveFives());
+            Assert.IsFalse(sut.SaveFives());
         }
 
         // SIXES
@@ -277,12 +231,10 @@ namespace YahtzeeTDDTest
         public void SaveSixesShouldCountAllDiceWithSixesAndSaveSum()
         {
             SetupDice(new int[] { 6, 5, 2, 5, 4 });
-
-            bool result = sut.SaveSixes();
+            Assert.IsTrue(sut.SaveSixes());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(6, sut.sixes);
         }
 
@@ -290,25 +242,18 @@ namespace YahtzeeTDDTest
         public void SaveSixesShouldSaveZeroIfNoSixes()
         {
             SetupDice(new int[] { 1, 1, 1, 1, 1 });
-
-            bool result = sut.SaveSixes();
+            Assert.IsTrue(sut.SaveSixes());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(0, sut.sixes);
         }
 
         [TestMethod]
         public void SaveSixesShouldReturnFalseIfValueAlreadyExists()
         {
-            bool result = sut.SaveSixes();
-
-            Assert.IsTrue(result);
-
-            result = sut.SaveSixes();
-
-            Assert.IsFalse(result);
+            Assert.IsTrue(sut.SaveSixes());
+            Assert.IsFalse(sut.SaveSixes());
         }
 
         // UPPER BONUS
@@ -318,16 +263,13 @@ namespace YahtzeeTDDTest
             FillUpperScore();
             sut.threes = null;
 
-            int? score = sut.UpperBonus;
-
-            Assert.AreEqual(50, score);
+            Assert.AreEqual(50, sut.UpperBonus);
         }
 
         [TestMethod]
         public void UpperBonusShouldReturnNullIfUpperScoreEquals62OrLess()
         {
-            int? score = sut.UpperBonus;
-            Assert.IsNull(score);
+            Assert.IsNull(sut.UpperBonus);
         }
 
         // UPPER SCORE
@@ -336,17 +278,13 @@ namespace YahtzeeTDDTest
         {
             FillUpperScore();
 
-            int score = sut.UpperScore;
-
-            Assert.AreEqual(155, score);
+            Assert.AreEqual(155, sut.UpperScore);
         }
 
         [TestMethod]
         public void UpperScoreShouldReturnZeroIfNoScore()
         {
-            int score = sut.UpperScore;
-
-            Assert.AreEqual(0, score);
+            Assert.AreEqual(0, sut.UpperScore);
         }
 
         [TestMethod]
@@ -354,9 +292,7 @@ namespace YahtzeeTDDTest
         {
             sut.threes = 6;
 
-            int score = sut.UpperScore;
-
-            Assert.AreEqual(6, score);
+            Assert.AreEqual(6, sut.UpperScore);
         }
 
         // ONE PAIR
@@ -364,36 +300,28 @@ namespace YahtzeeTDDTest
         public void SaveOnePairShouldCountTheHighestPairOfDiceAndSaveSum()
         {
             SetupDice(new int[] { 6, 5, 2, 5, 6 });
-
-            bool result = sut.SaveOnePair();
+            Assert.IsTrue(sut.SaveOnePair());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(12, sut.onePair);
         }
 
         [TestMethod]
         public void SaveOnePairShouldSaveZeroIfNoPair()
         {
-            bool result = sut.SaveOnePair();
+            Assert.IsTrue(sut.SaveOnePair());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(0, sut.onePair);
         }
 
         [TestMethod]
         public void SaveOnePairShouldReturnFalseIfValueAlreadyExists()
         {
-            bool result = sut.SaveOnePair();
-
-            Assert.IsTrue(result);
-
-            result = sut.SaveOnePair();
-
-            Assert.IsFalse(result);
+            Assert.IsTrue(sut.SaveOnePair());
+            Assert.IsFalse(sut.SaveOnePair());
         }
 
         // TWO PAIR
@@ -401,12 +329,10 @@ namespace YahtzeeTDDTest
         public void SaveTwoPairShouldCountTwoPairsOfDiceAndSaveSum()
         {
             SetupDice(new int[] { 6, 5, 2, 5, 6 });
-
-            bool result = sut.SaveTwoPair();
+            Assert.IsTrue(sut.SaveTwoPair());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(22, sut.twoPair);
         }
 
@@ -414,24 +340,18 @@ namespace YahtzeeTDDTest
         public void SaveTwoPairShouldSaveZeroIfNotEnoughPair()
         {
             SetupDice(new int[] { 6, 5, 2, 3, 6 });
-            bool result = sut.SaveTwoPair();
+            Assert.IsTrue(sut.SaveTwoPair());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(0, sut.twoPair);
         }
 
         [TestMethod]
         public void SaveTwoPairShouldReturnFalseIfValueAlreadyExists()
         {
-            bool result = sut.SaveTwoPair();
-
-            Assert.IsTrue(result);
-
-            result = sut.SaveTwoPair();
-
-            Assert.IsFalse(result);
+            Assert.IsTrue(sut.SaveTwoPair());
+            Assert.IsFalse(sut.SaveTwoPair());
         }
 
         // THREE OF A KIND
@@ -439,11 +359,10 @@ namespace YahtzeeTDDTest
         public void SaveToaKShouldCountThreeDiceWithTheSameValueAndSaveSum()
         {
             SetupDice(new int[] { 5, 2, 5, 3, 5 });
-            bool result = sut.SaveToaK();
+            Assert.IsTrue(sut.SaveToaK());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(15, sut.toak);
         }
 
@@ -451,24 +370,18 @@ namespace YahtzeeTDDTest
         public void SaveToaKShouldSaveZeroIfNotEnoughIdenticalDice()
         {
             SetupDice(new int[] { 6, 5, 2, 3, 6 });
-            bool result = sut.SaveToaK();
+            Assert.IsTrue(sut.SaveToaK());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(0, sut.toak);
         }
 
         [TestMethod]
         public void SaveToaKShouldReturnFalseIfValueAlreadyExists()
         {
-            bool result = sut.SaveToaK();
-
-            Assert.IsTrue(result);
-
-            result = sut.SaveToaK();
-
-            Assert.IsFalse(result);
+            Assert.IsTrue(sut.SaveToaK());
+            Assert.IsFalse(sut.SaveToaK());
         }
 
         // FOUR OF A KIND
@@ -476,11 +389,10 @@ namespace YahtzeeTDDTest
         public void SaveFoaKShouldCountFourDiceWithTheSameValueAndSaveSum()
         {
             SetupDice(new int[] { 5, 2, 5, 5, 5 });
-            bool result = sut.SaveFoaK();
+            Assert.IsTrue(sut.SaveFoaK());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(20, sut.foak);
         }
 
@@ -488,24 +400,18 @@ namespace YahtzeeTDDTest
         public void SaveFoaKShouldSaveZeroIfNotEnoughIdenticalDice()
         {
             SetupDice(new int[] { 6, 6, 2, 3, 6 });
-            bool result = sut.SaveFoaK();
+            Assert.IsTrue(sut.SaveFoaK());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(0, sut.foak);
         }
 
         [TestMethod]
         public void SaveFoaKShouldReturnFalseIfValueAlreadyExists()
         {
-            bool result = sut.SaveFoaK();
-
-            Assert.IsTrue(result);
-
-            result = sut.SaveFoaK();
-
-            Assert.IsFalse(result);
+            Assert.IsTrue(sut.SaveFoaK());
+            Assert.IsFalse(sut.SaveFoaK());
         }
 
         // SMALL STRAIGHT
@@ -513,11 +419,10 @@ namespace YahtzeeTDDTest
         public void SaveSmallStraightShouldCheckForSmallStraightThenSave15()
         {
             SetupDice(new int[] { 1, 3, 2, 5, 4 });
-            bool result = sut.SaveSmallStraight();
+            Assert.IsTrue(sut.SaveSmallStraight());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(15, sut.smallStraight);
         }
 
@@ -525,24 +430,17 @@ namespace YahtzeeTDDTest
         public void SaveSmallStraightShouldSaveZeroIfNoSmallStraightExists()
         {
             SetupDice(new int[] { 1, 3, 2, 4, 6 });
-            bool result = sut.SaveSmallStraight();
+            Assert.IsTrue(sut.SaveSmallStraight());
 
             VerifyDiceNumberGet();
-
-            Assert.IsTrue(result);
             Assert.AreEqual(0, sut.smallStraight);
         }
 
         [TestMethod]
         public void SaveSmallStraightShouldReturnFalseIfValueAlreadyExists()
         {
-            bool result = sut.SaveSmallStraight();
-
-            Assert.IsTrue(result);
-
-            result = sut.SaveSmallStraight();
-
-            Assert.IsFalse(result);
+            Assert.IsTrue(sut.SaveSmallStraight());
+            Assert.IsFalse(sut.SaveSmallStraight());
         }
 
         // LARGE STRAIGHT
@@ -550,11 +448,10 @@ namespace YahtzeeTDDTest
         public void SaveLargeStraightShouldCheckForLargeStraightThenSave15()
         {
             SetupDice(new int[] { 6, 3, 2, 5, 4 });
-            bool result = sut.SaveLargeStraight();
+            Assert.IsTrue(sut.SaveLargeStraight());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(20, sut.largeStraight);
         }
 
@@ -562,24 +459,18 @@ namespace YahtzeeTDDTest
         public void SaveLargeStraightShouldSaveZeroIfNoLargeStraightExists()
         {
             SetupDice(new int[] { 1, 3, 2, 4, 6 });
-            bool result = sut.SaveLargeStraight();
+            Assert.IsTrue(sut.SaveLargeStraight());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(0, sut.largeStraight);
         }
 
         [TestMethod]
         public void SaveLargeStraightShouldReturnFalseIfValueAlreadyExists()
         {
-            bool result = sut.SaveLargeStraight();
-
-            Assert.IsTrue(result);
-
-            result = sut.SaveLargeStraight();
-
-            Assert.IsFalse(result);
+            Assert.IsTrue(sut.SaveLargeStraight());
+            Assert.IsFalse(sut.SaveLargeStraight());
         }
 
         // FULL HOUSE
@@ -587,11 +478,10 @@ namespace YahtzeeTDDTest
         public void SaveFullHouseShouldCheckForFullHouseThenSaveSum()
         {
             SetupDice(new int[] { 2, 2, 3, 2, 3 });
-            bool result = sut.SaveFullHouse();
+            Assert.IsTrue(sut.SaveFullHouse());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(12, sut.fullHouse);
         }
 
@@ -599,48 +489,36 @@ namespace YahtzeeTDDTest
         public void SaveFullHouseShouldSaveZeroIfNoFullHouseExists()
         {
             SetupDice(new int[] { 2, 3, 5, 2, 3 });
-            bool result = sut.SaveFullHouse();
+            Assert.IsTrue(sut.SaveFullHouse());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(0, sut.fullHouse);
         }
 
         [TestMethod]
         public void SaveFullHouseShouldReturnFalseIfValueAlreadyExists()
         {
-            bool result = sut.SaveFullHouse();
-
-            Assert.IsTrue(result);
-
-            result = sut.SaveFullHouse();
-
-            Assert.IsFalse(result);
+            Assert.IsTrue(sut.SaveFullHouse());
+            Assert.IsFalse(sut.SaveFullHouse());
         }
 
         // CHANCE
         [TestMethod]
         public void SaveChanceShouldCountAllDiceThenSaveSum()
         {
-            bool result = sut.SaveChance();
+            Assert.IsTrue(sut.SaveChance());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(15, sut.chance);
         }
 
         [TestMethod]
         public void SaveChanceShouldReturnFalseIfValueAlreadyExists()
         {
-            bool result = sut.SaveChance();
-
-            Assert.IsTrue(result);
-
-            result = sut.SaveChance();
-
-            Assert.IsFalse(result);
+            Assert.IsTrue(sut.SaveChance());
+            Assert.IsFalse(sut.SaveChance());
         }
 
         // YAHTZEE
@@ -648,11 +526,10 @@ namespace YahtzeeTDDTest
         public void SaveYahtzeeShouldCheckIfAllDiceHaveTheSameValueThenSave50()
         {
             SetupDice(new int[] { 1, 1, 1, 1, 1 });
-            bool result = sut.SaveYahtzee();
+            Assert.IsTrue(sut.SaveYahtzee());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(50, sut.yahtzee);
         }
 
@@ -660,24 +537,18 @@ namespace YahtzeeTDDTest
         public void SaveYahtzeeShouldSaveZeroIfNotAllDiceHaveTheSameValue()
         {
             SetupDice(new int[] { 1, 1, 2, 1, 1 });
-            bool result = sut.SaveYahtzee();
+            Assert.IsTrue(sut.SaveYahtzee());
 
             VerifyDiceNumberGet();
 
-            Assert.IsTrue(result);
             Assert.AreEqual(0, sut.yahtzee);
         }
 
         [TestMethod]
         public void SaveYahtzeeShouldReturnFalseIfValueAlreadyExists()
         {
-            bool result = sut.SaveYahtzee();
-
-            Assert.IsTrue(result);
-
-            result = sut.SaveYahtzee();
-
-            Assert.IsFalse(result);
+            Assert.IsTrue(sut.SaveYahtzee());
+            Assert.IsFalse(sut.SaveYahtzee());
         }
 
         // TOTAL SCORE
@@ -686,17 +557,13 @@ namespace YahtzeeTDDTest
         {
             FillScore();
 
-            int score = sut.TotalScore;
-
-            Assert.AreEqual(374, score);
+            Assert.AreEqual(374, sut.TotalScore);
         }
 
         [TestMethod]
         public void TotalScoreShouldReturnZeroIfNoScore()
         {
-            int score = sut.TotalScore;
-
-            Assert.AreEqual(0, score);
+            Assert.AreEqual(0, sut.TotalScore);
         }
 
         [TestMethod]
@@ -704,9 +571,7 @@ namespace YahtzeeTDDTest
         {
             sut.threes = 6;
 
-            int score = sut.TotalScore;
-
-            Assert.AreEqual(6, score);
+            Assert.AreEqual(6, sut.TotalScore);
         }
 
         // RESET SCORE
@@ -720,9 +585,9 @@ namespace YahtzeeTDDTest
             // Get each field from the sut, check it's value, and make sure all relevant values are null
             var fields = sut.GetType().GetFields();
             
-            foreach (FieldInfo field in fields) 
+            foreach (var field in fields) 
             {
-                if (field.Name != "YahtzeeSet")
+                if (field.FieldType == typeof(Nullable<Int32>))
                 {
                     Assert.IsNull(field.GetValue(sut));
                 }
