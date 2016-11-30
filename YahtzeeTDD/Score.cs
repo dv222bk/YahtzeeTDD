@@ -24,7 +24,7 @@ namespace YahtzeeTDD
         public int? largeStraight;
         public int? fullHouse;
         public int? chance;
-        public object yahtzee;
+        public int? yahtzee;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -324,7 +324,14 @@ namespace YahtzeeTDD
 
         public bool SaveYahtzee()
         {
-            throw new NotImplementedException();
+            if (yahtzee != null)
+            {
+                return false;
+            }
+
+            yahtzee = FindXOfAKindScore(YahtzeeSet.DiceSet.Length) > 0 ? 50 : 0;
+
+            return true;
         }
     }
 }
