@@ -27,7 +27,7 @@ namespace YahtzeeTDD
             YahtzeeSet = yahtzeeSet;
         }
 
-        private int countDiceNumberScore(int number)
+        private int CountDiceNumberScore(int number)
         {
             int score = 0;
             foreach (Dice dice in YahtzeeSet.DiceSet)
@@ -40,7 +40,7 @@ namespace YahtzeeTDD
             return score;
         }
 
-        private Dice[] sortDices()
+        private Dice[] SortDices()
         {
             Dice[] sortedDice = (Dice[])YahtzeeSet.DiceSet.Clone();
             Array.Sort<Dice>(sortedDice,
@@ -50,9 +50,9 @@ namespace YahtzeeTDD
             return sortedDice;
         }
 
-        private int findPairScore(int pairs)
+        private int FindPairScore(int pairs)
         {
-            Dice[] sortedDice = sortDices();
+            Dice[] sortedDice = SortDices();
             int score = 0;
             int foundPairs = 0;
             for (int i = sortedDice.Length - 1; i > 0; i -= 1)
@@ -75,9 +75,9 @@ namespace YahtzeeTDD
             return foundPairs == pairs ? score : 0;
         }
 
-        private int findXOfAKindScore(int amount)
+        private int FindXOfAKindScore(int amount)
         {
-            Dice[] sortedDice = sortDices();
+            Dice[] sortedDice = SortDices();
             int score = 0;
             for (int i = sortedDice.Length - 1; i >= amount - 1; i -= 1)
             {
@@ -100,74 +100,74 @@ namespace YahtzeeTDD
             return score;
         }
 
-        public bool saveAces()
+        public bool SaveAces()
         {
             if (aces != null)
             {
                 return false;
             }
 
-            aces = countDiceNumberScore(1);
+            aces = CountDiceNumberScore(1);
 
             return true;
         }
 
-        public bool saveTwos()
+        public bool SaveTwos()
         {
             if (twos != null)
             {
                 return false;
             }
 
-            twos = countDiceNumberScore(2);
+            twos = CountDiceNumberScore(2);
 
             return true;
         }
 
-        public bool saveThrees()
+        public bool SaveThrees()
         {
             if (threes != null)
             {
                 return false;
             }
 
-            threes = countDiceNumberScore(3);
+            threes = CountDiceNumberScore(3);
 
             return true;
         }
 
-        public bool saveFours()
+        public bool SaveFours()
         {
             if (fours != null)
             {
                 return false;
             }
 
-            fours = countDiceNumberScore(4);
+            fours = CountDiceNumberScore(4);
 
             return true;
         }
 
-        public bool saveFives()
+        public bool SaveFives()
         {
             if (fives != null)
             {
                 return false;
             }
 
-            fives = countDiceNumberScore(5);
+            fives = CountDiceNumberScore(5);
 
             return true;
         }
 
-        public bool saveSixes()
+        public bool SaveSixes()
         {
             if (sixes != null)
             {
                 return false;
             }
 
-            sixes = countDiceNumberScore(6);
+            sixes = CountDiceNumberScore(6);
 
             return true;
         }
@@ -193,62 +193,62 @@ namespace YahtzeeTDD
             }
         }
 
-        public bool saveOnePair()
+        public bool SaveOnePair()
         {
             if (onePair != null)
             {
                 return false;
             }
 
-            onePair = findPairScore(1);
+            onePair = FindPairScore(1);
 
             return true;
         }
 
-        public bool saveTwoPair()
+        public bool SaveTwoPair()
         {
             if (twoPair != null)
             {
                 return false;
             }
 
-            twoPair = findPairScore(2);
+            twoPair = FindPairScore(2);
 
             return true;
         }
 
-        public bool saveToaK()
+        public bool SaveToaK()
         {
             if (toak != null)
             {
                 return false;
             }
 
-            toak = findXOfAKindScore(3);
+            toak = FindXOfAKindScore(3);
 
             return true;
         }
 
-        public bool saveFoaK()
+        public bool SaveFoaK()
         {
             if (foak != null)
             {
                 return false;
             }
 
-            foak = findXOfAKindScore(4);
+            foak = FindXOfAKindScore(4);
 
             return true;
         }
 
-        public bool saveSmallStraight()
+        public bool SaveSmallStraight()
         {
             if (smallStraight != null)
             {
                 return false;
             }
 
-            Dice[] sortedDice = sortDices();
+            Dice[] sortedDice = SortDices();
             int score = 15;
             for (int i = 0; i < sortedDice.Length - 1; i += 1)
             {
