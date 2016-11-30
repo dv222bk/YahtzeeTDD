@@ -598,5 +598,29 @@ namespace YahtzeeTDDTest
 
             Assert.IsFalse(result);
         }
+
+        // CHANCE
+        [TestMethod]
+        public void SaveChanceShouldCountAllDiceThenSaveSum()
+        {
+            bool result = sut.SaveChance();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(15, sut.chance);
+        }
+
+        [TestMethod]
+        public void SaveChanceShouldReturnFalseIfValueAlreadyExists()
+        {
+            bool result = sut.SaveChance();
+
+            Assert.IsTrue(result);
+
+            result = sut.SaveChance();
+
+            Assert.IsFalse(result);
+        }
     }
 }

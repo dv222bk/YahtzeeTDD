@@ -23,6 +23,7 @@ namespace YahtzeeTDD
         public int? smallStraight;
         public int? largeStraight;
         public int? fullHouse;
+        public object chance;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -306,6 +307,11 @@ namespace YahtzeeTDD
             fullHouse = score;
 
             return true;
+        }
+
+        public bool SaveChance()
+        {
+            throw new NotImplementedException();
         }
     }
 }
