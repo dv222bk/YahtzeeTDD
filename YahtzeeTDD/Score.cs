@@ -333,5 +333,7 @@ namespace YahtzeeTDD
 
             return true;
         }
+
+        public int TotalScore { get; set; }
     }
 }

@@ -57,6 +57,19 @@ namespace YahtzeeTDDTest
             sut.aces = 5;
         }
 
+        public void FillLowerScore()
+        {
+            sut.onePair = 12;
+            sut.twoPair = 22;
+            sut.toak = 18;
+            sut.foak = 24;
+            sut.smallStraight = 15;
+            sut.largeStraight = 20;
+            sut.fullHouse = 28;
+            sut.chance = 30;
+            sut.yahtzee = 50;
+        }
+
         // ACES
         [TestMethod]
         public void SaveAcesShouldCountAllDiceWithOnesAndSaveSum()
@@ -658,6 +671,36 @@ namespace YahtzeeTDDTest
             result = sut.SaveYahtzee();
 
             Assert.IsFalse(result);
+        }
+
+        // TOTAL SCORE
+        [TestMethod]
+        public void TotalScoreShouldReturnTheTotalScorePlusBonus()
+        {
+            FillUpperScore();
+            FillLowerScore();
+
+            int score = sut.TotalScore;
+
+            Assert.AreEqual(374, score);
+        }
+
+        [TestMethod]
+        public void TotalScoreShouldReturnZeroIfNoScore()
+        {
+            int score = sut.TotalScore;
+
+            Assert.AreEqual(0, score);
+        }
+
+        [TestMethod]
+        public void TotalScoreShouldReturnTotalEvenIfOnlyOneValueIsSet()
+        {
+            sut.threes = 6;
+
+            int score = sut.TotalScore;
+
+            Assert.AreEqual(6, score);
         }
     }
 }
