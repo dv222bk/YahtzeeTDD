@@ -19,6 +19,7 @@ namespace YahtzeeTDD
         public int? onePair;
         public int? twoPair;
         public int? toak; // two of a kind
+        public object foak;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -225,6 +226,11 @@ namespace YahtzeeTDD
             toak = findXOfAKindScore(3);
 
             return true;
+        }
+
+        public bool saveFoaK()
+        {
+            throw new NotImplementedException();
         }
     }
 }

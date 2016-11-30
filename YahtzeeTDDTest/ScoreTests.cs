@@ -451,5 +451,43 @@ namespace YahtzeeTDDTest
 
             Assert.IsFalse(result);
         }
+
+        // FOUR OF A KIND
+        [TestMethod]
+        public void SaveFoaKShouldCountFourDiceWithTheSameValueAndSaveSum()
+        {
+            SetupDice(new int[] { 5, 2, 5, 5, 5 });
+            bool result = sut.saveFoaK();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(20, sut.foak);
+        }
+
+        [TestMethod]
+        public void SaveFoaKShouldSaveZeroIfNotEnoughIdenticalDice()
+        {
+            SetupDice(new int[] { 6, 6, 2, 3, 6 });
+            bool result = sut.saveFoaK();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(0, sut.foak);
+        }
+
+        [TestMethod]
+        public void SaveFoaKShouldReturnFalseIfValueAlreadyExists()
+        {
+            SetupDice(new int[] { 6, 6, 6, 6, 6 });
+            bool result = sut.saveFoaK();
+
+            Assert.IsTrue(result);
+
+            result = sut.saveFoaK();
+
+            Assert.IsFalse(result);
+        }
     }
 }
