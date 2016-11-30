@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using YahtzeeTDD;
+using System.Reflection;
 
 namespace YahtzeeTDDTest
 {
@@ -31,7 +32,7 @@ namespace YahtzeeTDDTest
             sut = new Score(mock.Object);
         }
 
-        public void SetupDice(int[] diceValues)
+        private void SetupDice(int[] diceValues)
         {
             for (int i = 0; i < 5; i += 1)
             {
@@ -39,7 +40,7 @@ namespace YahtzeeTDDTest
             }
         }
 
-        public void VerifyDiceNumberGet()
+        private void VerifyDiceNumberGet()
         {
             foreach (Mock<Dice> mockDice in MockDiceSet)
             {
@@ -47,7 +48,7 @@ namespace YahtzeeTDDTest
             }
         }
 
-        public void FillUpperScore()
+        private void FillUpperScore()
         {
             sut.sixes = 30;
             sut.fives = 25;
@@ -57,7 +58,7 @@ namespace YahtzeeTDDTest
             sut.aces = 5;
         }
 
-        public void FillLowerScore()
+        private void FillLowerScore()
         {
             sut.onePair = 12;
             sut.twoPair = 22;
@@ -68,6 +69,12 @@ namespace YahtzeeTDDTest
             sut.fullHouse = 28;
             sut.chance = 30;
             sut.yahtzee = 50;
+        }
+
+        private void FillScore()
+        {
+            FillUpperScore();
+            FillLowerScore();
         }
 
         // ACES
@@ -677,8 +684,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void TotalScoreShouldReturnTheTotalScorePlusBonus()
         {
-            FillUpperScore();
-            FillLowerScore();
+            FillScore();
 
             int score = sut.TotalScore;
 
@@ -701,6 +707,28 @@ namespace YahtzeeTDDTest
             int score = sut.TotalScore;
 
             Assert.AreEqual(6, score);
+        }
+
+        // RESET SCORE
+        [TestMethod]
+        public void ResetScoreShouldResetAllValuesToNull()
+        {
+            FillScore();
+
+            sut.ResetScore();
+
+            // Get each relevant field from the sut class, check it's value in the sut, and make sure it's null
+            Type sutType = typeof(Score);
+            FieldInfo[] fields = sutType.GetFields(BindingFlags.Public 
+                | BindingFlags.Instance);
+            
+            foreach (FieldInfo field in fields) 
+            {
+                if (field.Name != "YahtzeeSet")
+                {
+                    Assert.IsNull(field.GetValue(sut));
+                }
+            }
         }
     }
 }

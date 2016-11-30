@@ -342,5 +342,10 @@ namespace YahtzeeTDD
                 return Convert.ToInt32(totalScores.Sum());
             }
         }
+
+        public void ResetScore()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
