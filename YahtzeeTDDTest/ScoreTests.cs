@@ -622,5 +622,42 @@ namespace YahtzeeTDDTest
 
             Assert.IsFalse(result);
         }
+
+        // YAHTZEE
+        [TestMethod]
+        public void SaveYahtzeeShouldCheckIfAllDiceHaveTheSameValueThenSave50()
+        {
+            SetupDice(new int[] { 1, 1, 1, 1, 1 });
+            bool result = sut.SaveYahtzee();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(50, sut.yahtzee);
+        }
+
+        [TestMethod]
+        public void SaveYahtzeeShouldSaveZeroIfNotAllDiceHaveTheSameValue()
+        {
+            SetupDice(new int[] { 1, 1, 2, 1, 1 });
+            bool result = sut.SaveYahtzee();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(0, sut.yahtzee);
+        }
+
+        [TestMethod]
+        public void SaveYahtzeeShouldReturnFalseIfValueAlreadyExists()
+        {
+            bool result = sut.SaveYahtzee();
+
+            Assert.IsTrue(result);
+
+            result = sut.SaveYahtzee();
+
+            Assert.IsFalse(result);
+        }
     }
 }
