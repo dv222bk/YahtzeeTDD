@@ -429,7 +429,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveSmallStraightShouldSaveZeroIfNoSmallStraightExists()
         {
-            SetupDice(new int[] { 1, 3, 2, 4, 6 });
+            SetupDice(new int[] { 1, 2, 2, 4, 6 });
             Assert.IsTrue(sut.SaveSmallStraight());
 
             VerifyDiceNumberGet();
@@ -458,7 +458,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveLargeStraightShouldSaveZeroIfNoLargeStraightExists()
         {
-            SetupDice(new int[] { 1, 3, 2, 4, 6 });
+            SetupDice(new int[] { 1, 1, 2, 4, 6 });
             Assert.IsTrue(sut.SaveLargeStraight());
 
             VerifyDiceNumberGet();
