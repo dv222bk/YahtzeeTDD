@@ -22,6 +22,7 @@ namespace YahtzeeTDD
         public int? foak; // four of a kind
         public int? smallStraight;
         public int? largeStraight;
+        public object fullHouse;
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -281,6 +282,11 @@ namespace YahtzeeTDD
             largeStraight = CheckForStraight(2) ? 20 : 0;
 
             return true;
+        }
+
+        public bool SaveFullHouse()
+        {
+            throw new NotImplementedException();
         }
     }
 }

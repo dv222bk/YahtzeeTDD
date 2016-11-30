@@ -561,5 +561,42 @@ namespace YahtzeeTDDTest
 
             Assert.IsFalse(result);
         }
+
+        // FULL HOUSE
+        [TestMethod]
+        public void SaveFullHouseShouldCheckForFullHouseThenSaveSum()
+        {
+            SetupDice(new int[] { 2, 2, 3, 2, 3 });
+            bool result = sut.SaveFullHouse();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(12, sut.fullHouse);
+        }
+
+        [TestMethod]
+        public void SaveFullHouseShouldSaveZeroIfNoFullHouseExists()
+        {
+            SetupDice(new int[] { 2, 3, 5, 2, 3 });
+            bool result = sut.SaveFullHouse();
+
+            VerifyDiceNumberGet();
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(0, sut.fullHouse);
+        }
+
+        [TestMethod]
+        public void SaveFullHouseShouldReturnFalseIfValueAlreadyExists()
+        {
+            bool result = sut.SaveFullHouse();
+
+            Assert.IsTrue(result);
+
+            result = sut.SaveFullHouse();
+
+            Assert.IsFalse(result);
+        }
     }
 }
