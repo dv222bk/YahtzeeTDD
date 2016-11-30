@@ -18,8 +18,8 @@ namespace YahtzeeTDD
         public int? sixes;
         public int? onePair;
         public int? twoPair;
-        public int? toak; // two of a kind
-        public object foak;
+        public int? toak; // three of a kind
+        public int? foak; // four of a kind
 
         public Score(YahtzeeSet yahtzeeSet)
         {
@@ -230,7 +230,14 @@ namespace YahtzeeTDD
 
         public bool saveFoaK()
         {
-            throw new NotImplementedException();
+            if (foak != null)
+            {
+                return false;
+            }
+
+            foak = findXOfAKindScore(4);
+
+            return true;
         }
     }
 }
