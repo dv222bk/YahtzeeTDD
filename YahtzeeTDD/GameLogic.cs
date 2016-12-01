@@ -26,11 +26,11 @@ namespace YahtzeeTDD
         {
             if (State == State.Playing)
             {
-                if (YahtzeeSet.CanThrow)
+                if (YahtzeeSet.CanRoll)
                 {
                     YahtzeeSet.RollUnsaved();
 
-                    if (YahtzeeSet.CanThrow)
+                    if (YahtzeeSet.CanRoll)
                     {
                         CurrentView = CurrentView.Roll;
                     }
@@ -51,7 +51,7 @@ namespace YahtzeeTDD
         public void NewGame()
         {
             YahtzeeSet.Reset();
-            Score.ResetScore();
+            Score.Reset();
             CurrentView = CurrentView.Roll;
             State = State.Playing;
         }

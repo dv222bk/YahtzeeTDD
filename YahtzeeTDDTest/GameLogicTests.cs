@@ -41,7 +41,7 @@ namespace YahtzeeTDDTest
         public void RollDicesShouldRollAllUnsavedDiceIfStateIsPlayingAndSetCurrentViewToRollIfTheUserCanStillRoll()
         {
             sut.State = State.Playing;
-            MockYahtzeeSet.SetupGet(m => m.CanThrow).Returns(true);
+            MockYahtzeeSet.SetupGet(m => m.CanRoll).Returns(true);
             sut.RollDices();
 
             MockYahtzeeSet.Verify(m => m.RollUnsaved(), Times.Once);
@@ -52,7 +52,7 @@ namespace YahtzeeTDDTest
         public void RollDicesShouldRollAllUnsavedDiceIfStateIsPlayingAndSetCurrentViewToSaveScoreAndStateToSavingIfTheUserCannotRollAnymore()
         {
             sut.State = State.Playing;
-            MockYahtzeeSet.SetupSequence(m => m.CanThrow).Returns(true).Returns(false);
+            MockYahtzeeSet.SetupSequence(m => m.CanRoll).Returns(true).Returns(false);
             sut.RollDices();
 
             MockYahtzeeSet.Verify(m => m.RollUnsaved(), Times.Once);
@@ -64,7 +64,7 @@ namespace YahtzeeTDDTest
         public void RollDicesShouldSetCurrentViewToSaveScoreAndStateToSavingIfTheUserCannotRollAnymore()
         {
             sut.State = State.Playing;
-            MockYahtzeeSet.SetupGet(m => m.CanThrow).Returns(false);
+            MockYahtzeeSet.SetupGet(m => m.CanRoll).Returns(false);
             sut.RollDices();
 
             MockYahtzeeSet.Verify(m => m.RollUnsaved(), Times.Never);
@@ -79,7 +79,7 @@ namespace YahtzeeTDDTest
             sut.CurrentView = CurrentView.Start;
             sut.RollDices();
 
-            MockYahtzeeSet.Verify(m => m.CanThrow, Times.Never);
+            MockYahtzeeSet.Verify(m => m.CanRoll, Times.Never);
             MockYahtzeeSet.Verify(m => m.RollUnsaved(), Times.Never);
             Assert.AreEqual(State.Start, sut.State);
             Assert.AreEqual(CurrentView.Start, sut.CurrentView);
@@ -91,7 +91,7 @@ namespace YahtzeeTDDTest
             sut.NewGame();
 
             MockYahtzeeSet.Verify(m => m.Reset(), Times.Once);
-            MockScore.Verify(m => m.ResetScore(), Times.Once);
+            MockScore.Verify(m => m.Reset(), Times.Once);
             Assert.AreEqual(State.Playing, sut.State);
             Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
         }

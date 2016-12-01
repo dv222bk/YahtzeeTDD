@@ -343,7 +343,7 @@ namespace YahtzeeTDD
             }
         }
 
-        public virtual void ResetScore()
+        public virtual void Reset()
         {
             var fields = this.GetType().GetFields();
 

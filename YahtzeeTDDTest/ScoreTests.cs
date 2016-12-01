@@ -573,7 +573,7 @@ namespace YahtzeeTDDTest
         {
             FillScore();
 
-            sut.ResetScore();
+            sut.Reset();
 
             // Get each field from the sut, check it's value, and make sure all relevant values are null
             var fields = sut.GetType().GetFields();
