@@ -92,12 +92,26 @@ namespace YahtzeeTDD
             }
         }
 
+        public void ReactToSaveDieInput(string input)
+        {
+            int intInput;
+            if (int.TryParse(input, out intInput))
+            {
+                if (intInput >= 0 && intInput < YahtzeeSet.DiceSet.Length)
+                {
+                    YahtzeeSet.DiceSet[intInput].Saved ^= true;
+                    CurrentView = CurrentView.Roll;
+                    State = State.Playing;
+                }
+            }
+        }
+
         public void ReactToSavingInput(string input)
         {
-            int intOutput;
-            if (int.TryParse(input, out intOutput))
+            int intInput;
+            if (int.TryParse(input, out intInput))
             {
-                if (SaveScore(intOutput))
+                if (SaveScore(intInput))
                 {
                     if (!Score.IsFull)
                     {
@@ -151,11 +165,6 @@ namespace YahtzeeTDD
                 default:
                     return false;
             }
-        }
-
-        public void ReactToSaveDieInput(string p)
-        {
-            throw new NotImplementedException();
         }
     }
 }
