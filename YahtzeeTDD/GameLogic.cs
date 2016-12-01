@@ -55,5 +55,10 @@ namespace YahtzeeTDD
             CurrentView = CurrentView.Roll;
             State = State.Playing;
         }
+
+        public void ShowScore()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -95,5 +95,13 @@ namespace YahtzeeTDDTest
             Assert.AreEqual(State.Playing, sut.State);
             Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
         }
+
+        [TestMethod]
+        public void ShowScoreShouldSetTheCurrentViewToCheckScore()
+        {
+            sut.ShowScore();
+
+            Assert.AreEqual(CurrentView.CheckScore, sut.CurrentView);
+        }
     }
 }
