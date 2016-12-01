@@ -303,9 +303,9 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void ReactToSavingInputShouldCallSaveScoreAndResetYahtzeeSetAndSetCurrentViewToRollAndSetStateToPlayingIfSuccessfulAndIfScoreIsNotFull()
+        public void ReactToSavingInputShouldCallSaveScoreAndResetYahtzeeSetAndSetCurrentViewToRollAndSetStateToPlayingIfSuccessfullAndIfScoreIsNotFull()
         {
-            MockScore.SetupSequence(m => m.SaveAces()).Returns(true);
+            MockScore.Setup(m => m.SaveAces()).Returns(true);
             MockScore.SetupGet(m => m.IsFull).Returns(false);
             sut.ReactToSavingInput("1");
 
@@ -314,6 +314,20 @@ namespace YahtzeeTDDTest
             MockYahtzeeSet.Verify(m => m.Reset(), Times.Once);
             Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
             Assert.AreEqual(State.Playing, sut.State);
+        }
+
+        [TestMethod]
+        public void ReactToSavingInputShouldCallSaveScoreAndChangeCurrentViewToFinishAndStateToStartIfSuccessfullAndIfScoreIsFull()
+        {
+            MockScore.Setup(m => m.SaveAces()).Returns(true);
+            MockScore.SetupGet(m => m.IsFull).Returns(true);
+            sut.ReactToSavingInput("1");
+
+            MockScore.Verify(m => m.SaveAces(), Times.Once);
+            MockScore.VerifyGet(m => m.IsFull, Times.Once);
+            MockYahtzeeSet.Verify(m => m.Reset(), Times.Never);
+            Assert.AreEqual(CurrentView.Finish, sut.CurrentView);
+            Assert.AreEqual(State.Start, sut.State);
         }
     }
 }
