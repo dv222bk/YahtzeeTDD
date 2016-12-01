@@ -60,7 +60,7 @@ namespace YahtzeeTDD
 
         public bool CanThrow()
         {
-            return true;
+            return CurrentRoll < MaxRolls;          
         }
     }
 }
