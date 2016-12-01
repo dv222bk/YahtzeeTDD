@@ -51,9 +51,8 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void RollDicesShouldRollAllUnsavedDiceIfStateIsPlayingAndSetCurrentViewToRollIfTheUserCanStillRoll()
+        public void RollDicesShouldRollAllUnsavedDiceAndSetCurrentViewToRollIfTheUserCanStillRoll()
         {
-            sut.State = State.Playing;
             MockYahtzeeSet.SetupGet(m => m.CanRoll).Returns(true);
             sut.RollDices();
 
@@ -62,9 +61,8 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void RollDicesShouldRollAllUnsavedDiceIfStateIsPlayingAndSetCurrentViewToSaveScoreAndStateToSavingIfTheUserCannotRollAnymore()
+        public void RollDicesShouldRollAllUnsavedDiceAndSetCurrentViewToSaveScoreAndStateToSavingIfTheUserCannotRollAnymore()
         {
-            sut.State = State.Playing;
             MockYahtzeeSet.SetupSequence(m => m.CanRoll).Returns(true).Returns(false);
             sut.RollDices();
 
@@ -76,26 +74,12 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void RollDicesShouldSetCurrentViewToSaveScoreAndStateToSavingIfTheUserCannotRollAnymore()
         {
-            sut.State = State.Playing;
             MockYahtzeeSet.SetupGet(m => m.CanRoll).Returns(false);
             sut.RollDices();
 
             MockYahtzeeSet.Verify(m => m.RollUnsaved(), Times.Never);
             Assert.AreEqual(CurrentView.SaveScore, sut.CurrentView);
             Assert.AreEqual(State.Saving, sut.State);
-        }
-
-        [TestMethod]
-        public void RollDicesShouldNotDoAnythingIfStateIsNotPlaying()
-        {
-            sut.State = State.Start;
-            sut.CurrentView = CurrentView.Start;
-            sut.RollDices();
-
-            MockYahtzeeSet.Verify(m => m.CanRoll, Times.Never);
-            MockYahtzeeSet.Verify(m => m.RollUnsaved(), Times.Never);
-            Assert.AreEqual(State.Start, sut.State);
-            Assert.AreEqual(CurrentView.Start, sut.CurrentView);
         }
 
         [TestMethod]
@@ -133,6 +117,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void ReactToPlayingInputShouldRollDicesIfSentR()
         {
+            MockYahtzeeSet.SetupGet(m => m.CanRoll).Returns(true);
             sut.ReactToPlayingInput("R");
 
             TestRollDice();

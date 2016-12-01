@@ -25,27 +25,24 @@ namespace YahtzeeTDD
 
         public void RollDices()
         {
-            if (State == State.Playing)
+            if (YahtzeeSet.CanRoll)
             {
+                YahtzeeSet.RollUnsaved();
+
                 if (YahtzeeSet.CanRoll)
                 {
-                    YahtzeeSet.RollUnsaved();
-
-                    if (YahtzeeSet.CanRoll)
-                    {
-                        CurrentView = CurrentView.Roll;
-                    }
-                    else
-                    {
-                        CurrentView = CurrentView.SaveScore;
-                        State = State.Saving;
-                    }
+                    CurrentView = CurrentView.Roll;
                 }
                 else
                 {
                     CurrentView = CurrentView.SaveScore;
                     State = State.Saving;
                 }
+            }
+            else
+            {
+                CurrentView = CurrentView.SaveScore;
+                State = State.Saving;
             }
         }
 
@@ -74,6 +71,10 @@ namespace YahtzeeTDD
             if (string.Equals(input, "C", StringComparison.CurrentCultureIgnoreCase))
             {
                 CurrentView = CurrentView.CheckScore;
+            }
+            else if (string.Equals(input, "R", StringComparison.CurrentCultureIgnoreCase))
+            {
+                RollDices();
             }
         }
 
