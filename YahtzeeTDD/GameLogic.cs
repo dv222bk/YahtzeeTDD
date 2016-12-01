@@ -34,6 +34,11 @@ namespace YahtzeeTDD
                     {
                         CurrentView = CurrentView.Roll;
                     }
+                    else
+                    {
+                        CurrentView = CurrentView.SaveScore;
+                        State = State.Saving;
+                    }
                 } 
             }
         }
