@@ -174,6 +174,18 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
+        public void ReactToSaveDieInputShouldNotChangeCurrentViewOrStateIfGivenInvalidInput()
+        {
+            sut.CurrentView = CurrentView.SaveDie;
+            sut.State = State.SaveDie;
+
+            sut.ReactToSaveDieInput("10");
+
+            Assert.AreEqual(CurrentView.SaveDie, sut.CurrentView);
+            Assert.AreEqual(State.SaveDie, sut.State);
+        }
+
+        [TestMethod]
         public void SaveScoreShouldReturnFalseIfGivenAnInvalidValue()
         {
             Assert.IsFalse(sut.SaveScore(999));
