@@ -97,6 +97,12 @@ namespace YahtzeeTDD
                         YahtzeeSet.Reset();
                     }
                     break;
+                case 2:
+                    if (Score.SaveTwos())
+                    {
+                        YahtzeeSet.Reset();
+                    }
+                    break;
             }
         }
     }
