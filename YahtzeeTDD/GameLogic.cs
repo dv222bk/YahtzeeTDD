@@ -24,7 +24,18 @@ namespace YahtzeeTDD
 
         public void RollDices()
         {
-            throw new NotImplementedException();
+            if (State == State.Playing)
+            {
+                if (YahtzeeSet.CanThrow)
+                {
+                    YahtzeeSet.RollUnsaved();
+
+                    if (YahtzeeSet.CanThrow)
+                    {
+                        CurrentView = CurrentView.Roll;
+                    }
+                } 
+            }
         }
     }
 }

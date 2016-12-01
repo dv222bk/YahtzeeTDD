@@ -37,7 +37,7 @@ namespace YahtzeeTDD
             }
         }
 
-        public void RollUnsaved()
+        public virtual void RollUnsaved()
         {
             if (CurrentRoll < MaxRolls)
             {
