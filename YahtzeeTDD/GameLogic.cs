@@ -39,7 +39,12 @@ namespace YahtzeeTDD
                         CurrentView = CurrentView.SaveScore;
                         State = State.Saving;
                     }
-                } 
+                }
+                else
+                {
+                    CurrentView = CurrentView.SaveScore;
+                    State = State.Saving;
+                }
             }
         }
     }
