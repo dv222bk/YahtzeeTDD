@@ -37,6 +37,14 @@ namespace YahtzeeTDDTest
             sut = new GameLogic(MockYahtzeeSet.Object, MockScore.Object, MockView.Object);
         }
 
+        public void TestNewGame()
+        {
+            MockYahtzeeSet.Verify(m => m.Reset(), Times.Once);
+            MockScore.Verify(m => m.Reset(), Times.Once);
+            Assert.AreEqual(State.Playing, sut.State);
+            Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
+        }
+
         [TestMethod]
         public void RollDicesShouldRollAllUnsavedDiceIfStateIsPlayingAndSetCurrentViewToRollIfTheUserCanStillRoll()
         {
@@ -90,10 +98,7 @@ namespace YahtzeeTDDTest
         {
             sut.NewGame();
 
-            MockYahtzeeSet.Verify(m => m.Reset(), Times.Once);
-            MockScore.Verify(m => m.Reset(), Times.Once);
-            Assert.AreEqual(State.Playing, sut.State);
-            Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
+            TestNewGame();
         }
 
         [TestMethod]
@@ -128,6 +133,14 @@ namespace YahtzeeTDDTest
             sut.ReactToInput("C");
 
             Assert.AreEqual(CurrentView.CheckScore, sut.CurrentView);
+        }
+
+        [TestMethod]
+        public void ReactToInputShouldStartANewGameIfSentN()
+        {
+            sut.ReactToInput("N");
+
+            TestNewGame();
         }
     }
 }
