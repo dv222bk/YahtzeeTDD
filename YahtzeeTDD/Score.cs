@@ -356,7 +356,7 @@ namespace YahtzeeTDD
             }
         }
 
-        public bool IsFull
+        public virtual bool IsFull
         {
             get
             {

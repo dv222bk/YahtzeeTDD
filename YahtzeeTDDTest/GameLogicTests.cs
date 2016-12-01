@@ -301,5 +301,19 @@ namespace YahtzeeTDDTest
 
             MockScore.Verify(m => m.SaveYahtzee(), Times.Exactly(2));
         }
+
+        [TestMethod]
+        public void ReactToSavingInputShouldCallSaveScoreAndResetYahtzeeSetAndSetCurrentViewToRollAndSetStateToPlayingIfSuccessfulAndIfScoreIsNotFull()
+        {
+            MockScore.SetupSequence(m => m.SaveAces()).Returns(true);
+            MockScore.SetupGet(m => m.IsFull).Returns(false);
+            sut.ReactToSavingInput("1");
+
+            MockScore.Verify(m => m.SaveAces(), Times.Once);
+            MockScore.VerifyGet(m => m.IsFull, Times.Once);
+            MockYahtzeeSet.Verify(m => m.Reset(), Times.Once);
+            Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
+            Assert.AreEqual(State.Playing, sut.State);
+        }
     }
 }
