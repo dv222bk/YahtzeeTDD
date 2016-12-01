@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace YahtzeeTDD
 {
-    public static enum CurrentView { Start, Roll, CheckScore, SaveScore, SaveDie, UnsaveDie, Finish }
+    public enum CurrentView { Start, Roll, CheckScore, SaveScore, SaveDie, UnsaveDie, Finish }
 }

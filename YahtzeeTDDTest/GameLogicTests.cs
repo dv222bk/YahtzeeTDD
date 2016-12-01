@@ -37,5 +37,15 @@ namespace YahtzeeTDDTest
             sut = new GameLogic(MockYahtzeeSet.Object, MockScore.Object, MockView.Object);
         }
 
+        [TestMethod]
+        public void RollDicesShouldRollAllUnsavedDiceIfStateIsPlayingAndSetCurrentViewToRollIfTheUserCanStillRoll()
+        {
+            sut.State = State.Playing;
+            MockYahtzeeSet.SetupGet(m => m.CanThrow).Returns(true);
+            sut.RollDices();
+
+            MockYahtzeeSet.Verify(m => m.RollUnsaved(), Times.Once);
+            Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
+        }
     }
 }

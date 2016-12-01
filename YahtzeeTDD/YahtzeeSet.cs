@@ -58,7 +58,7 @@ namespace YahtzeeTDD
             RollAll();
         }
 
-        public bool CanThrow
+        public virtual bool CanThrow
         {
             get 
             {

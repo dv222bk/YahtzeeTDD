@@ -12,14 +12,19 @@ namespace YahtzeeTDD
         private YahtzeeSet YahtzeeSet;
         private Score Score;
         private YahtzeeView YahtzeeView;
-        private State State = State.Start;
-        private CurrentView CurrentView = CurrentView.Start;
+        public State State = State.Start;
+        public CurrentView CurrentView = CurrentView.Start;
 
         public GameLogic(YahtzeeSet yahtzeeSet, Score score, YahtzeeView yahtzeeView)
         {
             YahtzeeSet = yahtzeeSet;
             Score = score;
             YahtzeeView = yahtzeeView;
+        }
+
+        public void RollDices()
+        {
+            throw new NotImplementedException();
         }
     }
 }
