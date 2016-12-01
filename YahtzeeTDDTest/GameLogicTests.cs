@@ -147,6 +147,15 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
+        public void ReactToPlayingInputShouldChangeCurrentViewToSaveDieAndStateToSaveDieIfSentS()
+        {
+            sut.ReactToPlayingInput("S");
+
+            Assert.AreEqual(CurrentView.SaveDie, sut.CurrentView);
+            Assert.AreEqual(State.SaveDie, sut.State);
+        }
+
+        [TestMethod]
         public void SaveScoreShouldReturnFalseIfGivenAnInvalidValue()
         {
             Assert.IsFalse(sut.SaveScore(999));
