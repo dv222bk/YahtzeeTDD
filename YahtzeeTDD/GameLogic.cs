@@ -14,6 +14,7 @@ namespace YahtzeeTDD
         private YahtzeeView YahtzeeView;
         public State State = State.Start;
         public CurrentView CurrentView = CurrentView.Start;
+        public bool continueGame = true;
 
         public GameLogic(YahtzeeSet yahtzeeSet, Score score, YahtzeeView yahtzeeView)
         {
@@ -59,6 +60,11 @@ namespace YahtzeeTDD
         public void ShowScore()
         {
             CurrentView = CurrentView.CheckScore;
+        }
+
+        public void Quit()
+        {
+            throw new NotImplementedException();
         }
     }
 }

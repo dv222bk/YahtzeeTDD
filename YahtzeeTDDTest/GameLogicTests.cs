@@ -103,5 +103,13 @@ namespace YahtzeeTDDTest
 
             Assert.AreEqual(CurrentView.CheckScore, sut.CurrentView);
         }
+
+        [TestMethod]
+        public void QuitShouldSetContinueGameToFalse()
+        {
+            sut.Quit();
+
+            Assert.AreEqual(false, sut.continueGame);
+        }
     }
 }
