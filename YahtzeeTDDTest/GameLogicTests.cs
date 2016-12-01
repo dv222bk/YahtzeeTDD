@@ -111,5 +111,31 @@ namespace YahtzeeTDDTest
 
             Assert.AreEqual(false, sut.continueGame);
         }
+
+        [TestMethod]
+        public void ReactToInputShouldSetTheCurrentViewToCheckScoreOnlyIfStateIsPlayingAndIfSentC()
+        {
+            sut.CurrentView = CurrentView.Roll;
+            
+            sut.State = State.Start;
+            sut.ReactToInput("C");
+
+            Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
+
+            sut.State = State.Saving;
+            sut.ReactToInput("C");
+
+            Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
+
+            sut.State = State.Finish;
+            sut.ReactToInput("C");
+
+            Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
+
+            sut.State = State.Playing;
+            sut.ReactToInput("C");
+
+            Assert.AreEqual(CurrentView.CheckScore, sut.CurrentView);
+        }
     }
 }
