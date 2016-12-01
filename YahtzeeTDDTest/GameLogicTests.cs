@@ -131,5 +131,13 @@ namespace YahtzeeTDDTest
             Assert.AreEqual(CurrentView.SaveScore, sut.CurrentView);
             Assert.AreEqual(State.Saving, sut.State);
         }
+
+        [TestMethod]
+        public void ReactToPlayingInputShouldChangeCurrentViewToRollIfSentH()
+        {
+            sut.ReactToPlayingInput("H");
+
+            Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
+        }
     }
 }
