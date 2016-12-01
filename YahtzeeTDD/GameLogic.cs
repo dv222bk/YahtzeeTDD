@@ -89,7 +89,19 @@ namespace YahtzeeTDD
 
         public void ReactToSavingInput(string input)
         {
-            
+            int intOutput;
+            if (int.TryParse(input, out intOutput))
+            {
+                if (SaveScore(intOutput))
+                {
+                    if (!Score.IsFull)
+                    {
+                        YahtzeeSet.Reset();
+                        CurrentView = CurrentView.Roll;
+                        State = State.Playing;
+                    }
+                }
+            }
         }
 
         public bool SaveScore(int input)
