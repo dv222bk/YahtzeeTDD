@@ -356,6 +356,25 @@ namespace YahtzeeTDD
             }
         }
 
-        public bool IsFull { get; set; }
+        public bool IsFull
+        {
+            get
+            {
+                var fields = this.GetType().GetFields();
+
+                foreach (var field in fields)
+                {
+                    if (field.FieldType == typeof(Nullable<Int32>))
+                    {
+                        if(field.GetValue(this) == null)
+                        {
+                            return false;
+                        }
+                    }
+                }
+
+                return true;
+            }
+        }
     }
 }
