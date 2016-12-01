@@ -63,8 +63,13 @@ namespace YahtzeeTDD
             {
                 CurrentView = CurrentView.CheckScore;
             }
-            else if(string.Equals(input, "Q", StringComparison.CurrentCultureIgnoreCase)) {
+            else if (string.Equals(input, "Q", StringComparison.CurrentCultureIgnoreCase))
+            {
                 continueGame = false;
+            }
+            else if (string.Equals(input, "N", StringComparison.CurrentCultureIgnoreCase))
+            {
+                NewGame();
             }
         }
     }
