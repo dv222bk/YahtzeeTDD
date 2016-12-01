@@ -49,6 +49,15 @@ namespace YahtzeeTDDTest
         {
             MockYahtzeeSet.Verify(m => m.RollUnsaved(), Times.Once);
         }
+        public void TestSavingInput(int input)
+        {
+            sut.ReactToSavingInput(input);
+            MockYahtzeeSet.Verify(m => m.Reset(), Times.Once);
+            MockYahtzeeSet.Reset();
+            sut.ReactToSavingInput(input);
+            MockYahtzeeSet.Verify(m => m.Reset(), Times.Never);
+        }
+
 
         [TestMethod]
         public void RollDicesShouldRollAllUnsavedDiceAndSetCurrentViewToRollIfTheUserCanStillRoll()
@@ -144,14 +153,9 @@ namespace YahtzeeTDDTest
         public void ReactToSavingInputShouldSaveAcesAndResetYahtzeeSetIfSuccesfullIfSent1()
         {
             MockScore.SetupSequence(m => m.SaveAces()).Returns(true).Returns(false);
-            sut.ReactToSavingInput(1);
+            TestSavingInput(1);
 
-            MockScore.Verify(m => m.SaveAces(), Times.Once);
-            MockYahtzeeSet.Verify(m => m.Reset(), Times.Once);
-
-            MockYahtzeeSet.Reset();
-            sut.ReactToSavingInput(1);
-            MockYahtzeeSet.Verify(m => m.Reset(), Times.Never);
+            MockScore.Verify(m => m.SaveAces(), Times.Exactly(2));
         }
     }
 }
