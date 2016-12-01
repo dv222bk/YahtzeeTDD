@@ -66,5 +66,10 @@ namespace YahtzeeTDD
         {
             continueGame = false;
         }
+
+        public void ReactToInput(string p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
