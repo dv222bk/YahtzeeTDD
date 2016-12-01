@@ -45,6 +45,11 @@ namespace YahtzeeTDDTest
             Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
         }
 
+        public void TestRollDice()
+        {
+            MockYahtzeeSet.Verify(m => m.RollUnsaved(), Times.Once);
+        }
+
         [TestMethod]
         public void RollDicesShouldRollAllUnsavedDiceIfStateIsPlayingAndSetCurrentViewToRollIfTheUserCanStillRoll()
         {
@@ -52,7 +57,7 @@ namespace YahtzeeTDDTest
             MockYahtzeeSet.SetupGet(m => m.CanRoll).Returns(true);
             sut.RollDices();
 
-            MockYahtzeeSet.Verify(m => m.RollUnsaved(), Times.Once);
+            TestRollDice();
             Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
         }
 
@@ -63,7 +68,7 @@ namespace YahtzeeTDDTest
             MockYahtzeeSet.SetupSequence(m => m.CanRoll).Returns(true).Returns(false);
             sut.RollDices();
 
-            MockYahtzeeSet.Verify(m => m.RollUnsaved(), Times.Once);
+            TestRollDice();
             Assert.AreEqual(CurrentView.SaveScore, sut.CurrentView);
             Assert.AreEqual(State.Saving, sut.State);
         }
@@ -118,11 +123,19 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void ReactToPlayingInputShouldSetTheCurrentViewToCheckScoreOnlyIfStateIsPlayingAndIfSentC()
+        public void ReactToPlayingInputShouldSetTheCurrentViewToCheckScoreIfSentC()
         {
             sut.ReactToPlayingInput("C");
 
             Assert.AreEqual(CurrentView.CheckScore, sut.CurrentView);
+        }
+
+        [TestMethod]
+        public void ReactToPlayingInputShouldRollDicesIfSentR()
+        {
+            sut.ReactToPlayingInput("R");
+
+            TestRollDice();
         }
     }
 }
