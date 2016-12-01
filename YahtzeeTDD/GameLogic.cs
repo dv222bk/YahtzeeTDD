@@ -12,14 +12,14 @@ namespace YahtzeeTDD
         private YahtzeeSet YahtzeeSet;
         private Score Score;
         private YahtzeeView YahtzeeView;
-        private UserConsole UserConsole;
+        private State State = State.Start;
+        private CurrentView CurrentView = CurrentView.Start;
 
-        public GameLogic(YahtzeeSet yahtzeeSet, Score score, YahtzeeView yahtzeeView, UserConsole userConsole)
+        public GameLogic(YahtzeeSet yahtzeeSet, Score score, YahtzeeView yahtzeeView)
         {
             YahtzeeSet = yahtzeeSet;
             Score = score;
             YahtzeeView = yahtzeeView;
-            UserConsole = userConsole;
         }
     }
 }
