@@ -47,5 +47,10 @@ namespace YahtzeeTDD
                 }
             }
         }
+
+        public void NewGame()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

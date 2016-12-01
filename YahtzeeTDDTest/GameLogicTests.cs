@@ -84,5 +84,16 @@ namespace YahtzeeTDDTest
             Assert.AreEqual(State.Start, sut.State);
             Assert.AreEqual(CurrentView.Start, sut.CurrentView);
         }
+
+        [TestMethod]
+        public void NewGameShouldResetYahtzeeSetAndScoreAndSetStateToPlayingAndSetCurrentViewToRoll()
+        {
+            sut.NewGame();
+
+            MockYahtzeeSet.Verify(m => m.Reset(), Times.Once);
+            MockScore.Verify(m => m.ResetScore(), Times.Once);
+            Assert.AreEqual(State.Playing, sut.State);
+            Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
+        }
     }
 }
