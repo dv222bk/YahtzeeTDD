@@ -122,5 +122,12 @@ namespace YahtzeeTDDTest
         {
             Assert.IsTrue(sut.CanThrow());
         }
+
+        [TestMethod]
+        public void CanThrowShouldReturnFalseIfThePlayerCannotRollTheDices()
+        {
+            sut.CurrentRoll = 3;
+            Assert.IsFalse(sut.CanThrow());
+        }
     }
 }
