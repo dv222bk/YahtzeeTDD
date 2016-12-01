@@ -590,5 +590,14 @@ namespace YahtzeeTDDTest
                 }
             }
         }
+
+        // IS FULL
+        [TestMethod]
+        public void IsFullShouldReturnTrueIfAllScoreValuesAreSet()
+        {
+            FillScore();
+
+            Assert.IsTrue(sut.IsFull);
+        }
     }
 }

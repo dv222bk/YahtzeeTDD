@@ -355,5 +355,7 @@ namespace YahtzeeTDD
                 }
             }
         }
+
+        public bool IsFull { get; set; }
     }
 }
