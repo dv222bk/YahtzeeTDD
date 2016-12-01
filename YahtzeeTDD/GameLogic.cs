@@ -90,6 +90,11 @@ namespace YahtzeeTDD
                 CurrentView = CurrentView.SaveDie;
                 State = State.SaveDie;
             }
+            else if (string.Equals(input, "U", StringComparison.CurrentCultureIgnoreCase))
+            {
+                CurrentView = CurrentView.UnsaveDie;
+                State = State.SaveDie;
+            }
         }
 
         public void ReactToSavingInput(string input)
