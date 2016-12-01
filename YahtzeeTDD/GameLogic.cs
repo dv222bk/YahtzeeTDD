@@ -105,5 +105,10 @@ namespace YahtzeeTDD
                     break;
             }
         }
+
+        public bool SaveScore(int p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

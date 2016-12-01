@@ -166,5 +166,16 @@ namespace YahtzeeTDDTest
 
             MockScore.Verify(m => m.SaveTwos(), Times.Exactly(2));
         }
+
+        [TestMethod]
+        public void SaveScoreShouldSaveAcesAndReturnScoreBoolReturnValueIfSent1()
+        {
+            MockScore.SetupSequence(m => m.SaveAces()).Returns(true).Returns(false);
+
+            Assert.IsTrue(sut.SaveScore(1));
+            Assert.IsFalse(sut.SaveScore(1));
+
+            MockScore.Verify(m => m.SaveAces(), Times.Exactly(2));
+        }
     }
 }
