@@ -100,6 +100,32 @@ namespace YahtzeeTDD
                     return Score.SaveAces();
                 case 2:
                     return Score.SaveTwos();
+                case 3:
+                    return Score.SaveThrees();
+                case 4:
+                    return Score.SaveFours();
+                case 5:
+                    return Score.SaveFives();
+                case 6:
+                    return Score.SaveSixes();
+                case 7:
+                    return Score.SaveOnePair();
+                case 8:
+                    return Score.SaveTwoPair();
+                case 9:
+                    return Score.SaveToaK();
+                case 10:
+                    return Score.SaveFoaK();
+                case 11:
+                    return Score.SaveSmallStraight();
+                case 12:
+                    return Score.SaveLargeStraight();
+                case 13:
+                    return Score.SaveFullHouse();
+                case 14:
+                    return Score.SaveChance();
+                case 15:
+                    return Score.SaveYahtzee();
                 default:
                     return false;
             }
