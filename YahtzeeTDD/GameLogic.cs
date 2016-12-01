@@ -58,7 +58,7 @@ namespace YahtzeeTDD
 
         public void ShowScore()
         {
-            throw new NotImplementedException();
+            CurrentView = CurrentView.CheckScore;
         }
     }
 }
