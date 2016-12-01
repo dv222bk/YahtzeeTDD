@@ -67,9 +67,11 @@ namespace YahtzeeTDD
             continueGame = false;
         }
 
-        public void ReactToInput(string p)
+        public void ReactToInput(string input)
         {
-            throw new NotImplementedException();
+            if(string.Equals(input, "Q", StringComparison.CurrentCultureIgnoreCase)) {
+                continueGame = false;
+            }
         }
     }
 }
