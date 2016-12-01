@@ -85,6 +85,11 @@ namespace YahtzeeTDD
                 CurrentView = CurrentView.SaveScore;
                 State = State.Saving;
             }
+            else if (string.Equals(input, "S", StringComparison.CurrentCultureIgnoreCase))
+            {
+                CurrentView = CurrentView.SaveDie;
+                State = State.SaveDie;
+            }
         }
 
         public void ReactToSavingInput(string input)
