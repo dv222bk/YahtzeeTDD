@@ -143,11 +143,15 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void ReactToSavingInputShouldSaveAcesAndResetYahtzeeSetIfSuccesfullIfSent1()
         {
-            MockScore.Setup(m => m.SaveAces()).Returns(true);
+            MockScore.SetupSequence(m => m.SaveAces()).Returns(true).Returns(false);
             sut.ReactToSavingInput(1);
 
             MockScore.Verify(m => m.SaveAces(), Times.Once);
             MockYahtzeeSet.Verify(m => m.Reset(), Times.Once);
+
+            MockYahtzeeSet.Reset();
+            sut.ReactToSavingInput(1);
+            MockYahtzeeSet.Verify(m => m.Reset(), Times.Never);
         }
     }
 }
