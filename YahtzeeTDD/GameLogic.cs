@@ -100,6 +100,11 @@ namespace YahtzeeTDD
                         CurrentView = CurrentView.Roll;
                         State = State.Playing;
                     }
+                    else
+                    {
+                        CurrentView = CurrentView.Finish;
+                        State = State.Start;
+                    }
                 }
             }
         }
