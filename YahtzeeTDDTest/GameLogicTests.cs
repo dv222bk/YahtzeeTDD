@@ -71,5 +71,18 @@ namespace YahtzeeTDDTest
             Assert.AreEqual(CurrentView.SaveScore, sut.CurrentView);
             Assert.AreEqual(State.Saving, sut.State);
         }
+
+        [TestMethod]
+        public void RollDicesShouldNotDoAnythingIfStateIsNotPlaying()
+        {
+            sut.State = State.Start;
+            sut.CurrentView = CurrentView.Start;
+            sut.RollDices();
+
+            MockYahtzeeSet.Verify(m => m.CanThrow, Times.Never);
+            MockYahtzeeSet.Verify(m => m.RollUnsaved(), Times.Never);
+            Assert.AreEqual(State.Start, sut.State);
+            Assert.AreEqual(CurrentView.Start, sut.CurrentView);
+        }
     }
 }
