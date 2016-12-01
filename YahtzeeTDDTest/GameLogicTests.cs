@@ -157,5 +157,14 @@ namespace YahtzeeTDDTest
 
             MockScore.Verify(m => m.SaveAces(), Times.Exactly(2));
         }
+
+        [TestMethod]
+        public void RecatToSavingInputShouldSaveTwosAndResetYahtzeeSetIfSuccessfullIfSent2()
+        {
+            MockScore.SetupSequence(m => m.SaveTwos()).Returns(true).Returns(false);
+            TestSavingInput(2);
+
+            MockScore.Verify(m => m.SaveTwos(), Times.Exactly(2));
+        }
     }
 }
