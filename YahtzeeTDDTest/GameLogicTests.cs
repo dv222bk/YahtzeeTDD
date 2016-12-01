@@ -122,5 +122,14 @@ namespace YahtzeeTDDTest
 
             TestRollDice();
         }
+
+        [TestMethod]
+        public void ReactToPlayingInputShouldChangeCurrentStateToSavingAndCurrentViewToSaveScoreIfSentA()
+        {
+            sut.ReactToPlayingInput("A");
+
+            Assert.AreEqual(CurrentView.SaveScore, sut.CurrentView);
+            Assert.AreEqual(State.Saving, sut.State);
+        }
     }
 }
