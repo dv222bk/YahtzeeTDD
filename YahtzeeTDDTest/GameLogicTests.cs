@@ -49,13 +49,25 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void RollDicesShouldRollAllUnsavedDiceIfStateIsPlayingAndSetCurrentViewToSaveScoreAndStateToSavingIfTheUserCannotRollAnyMore()
+        public void RollDicesShouldRollAllUnsavedDiceIfStateIsPlayingAndSetCurrentViewToSaveScoreAndStateToSavingIfTheUserCannotRollAnymore()
         {
             sut.State = State.Playing;
             MockYahtzeeSet.SetupSequence(m => m.CanThrow).Returns(true).Returns(false);
             sut.RollDices();
 
             MockYahtzeeSet.Verify(m => m.RollUnsaved(), Times.Once);
+            Assert.AreEqual(CurrentView.SaveScore, sut.CurrentView);
+            Assert.AreEqual(State.Saving, sut.State);
+        }
+
+        [TestMethod]
+        public void RollDicesShouldSetCurrentViewToSaveScoreAndStateToSavingIfTheUserCannotRollAnymore()
+        {
+            sut.State = State.Playing;
+            MockYahtzeeSet.SetupGet(m => m.CanThrow).Returns(false);
+            sut.RollDices();
+
+            MockYahtzeeSet.Verify(m => m.RollUnsaved(), Times.Never);
             Assert.AreEqual(CurrentView.SaveScore, sut.CurrentView);
             Assert.AreEqual(State.Saving, sut.State);
         }
