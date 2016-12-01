@@ -76,6 +76,11 @@ namespace YahtzeeTDD
             {
                 RollDices();
             }
+            else if (string.Equals(input, "A", StringComparison.CurrentCultureIgnoreCase))
+            {
+                CurrentView = CurrentView.SaveScore;
+                State = State.Saving;
+            }
         }
 
         public void ReactToSavingInput(string input)
