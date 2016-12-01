@@ -89,7 +89,15 @@ namespace YahtzeeTDD
 
         public void ReactToSavingInput(int input)
         {
-
+            switch (input)
+            {
+                case 1:
+                    if (Score.SaveAces())
+                    {
+                        YahtzeeSet.Reset();
+                    }
+                    break;
+            }
         }
     }
 }

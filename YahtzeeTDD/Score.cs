@@ -121,7 +121,7 @@ namespace YahtzeeTDD
             return true;
         }
 
-        public bool SaveAces()
+        public virtual bool SaveAces()
         {
             if (aces != null)
             {
@@ -133,7 +133,7 @@ namespace YahtzeeTDD
             return true;
         }
 
-        public bool SaveTwos()
+        public virtual bool SaveTwos()
         {
             if (twos != null)
             {
@@ -145,7 +145,7 @@ namespace YahtzeeTDD
             return true;
         }
 
-        public bool SaveThrees()
+        public virtual bool SaveThrees()
         {
             if (threes != null)
             {
@@ -157,7 +157,7 @@ namespace YahtzeeTDD
             return true;
         }
 
-        public bool SaveFours()
+        public virtual bool SaveFours()
         {
             if (fours != null)
             {
@@ -169,7 +169,7 @@ namespace YahtzeeTDD
             return true;
         }
 
-        public bool SaveFives()
+        public virtual bool SaveFives()
         {
             if (fives != null)
             {
@@ -181,7 +181,7 @@ namespace YahtzeeTDD
             return true;
         }
 
-        public bool SaveSixes()
+        public virtual bool SaveSixes()
         {
             if (sixes != null)
             {
@@ -214,7 +214,7 @@ namespace YahtzeeTDD
             }
         }
 
-        public bool SaveOnePair()
+        public virtual bool SaveOnePair()
         {
             if (onePair != null)
             {
@@ -226,7 +226,7 @@ namespace YahtzeeTDD
             return true;
         }
 
-        public bool SaveTwoPair()
+        public virtual bool SaveTwoPair()
         {
             if (twoPair != null)
             {
@@ -238,7 +238,7 @@ namespace YahtzeeTDD
             return true;
         }
 
-        public bool SaveToaK()
+        public virtual bool SaveToaK()
         {
             if (toak != null)
             {
@@ -250,7 +250,7 @@ namespace YahtzeeTDD
             return true;
         }
 
-        public bool SaveFoaK()
+        public virtual bool SaveFoaK()
         {
             if (foak != null)
             {
@@ -262,7 +262,7 @@ namespace YahtzeeTDD
             return true;
         }
 
-        public bool SaveSmallStraight()
+        public virtual bool SaveSmallStraight()
         {
             if (smallStraight != null)
             {
@@ -274,7 +274,7 @@ namespace YahtzeeTDD
             return true;
         }
 
-        public bool SaveLargeStraight()
+        public virtual bool SaveLargeStraight()
         {
             if (largeStraight != null)
             {
@@ -286,7 +286,7 @@ namespace YahtzeeTDD
             return true;
         }
 
-        public bool SaveFullHouse()
+        public virtual bool SaveFullHouse()
         {
             if (fullHouse != null)
             {
@@ -310,7 +310,7 @@ namespace YahtzeeTDD
             return true;
         }
 
-        public bool SaveChance()
+        public virtual bool SaveChance()
         {
             if (chance != null)
             {
@@ -322,7 +322,7 @@ namespace YahtzeeTDD
             return true;
         }
 
-        public bool SaveYahtzee()
+        public virtual bool SaveYahtzee()
         {
             if (yahtzee != null)
             {
