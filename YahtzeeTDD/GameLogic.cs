@@ -64,7 +64,7 @@ namespace YahtzeeTDD
 
         public void Quit()
         {
-            throw new NotImplementedException();
+            continueGame = false;
         }
     }
 }
