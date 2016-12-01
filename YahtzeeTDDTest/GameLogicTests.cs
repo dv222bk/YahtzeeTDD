@@ -156,12 +156,15 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void ReactToPlayingInputShouldChangeCurrentViewToUnsaveDieAndStateToSaveDieIfSentU()
+        public void ReactToSaveDieInputShouldSaveDieIfCurrentViewIsSaveDieAndChangeCurrentViewToPlayingAndStateToRoll()
         {
-            sut.ReactToPlayingInput("U");
+            MockDiceSet[0].SetupGet(m => m.Saved).Returns(false);
 
-            Assert.AreEqual(CurrentView.UnsaveDie, sut.CurrentView);
-            Assert.AreEqual(State.SaveDie, sut.State);
+            sut.ReactToSaveDieInput("0");
+
+            MockDiceSet[0].VerifySet(m => m.Saved = true);
+            Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
+            Assert.AreEqual(State.Playing, sut.State);
         }
 
         [TestMethod]
