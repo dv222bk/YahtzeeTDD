@@ -99,7 +99,7 @@ namespace YahtzeeTDD
             {
                 if (intInput >= 0 && intInput < YahtzeeSet.DiceSet.Length)
                 {
-                    YahtzeeSet.DiceSet[intInput].Saved ^= true;
+                    YahtzeeSet.DiceSet[intInput].Saved ^= true; // True c# magic
                     CurrentView = CurrentView.Roll;
                     State = State.Playing;
                 }
