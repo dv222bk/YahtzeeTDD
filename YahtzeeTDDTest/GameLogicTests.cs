@@ -102,45 +102,27 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void ReactToInputShouldSetContinueGameToFalseIfSentQ()
+        public void ReactToStandardInputShouldSetContinueGameToFalseIfSentQ()
         {
-            sut.ReactToInput("Q");
+            sut.ReactToStandardInput("Q");
 
             Assert.AreEqual(false, sut.continueGame);
         }
 
         [TestMethod]
-        public void ReactToInputShouldSetTheCurrentViewToCheckScoreOnlyIfStateIsPlayingAndIfSentC()
+        public void ReactToStandardInputShouldStartANewGameIfSentN()
         {
-            sut.CurrentView = CurrentView.Roll;
-            
-            sut.State = State.Start;
-            sut.ReactToInput("C");
+            sut.ReactToStandardInput("N");
 
-            Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
-
-            sut.State = State.Saving;
-            sut.ReactToInput("C");
-
-            Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
-
-            sut.State = State.Finish;
-            sut.ReactToInput("C");
-
-            Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
-
-            sut.State = State.Playing;
-            sut.ReactToInput("C");
-
-            Assert.AreEqual(CurrentView.CheckScore, sut.CurrentView);
+            TestNewGame();
         }
 
         [TestMethod]
-        public void ReactToInputShouldStartANewGameIfSentN()
+        public void ReactToPlayingInputShouldSetTheCurrentViewToCheckScoreOnlyIfStateIsPlayingAndIfSentC()
         {
-            sut.ReactToInput("N");
+            sut.ReactToPlayingInput("C");
 
-            TestNewGame();
+            Assert.AreEqual(CurrentView.CheckScore, sut.CurrentView);
         }
     }
 }

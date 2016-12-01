@@ -57,13 +57,9 @@ namespace YahtzeeTDD
             State = State.Playing;
         }
 
-        public void ReactToInput(string input)
+        public void ReactToStandardInput(string input)
         {
-            if (State == State.Playing && string.Equals(input, "C", StringComparison.CurrentCultureIgnoreCase))
-            {
-                CurrentView = CurrentView.CheckScore;
-            }
-            else if (string.Equals(input, "Q", StringComparison.CurrentCultureIgnoreCase))
+            if (string.Equals(input, "Q", StringComparison.CurrentCultureIgnoreCase))
             {
                 continueGame = false;
             }
@@ -71,6 +67,19 @@ namespace YahtzeeTDD
             {
                 NewGame();
             }
+        }
+
+        public void ReactToPlayingInput(string input)
+        {
+            if (string.Equals(input, "C", StringComparison.CurrentCultureIgnoreCase))
+            {
+                CurrentView = CurrentView.CheckScore;
+            }
+        }
+
+        public void ReactToSavingInput(string input)
+        {
+
         }
     }
 }
