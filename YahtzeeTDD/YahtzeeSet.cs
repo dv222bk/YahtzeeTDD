@@ -58,9 +58,12 @@ namespace YahtzeeTDD
             RollAll();
         }
 
-        public bool CanThrow()
+        public bool CanThrow
         {
-            return CurrentRoll < MaxRolls;          
+            get 
+            {
+                return CurrentRoll < MaxRolls;      
+            }  
         }
     }
 }
