@@ -97,14 +97,6 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void ShowScoreShouldSetTheCurrentViewToCheckScore()
-        {
-            sut.ShowScore();
-
-            Assert.AreEqual(CurrentView.CheckScore, sut.CurrentView);
-        }
-
-        [TestMethod]
         public void ReactToInputShouldSetContinueGameToFalseIfSentQ()
         {
             sut.ReactToInput("Q");

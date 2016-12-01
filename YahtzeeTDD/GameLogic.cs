@@ -57,11 +57,6 @@ namespace YahtzeeTDD
             State = State.Playing;
         }
 
-        public void ShowScore()
-        {
-            CurrentView = CurrentView.CheckScore;
-        }
-
         public void ReactToInput(string input)
         {
             if (State == State.Playing && string.Equals(input, "C", StringComparison.CurrentCultureIgnoreCase))
