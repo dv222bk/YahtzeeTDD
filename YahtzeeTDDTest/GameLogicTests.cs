@@ -171,5 +171,135 @@ namespace YahtzeeTDDTest
 
             MockScore.Verify(m => m.SaveTwos(), Times.Exactly(2));
         }
+
+        [TestMethod]
+        public void SaveScoreShouldSaveThreesAndReturnScoreBoolReturnValueIfSent3()
+        {
+            MockScore.SetupSequence(m => m.SaveThrees()).Returns(true).Returns(false);
+
+            TestSaveScoreInput(3);
+
+            MockScore.Verify(m => m.SaveThrees(), Times.Exactly(2));
+        }
+
+        [TestMethod]
+        public void SaveScoreShouldSaveFoursAndReturnScoreBoolReturnValueIfSent4()
+        {
+            MockScore.SetupSequence(m => m.SaveFours()).Returns(true).Returns(false);
+
+            TestSaveScoreInput(4);
+
+            MockScore.Verify(m => m.SaveFours(), Times.Exactly(2));
+        }
+
+        [TestMethod]
+        public void SaveScoreShouldSaveFivesAndReturnScoreBoolReturnValueIfSent5()
+        {
+            MockScore.SetupSequence(m => m.SaveFives()).Returns(true).Returns(false);
+
+            TestSaveScoreInput(5);
+
+            MockScore.Verify(m => m.SaveFives(), Times.Exactly(2));
+        }
+
+        [TestMethod]
+        public void SaveScoreShouldSaveSixesAndReturnScoreBoolReturnValueIfSent6()
+        {
+            MockScore.SetupSequence(m => m.SaveSixes()).Returns(true).Returns(false);
+
+            TestSaveScoreInput(6);
+
+            MockScore.Verify(m => m.SaveSixes(), Times.Exactly(2));
+        }
+
+        [TestMethod]
+        public void SaveScoreShouldSaveOnePairAndReturnScoreBoolReturnValueIfSent7()
+        {
+            MockScore.SetupSequence(m => m.SaveOnePair()).Returns(true).Returns(false);
+
+            TestSaveScoreInput(7);
+
+            MockScore.Verify(m => m.SaveOnePair(), Times.Exactly(2));
+        }
+
+        [TestMethod]
+        public void SaveScoreShouldSaveTwoPairAndReturnScoreBoolReturnValueIfSent8()
+        {
+            MockScore.SetupSequence(m => m.SaveTwoPair()).Returns(true).Returns(false);
+
+            TestSaveScoreInput(8);
+
+            MockScore.Verify(m => m.SaveTwoPair(), Times.Exactly(2));
+        }
+
+        [TestMethod]
+        public void SaveScoreShouldSaveToaKAndReturnScoreBoolReturnValueIfSent9()
+        {
+            MockScore.SetupSequence(m => m.SaveToaK()).Returns(true).Returns(false);
+
+            TestSaveScoreInput(9);
+
+            MockScore.Verify(m => m.SaveToaK(), Times.Exactly(2));
+        }
+
+        [TestMethod]
+        public void SaveScoreShouldSaveFoaKAndReturnScoreBoolReturnValueIfSen10()
+        {
+            MockScore.SetupSequence(m => m.SaveFoaK()).Returns(true).Returns(false);
+
+            TestSaveScoreInput(10);
+
+            MockScore.Verify(m => m.SaveFoaK(), Times.Exactly(2));
+        }
+
+        [TestMethod]
+        public void SaveScoreShouldSaveSmallStraightAndReturnScoreBoolReturnValueIfSent11()
+        {
+            MockScore.SetupSequence(m => m.SaveSmallStraight()).Returns(true).Returns(false);
+
+            TestSaveScoreInput(11);
+
+            MockScore.Verify(m => m.SaveSmallStraight(), Times.Exactly(2));
+        }
+
+        [TestMethod]
+        public void SaveScoreShouldSaveLargeStraightAndReturnScoreBoolReturnValueIfSent12()
+        {
+            MockScore.SetupSequence(m => m.SaveLargeStraight()).Returns(true).Returns(false);
+
+            TestSaveScoreInput(12);
+
+            MockScore.Verify(m => m.SaveLargeStraight(), Times.Exactly(2));
+        }
+
+        [TestMethod]
+        public void SaveScoreShouldSaveFullHouseAndReturnScoreBoolReturnValueIfSent13()
+        {
+            MockScore.SetupSequence(m => m.SaveFullHouse()).Returns(true).Returns(false);
+
+            TestSaveScoreInput(13);
+
+            MockScore.Verify(m => m.SaveFullHouse(), Times.Exactly(2));
+        }
+
+        [TestMethod]
+        public void SaveScoreShouldSaveChanceAndReturnScoreBoolReturnValueIfSent14()
+        {
+            MockScore.SetupSequence(m => m.SaveChance()).Returns(true).Returns(false);
+
+            TestSaveScoreInput(14);
+
+            MockScore.Verify(m => m.SaveChance(), Times.Exactly(2));
+        }
+
+        [TestMethod]
+        public void SaveScoreShouldSaveTwosAndReturnScoreBoolReturnValueIfSent15()
+        {
+            MockScore.SetupSequence(m => m.SaveYahtzee()).Returns(true).Returns(false);
+
+            TestSaveScoreInput(15);
+
+            MockScore.Verify(m => m.SaveYahtzee(), Times.Exactly(2));
+        }
     }
 }
