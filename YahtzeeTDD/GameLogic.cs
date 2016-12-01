@@ -72,6 +72,10 @@ namespace YahtzeeTDD
             {
                 CurrentView = CurrentView.CheckScore;
             }
+            else if (string.Equals(input, "H", StringComparison.CurrentCultureIgnoreCase))
+            {
+                CurrentView = CurrentView.Roll;
+            }
             else if (string.Equals(input, "R", StringComparison.CurrentCultureIgnoreCase))
             {
                 RollDices();
