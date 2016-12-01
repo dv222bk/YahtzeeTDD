@@ -50,7 +50,10 @@ namespace YahtzeeTDD
 
         public void NewGame()
         {
-            throw new NotImplementedException();
+            YahtzeeSet.Reset();
+            Score.ResetScore();
+            CurrentView = CurrentView.Roll;
+            State = State.Playing;
         }
     }
 }

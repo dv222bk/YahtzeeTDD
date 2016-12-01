@@ -52,7 +52,7 @@ namespace YahtzeeTDD
             }
         }
 
-        public void Reset()
+        public virtual void Reset()
         {
             CurrentRoll = 0;
             RollAll();
