@@ -11,6 +11,7 @@ namespace YahtzeeTDDTest
         private Mock<Dice>[] MockDiceSet = new Mock<Dice>[5];
         private Mock<YahtzeeSet> mock;
         private Score sut;
+        private TestFunctions testFunctions = new TestFunctions();
 
         public ScoreTests()
         {
@@ -27,16 +28,8 @@ namespace YahtzeeTDDTest
                 MockDiceSet[3].Object, 
                 MockDiceSet[4].Object
             };
-            SetupDice(new int[] { 1, 2, 3, 4, 5 }); // default dice setup in case values does not matter
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 1, 2, 3, 4, 5 }); // default dice setup in case values does not matter
             sut = new Score(mock.Object);
-        }
-
-        private void SetupDice(int[] diceValues)
-        {
-            for (int i = 0; i < 5; i += 1)
-            {
-                MockDiceSet[i].SetupGet(m => m.Number).Returns(diceValues[i]);
-            }
         }
 
         private void VerifyDiceNumberGet()
@@ -80,7 +73,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveAcesShouldCountAllDiceWithOnesAndSaveSum()
         {
-            SetupDice(new int[] { 1, 2, 3, 1, 4 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 1, 2, 3, 1, 4 });
             Assert.IsTrue(sut.SaveAces());
 
             VerifyDiceNumberGet();
@@ -91,7 +84,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveAcesShouldSaveZeroIfNoOnes()
         {
-            SetupDice(new int[] { 5, 5, 5, 5, 5 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 5, 5, 5, 5, 5 });
             Assert.IsTrue(sut.SaveAces());
 
             VerifyDiceNumberGet();
@@ -110,7 +103,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveTwosShouldCountAllDiceWithTwosAndSaveSum()
         {
-            SetupDice(new int[] { 2, 3, 2, 2, 4 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 2, 3, 2, 2, 4 });
             Assert.IsTrue(sut.SaveTwos());
 
             VerifyDiceNumberGet();
@@ -121,7 +114,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveTwosShouldSaveZeroIfNoTwos()
         {
-            SetupDice(new int[] { 5, 5, 5, 5, 5 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 5, 5, 5, 5, 5 });
             Assert.IsTrue(sut.SaveTwos());
 
             VerifyDiceNumberGet();
@@ -140,7 +133,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveThreesShouldCountAllDiceWithThreesAndSaveSum()
         {
-            SetupDice(new int[] { 3, 3, 2, 2, 4 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 3, 3, 2, 2, 4 });
             Assert.IsTrue(sut.SaveThrees());
 
             VerifyDiceNumberGet();
@@ -151,7 +144,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveThreesShouldSaveZeroIfNoThrees()
         {
-            SetupDice(new int[] { 5, 5, 5, 5, 5 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 5, 5, 5, 5, 5 });
             Assert.IsTrue(sut.SaveThrees());
 
             VerifyDiceNumberGet();
@@ -170,7 +163,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveFoursShouldCountAllDiceWithFoursAndSaveSum()
         {
-            SetupDice(new int[] { 4, 4, 2, 2, 4 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 4, 4, 2, 2, 4 });
             Assert.IsTrue(sut.SaveFours());
 
             VerifyDiceNumberGet();
@@ -181,7 +174,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveFoursShouldSaveZeroIfNoFours()
         {
-            SetupDice(new int[] { 5, 5, 5, 5, 5 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 5, 5, 5, 5, 5 });
             Assert.IsTrue(sut.SaveFours());
 
             VerifyDiceNumberGet();
@@ -200,7 +193,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveFivesShouldCountAllDiceWithFivesAndSaveSum()
         {
-            SetupDice(new int[] { 5, 5, 2, 5, 4 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 5, 5, 2, 5, 4 });
             Assert.IsTrue(sut.SaveFives());
 
             VerifyDiceNumberGet();
@@ -211,7 +204,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveFivesShouldSaveZeroIfNoFives()
         {
-            SetupDice(new int[] { 1, 1, 1, 1, 1 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 1, 1, 1, 1, 1 });
             Assert.IsTrue(sut.SaveFives());
 
             VerifyDiceNumberGet();
@@ -230,7 +223,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveSixesShouldCountAllDiceWithSixesAndSaveSum()
         {
-            SetupDice(new int[] { 6, 5, 2, 5, 4 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 6, 5, 2, 5, 4 });
             Assert.IsTrue(sut.SaveSixes());
 
             VerifyDiceNumberGet();
@@ -241,7 +234,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveSixesShouldSaveZeroIfNoSixes()
         {
-            SetupDice(new int[] { 1, 1, 1, 1, 1 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 1, 1, 1, 1, 1 });
             Assert.IsTrue(sut.SaveSixes());
 
             VerifyDiceNumberGet();
@@ -299,7 +292,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveOnePairShouldCountTheHighestPairOfDiceAndSaveSum()
         {
-            SetupDice(new int[] { 6, 5, 2, 5, 6 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 6, 5, 2, 5, 6 });
             Assert.IsTrue(sut.SaveOnePair());
 
             VerifyDiceNumberGet();
@@ -328,7 +321,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveTwoPairShouldCountTwoPairsOfDiceAndSaveSum()
         {
-            SetupDice(new int[] { 6, 5, 2, 5, 6 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 6, 5, 2, 5, 6 });
             Assert.IsTrue(sut.SaveTwoPair());
 
             VerifyDiceNumberGet();
@@ -339,7 +332,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveTwoPairShouldSaveZeroIfNotEnoughPair()
         {
-            SetupDice(new int[] { 6, 5, 2, 3, 6 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 6, 5, 2, 3, 6 });
             Assert.IsTrue(sut.SaveTwoPair());
 
             VerifyDiceNumberGet();
@@ -358,7 +351,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveToaKShouldCountThreeDiceWithTheSameValueAndSaveSum()
         {
-            SetupDice(new int[] { 5, 2, 5, 3, 5 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 5, 2, 5, 3, 5 });
             Assert.IsTrue(sut.SaveToaK());
 
             VerifyDiceNumberGet();
@@ -369,7 +362,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveToaKShouldSaveZeroIfNotEnoughIdenticalDice()
         {
-            SetupDice(new int[] { 6, 5, 2, 3, 6 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 6, 5, 2, 3, 6 });
             Assert.IsTrue(sut.SaveToaK());
 
             VerifyDiceNumberGet();
@@ -388,7 +381,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveFoaKShouldCountFourDiceWithTheSameValueAndSaveSum()
         {
-            SetupDice(new int[] { 5, 2, 5, 5, 5 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 5, 2, 5, 5, 5 });
             Assert.IsTrue(sut.SaveFoaK());
 
             VerifyDiceNumberGet();
@@ -399,7 +392,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveFoaKShouldSaveZeroIfNotEnoughIdenticalDice()
         {
-            SetupDice(new int[] { 6, 6, 2, 3, 6 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 6, 6, 2, 3, 6 });
             Assert.IsTrue(sut.SaveFoaK());
 
             VerifyDiceNumberGet();
@@ -418,7 +411,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveSmallStraightShouldCheckForSmallStraightThenSave15()
         {
-            SetupDice(new int[] { 1, 3, 2, 5, 4 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 1, 3, 2, 5, 4 });
             Assert.IsTrue(sut.SaveSmallStraight());
 
             VerifyDiceNumberGet();
@@ -429,7 +422,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveSmallStraightShouldSaveZeroIfNoSmallStraightExists()
         {
-            SetupDice(new int[] { 1, 2, 2, 4, 6 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 1, 2, 2, 4, 6 });
             Assert.IsTrue(sut.SaveSmallStraight());
 
             VerifyDiceNumberGet();
@@ -447,7 +440,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveLargeStraightShouldCheckForLargeStraightThenSave15()
         {
-            SetupDice(new int[] { 6, 3, 2, 5, 4 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 6, 3, 2, 5, 4 });
             Assert.IsTrue(sut.SaveLargeStraight());
 
             VerifyDiceNumberGet();
@@ -458,7 +451,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveLargeStraightShouldSaveZeroIfNoLargeStraightExists()
         {
-            SetupDice(new int[] { 1, 1, 2, 4, 6 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 1, 1, 2, 4, 6 });
             Assert.IsTrue(sut.SaveLargeStraight());
 
             VerifyDiceNumberGet();
@@ -477,7 +470,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveFullHouseShouldCheckForFullHouseThenSaveSum()
         {
-            SetupDice(new int[] { 2, 2, 3, 2, 3 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 2, 2, 3, 2, 3 });
             Assert.IsTrue(sut.SaveFullHouse());
 
             VerifyDiceNumberGet();
@@ -488,7 +481,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveFullHouseShouldSaveZeroIfNoFullHouseExists()
         {
-            SetupDice(new int[] { 2, 3, 5, 2, 3 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 2, 3, 5, 2, 3 });
             Assert.IsTrue(sut.SaveFullHouse());
 
             VerifyDiceNumberGet();
@@ -525,7 +518,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveYahtzeeShouldCheckIfAllDiceHaveTheSameValueThenSave50()
         {
-            SetupDice(new int[] { 1, 1, 1, 1, 1 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 1, 1, 1, 1, 1 });
             Assert.IsTrue(sut.SaveYahtzee());
 
             VerifyDiceNumberGet();
@@ -536,7 +529,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveYahtzeeShouldSaveZeroIfNotAllDiceHaveTheSameValue()
         {
-            SetupDice(new int[] { 1, 1, 2, 1, 1 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 1, 1, 2, 1, 1 });
             Assert.IsTrue(sut.SaveYahtzee());
 
             VerifyDiceNumberGet();
