@@ -139,5 +139,15 @@ namespace YahtzeeTDDTest
 
             Assert.AreEqual(CurrentView.Roll, sut.CurrentView);
         }
+
+        [TestMethod]
+        public void ReactToSavingInputShouldSaveAcesAndResetYahtzeeSetIfSuccesfullIfSent1()
+        {
+            MockScore.Setup(m => m.SaveAces()).Returns(true);
+            sut.ReactToSavingInput(1);
+
+            MockScore.Verify(m => m.SaveAces(), Times.Once);
+            MockYahtzeeSet.Verify(m => m.Reset(), Times.Once);
+        }
     }
 }

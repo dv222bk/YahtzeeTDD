@@ -87,7 +87,7 @@ namespace YahtzeeTDD
             }
         }
 
-        public void ReactToSavingInput(string input)
+        public void ReactToSavingInput(int input)
         {
 
         }
