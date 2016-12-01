@@ -116,5 +116,11 @@ namespace YahtzeeTDDTest
             AssertRollAll();
             Assert.AreEqual(1, sut.CurrentRoll);
         }
+
+        [TestMethod]
+        public void CanThrowShouldReturnTrueIfThePlayerCanRollTheDices()
+        {
+            Assert.IsTrue(sut.CanThrow());
+        }
     }
 }

@@ -57,5 +57,10 @@ namespace YahtzeeTDD
             CurrentRoll = 0;
             RollAll();
         }
+
+        public bool CanThrow()
+        {
+            return true;
+        }
     }
 }
