@@ -89,26 +89,20 @@ namespace YahtzeeTDD
 
         public void ReactToSavingInput(int input)
         {
+            
+        }
+
+        public bool SaveScore(int input)
+        {
             switch (input)
             {
                 case 1:
-                    if (Score.SaveAces())
-                    {
-                        YahtzeeSet.Reset();
-                    }
-                    break;
+                    return Score.SaveAces();
                 case 2:
-                    if (Score.SaveTwos())
-                    {
-                        YahtzeeSet.Reset();
-                    }
-                    break;
+                    return Score.SaveTwos();
+                default:
+                    return false;
             }
-        }
-
-        public bool SaveScore(int p)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -49,13 +49,10 @@ namespace YahtzeeTDDTest
         {
             MockYahtzeeSet.Verify(m => m.RollUnsaved(), Times.Once);
         }
-        public void TestSavingInput(int input)
+        public void TestSaveScoreInput(int input)
         {
-            sut.ReactToSavingInput(input);
-            MockYahtzeeSet.Verify(m => m.Reset(), Times.Once);
-            MockYahtzeeSet.Reset();
-            sut.ReactToSavingInput(input);
-            MockYahtzeeSet.Verify(m => m.Reset(), Times.Never);
+            Assert.IsTrue(sut.SaveScore(input));
+            Assert.IsFalse(sut.SaveScore(input));
         }
 
 
@@ -150,21 +147,9 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void ReactToSavingInputShouldSaveAcesAndResetYahtzeeSetIfSuccesfullIfSent1()
+        public void SaveScoreShouldReturnFalseIfGivenAnInvalidValue()
         {
-            MockScore.SetupSequence(m => m.SaveAces()).Returns(true).Returns(false);
-            TestSavingInput(1);
-
-            MockScore.Verify(m => m.SaveAces(), Times.Exactly(2));
-        }
-
-        [TestMethod]
-        public void RecatToSavingInputShouldSaveTwosAndResetYahtzeeSetIfSuccessfullIfSent2()
-        {
-            MockScore.SetupSequence(m => m.SaveTwos()).Returns(true).Returns(false);
-            TestSavingInput(2);
-
-            MockScore.Verify(m => m.SaveTwos(), Times.Exactly(2));
+            Assert.IsFalse(sut.SaveScore(999));
         }
 
         [TestMethod]
@@ -172,10 +157,19 @@ namespace YahtzeeTDDTest
         {
             MockScore.SetupSequence(m => m.SaveAces()).Returns(true).Returns(false);
 
-            Assert.IsTrue(sut.SaveScore(1));
-            Assert.IsFalse(sut.SaveScore(1));
+            TestSaveScoreInput(1);
 
             MockScore.Verify(m => m.SaveAces(), Times.Exactly(2));
+        }
+
+        [TestMethod]
+        public void SaveScoreShouldSaveTwosAndReturnScoreBoolReturnValueIfSent2()
+        {
+            MockScore.SetupSequence(m => m.SaveTwos()).Returns(true).Returns(false);
+
+            TestSaveScoreInput(2);
+
+            MockScore.Verify(m => m.SaveTwos(), Times.Exactly(2));
         }
     }
 }
