@@ -105,14 +105,6 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void QuitShouldSetContinueGameToFalse()
-        {
-            sut.Quit();
-
-            Assert.AreEqual(false, sut.continueGame);
-        }
-
-        [TestMethod]
         public void ReactToInputShouldSetContinueGameToFalseIfSentQ()
         {
             sut.ReactToInput("Q");

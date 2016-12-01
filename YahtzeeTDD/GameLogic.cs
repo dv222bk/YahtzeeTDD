@@ -62,11 +62,6 @@ namespace YahtzeeTDD
             CurrentView = CurrentView.CheckScore;
         }
 
-        public void Quit()
-        {
-            continueGame = false;
-        }
-
         public void ReactToInput(string input)
         {
             if(string.Equals(input, "Q", StringComparison.CurrentCultureIgnoreCase)) {
