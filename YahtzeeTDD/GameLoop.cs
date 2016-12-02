@@ -21,6 +21,7 @@ namespace YahtzeeTDD
         {
             YahtzeeView.ClearConsole();
             YahtzeeView.ShowLogo();
+            YahtzeeView.ShowView(GameLogic.CurrentView);
         }
     }
 }
