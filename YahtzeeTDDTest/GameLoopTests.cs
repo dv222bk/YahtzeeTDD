@@ -27,5 +27,13 @@ namespace YahtzeeTDDTest
 
             MockView.Verify(m => m.ClearConsole(), Times.Once);
         }
+
+        [TestMethod]
+        public void LoopShouldCallViewShowLogo()
+        {
+            sut.Loop();
+
+            MockView.Verify(m => m.ShowLogo(), Times.Once);
+        }
     }
 }
