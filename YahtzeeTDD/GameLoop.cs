@@ -19,7 +19,7 @@ namespace YahtzeeTDD
 
         public void Loop()
         {
-            throw new NotImplementedException();
+            YahtzeeView.ClearConsole();
         }
     }
 }

@@ -18,12 +18,12 @@ namespace YahtzeeTDD
             UserConsole = userConsole;
         }
 
-        public object ClearConsole()
+        public virtual void ClearConsole()
         {
             throw new NotImplementedException();
         }
 
-        public object ShowLogo()
+        public virtual void ShowLogo()
         {
             throw new NotImplementedException();
         }
