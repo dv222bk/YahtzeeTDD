@@ -187,6 +187,7 @@ namespace YahtzeeTDDTest
         public void SaveScoreShouldReturnFalseIfGivenAnInvalidValue()
         {
             Assert.IsFalse(sut.SaveScore(999));
+            Assert.IsFalse(sut.SaveScore(-1));
         }
 
         [TestMethod]

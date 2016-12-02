@@ -164,10 +164,5 @@ namespace YahtzeeTDD
                     return false;
             }
         }
-
-        public void GameLoop()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
