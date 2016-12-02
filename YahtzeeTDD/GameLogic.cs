@@ -11,16 +11,14 @@ namespace YahtzeeTDD
 
         private YahtzeeSet YahtzeeSet;
         private Score Score;
-        private YahtzeeView YahtzeeView;
         public State State = State.Start;
         public CurrentView CurrentView = CurrentView.Start;
         public bool continueGame = true;
 
-        public GameLogic(YahtzeeSet yahtzeeSet, Score score, YahtzeeView yahtzeeView)
+        public GameLogic(YahtzeeSet yahtzeeSet, Score score)
         {
             YahtzeeSet = yahtzeeSet;
             Score = score;
-            YahtzeeView = yahtzeeView;
         }
 
         public void RollDices()
@@ -165,6 +163,11 @@ namespace YahtzeeTDD
                 default:
                     return false;
             }
+        }
+
+        public void GameLoop()
+        {
+            throw new NotImplementedException();
         }
     }
 }

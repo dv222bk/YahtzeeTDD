@@ -11,7 +11,6 @@ namespace YahtzeeTDDTest
 
         private Mock<Dice>[] MockDiceSet = new Mock<Dice>[5];
         private Mock<YahtzeeSet> MockYahtzeeSet;
-        private Mock<YahtzeeView> MockView;
         private Mock<Score> MockScore;
         private GameLogic sut;
         private TestFunctions testFunctions = new TestFunctions();
@@ -33,8 +32,7 @@ namespace YahtzeeTDDTest
             };
             testFunctions.SetupMockDice(MockDiceSet, new int[] { 1, 2, 3, 4, 5 }); // default dice setup in case values does not matter
             MockScore = new Mock<Score>(new YahtzeeSet(new Dice[5]));
-            MockView = new Mock<YahtzeeView>(new YahtzeeSet(new Dice[5]), new Score(new YahtzeeSet(new Dice[5])), new UserConsole());
-            sut = new GameLogic(MockYahtzeeSet.Object, MockScore.Object, MockView.Object);
+            sut = new GameLogic(MockYahtzeeSet.Object, MockScore.Object);
         }
 
         public void TestNewGame()

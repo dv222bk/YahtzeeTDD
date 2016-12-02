@@ -17,5 +17,15 @@ namespace YahtzeeTDD
             Score = score;
             UserConsole = userConsole;
         }
+
+        public object ClearConsole()
+        {
+            throw new NotImplementedException();
+        }
+
+        public object ShowLogo()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
