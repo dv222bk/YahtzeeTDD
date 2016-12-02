@@ -29,11 +29,16 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void LoopShouldCallViewShowLogo()
+        public void LoopShouldCallViewShowLogoAfterClearConsole()
         {
+            int orderOfCalls = 0;
+
+            MockView.Setup(m => m.ClearConsole()).Callback(() => Assert.AreEqual(orderOfCalls++, 0));
+            MockView.Setup(m => m.ShowLogo()).Callback(() => Assert.AreEqual(orderOfCalls++, 1));
+            
+
             sut.Loop();
 
-            MockView.Verify(m => m.ShowLogo(), Times.Once);
         }
     }
 }

@@ -20,6 +20,7 @@ namespace YahtzeeTDD
         public void Loop()
         {
             YahtzeeView.ClearConsole();
+            YahtzeeView.ShowLogo();
         }
     }
 }
