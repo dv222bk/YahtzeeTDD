@@ -29,55 +29,40 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void LoopShouldCallViewShowLogoAfterClearConsole()
+        public void LoopShouldCallViewShowLogo()
+        {
+            sut.Loop();
+
+            MockView.Verify(m => m.ShowLogo(), Times.Once);
+        }
+
+        [TestMethod]
+        public void LoopShouldCallViewShowView()
+        {
+            sut.Loop();
+
+            MockView.Verify(m => m.ShowView(MockLogic.Object.CurrentView), Times.Once);
+        }
+
+        [TestMethod]
+        public void LoopShouldCallViewReadInput()
+        {
+            sut.Loop();
+
+            MockView.Verify(m => m.ReadInput(), Times.Once);
+        }
+
+        [TestMethod]
+        public void LoopShouldCallMethodsInTheProperOrder()
         {
             int orderOfCalls = 0;
             MockView.Setup(m => m.ClearConsole()).Callback(() => Assert.AreEqual(orderOfCalls++, 0));
             MockView.Setup(m => m.ShowLogo()).Callback(() => Assert.AreEqual(orderOfCalls++, 1));
-            
-            sut.Loop();
-
-            MockView.Verify(m => m.ClearConsole(), Times.Once);
-            MockView.Verify(m => m.ShowLogo(), Times.Once);
-        }
-
-        [TestMethod]
-        public void LoopShouldCallViewShowViewAfterShowLogo()
-        {
-            int orderOfCalls = 0;
-            MockView.Setup(m => m.ShowLogo()).Callback(() => Assert.AreEqual(orderOfCalls++, 0));
-            MockView.Setup(m => m.ShowView(MockLogic.Object.CurrentView)).Callback(() => Assert.AreEqual(orderOfCalls++, 1));
+            MockView.Setup(m => m.ShowView(MockLogic.Object.CurrentView)).Callback(() => Assert.AreEqual(orderOfCalls++, 2));
+            MockView.Setup(m => m.ReadInput()).Returns(It.IsAny<String>()).Callback(() => Assert.AreEqual(orderOfCalls++, 3));
+            MockLogic.Setup(m => m.ReactToStandardInput(It.IsAny<String>())).Callback(() => Assert.AreEqual(orderOfCalls++, 4));
 
             sut.Loop();
-
-            MockView.Verify(m => m.ShowLogo(), Times.Once);
-            MockView.Verify(m => m.ShowView(MockLogic.Object.CurrentView), Times.Once);
-        }
-
-        [TestMethod]
-        public void LoopShouldCallViewReadInputAfterShowView()
-        {
-            int orderOfCalls = 0;
-            MockView.Setup(m => m.ShowView(MockLogic.Object.CurrentView)).Callback(() => Assert.AreEqual(orderOfCalls++, 0));
-            MockView.Setup(m => m.ReadInput()).Returns("").Callback(() => Assert.AreEqual(orderOfCalls++, 1));
-
-            sut.Loop();
-
-            MockView.Verify(m => m.ShowView(MockLogic.Object.CurrentView), Times.Once);
-            MockView.Verify(m => m.ReadInput(), Times.Once);
-        }
-
-        [TestMethod]
-        public void LoopShouldCallReactToStandardInputWithInputAfterReadInput()
-        {
-            int orderOfCalls = 0;
-            MockView.Setup(m => m.ReadInput()).Returns("input").Callback(() => Assert.AreEqual(orderOfCalls++, 0));
-            MockLogic.Setup(m => m.ReactToStandardInput("input")).Callback(() => Assert.AreEqual(orderOfCalls++, 1));
-
-            sut.Loop();
-
-            MockView.Verify(m => m.ReadInput(), Times.Once);
-            MockLogic.Verify(m => m.ReactToStandardInput("input"), Times.Once);
         }
 
         [TestMethod]
@@ -85,23 +70,20 @@ namespace YahtzeeTDDTest
         {
             int orderOfCalls = 0;
             MockLogic.Setup(m => m.ReactToStandardInput(It.IsAny<String>())).Callback(() => orderOfCalls++);
-            MockLogic.Setup(m => m.ReactToPlayingInput(It.IsAny<String>())).Callback(() => Assert.AreEqual(orderOfCalls++, 1));
-            MockLogic.Setup(m => m.ReactToSavingInput(It.IsAny<String>())).Callback(() => Assert.AreEqual(orderOfCalls++, 3));
-            MockLogic.Setup(m => m.ReactToSaveDieInput(It.IsAny<String>())).Callback(() => Assert.AreEqual(orderOfCalls++, 5));
-
-            MockLogic.Object.State = State.Playing;
-            sut.Loop();
-            MockLogic.Object.State = State.Saving;
-            sut.Loop();
-            MockLogic.Object.State = State.SaveDie;
-            sut.Loop();
-            MockLogic.Object.State = State.Start;
-            sut.Loop();
+            MockLogic.Setup(m => m.ReactToPlayingInput(It.IsAny<String>())).Callback(() => Assert.AreEqual(orderOfCalls++, 2));
+            MockLogic.Setup(m => m.ReactToSaveDieInput(It.IsAny<String>())).Callback(() => Assert.AreEqual(orderOfCalls++, 4));
+            MockLogic.Setup(m => m.ReactToSavingInput(It.IsAny<String>())).Callback(() => Assert.AreEqual(orderOfCalls++, 6));
+            
+            for (int i = 0; i < Enum.GetNames(typeof(State)).Length; i += 1)
+            {
+                MockLogic.Object.State = (State)i;
+                sut.Loop();
+            }
 
             MockLogic.Verify(m => m.ReactToStandardInput(It.IsAny<String>()), Times.Exactly(4));
             MockLogic.Verify(m => m.ReactToPlayingInput(It.IsAny<String>()), Times.Once);
-            MockLogic.Verify(m => m.ReactToSavingInput(It.IsAny<String>()), Times.Once);
             MockLogic.Verify(m => m.ReactToSaveDieInput(It.IsAny<String>()), Times.Once);
+            MockLogic.Verify(m => m.ReactToSavingInput(It.IsAny<String>()), Times.Once);
         }
     }
 }
