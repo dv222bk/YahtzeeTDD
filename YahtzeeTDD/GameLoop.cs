@@ -23,6 +23,7 @@ namespace YahtzeeTDD
             YahtzeeView.ShowLogo();
             YahtzeeView.ShowView(GameLogic.CurrentView);
             string input = YahtzeeView.ReadInput();
+            GameLogic.ReactToStandardInput(input);
         }
     }
 }

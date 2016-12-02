@@ -52,7 +52,7 @@ namespace YahtzeeTDD
             State = State.Playing;
         }
 
-        public void ReactToStandardInput(string input)
+        public virtual void ReactToStandardInput(string input)
         {
             if (string.Equals(input, "Q", StringComparison.CurrentCultureIgnoreCase))
             {
@@ -64,7 +64,7 @@ namespace YahtzeeTDD
             }
         }
 
-        public void ReactToPlayingInput(string input)
+        public virtual  void ReactToPlayingInput(string input)
         {
             if (string.Equals(input, "C", StringComparison.CurrentCultureIgnoreCase))
             {
@@ -90,7 +90,7 @@ namespace YahtzeeTDD
             }
         }
 
-        public void ReactToSaveDieInput(string input)
+        public virtual void ReactToSaveDieInput(string input)
         {
             int intInput;
             if (int.TryParse(input, out intInput))
@@ -104,7 +104,7 @@ namespace YahtzeeTDD
             }
         }
 
-        public void ReactToSavingInput(string input)
+        public virtual void ReactToSavingInput(string input)
         {
             int intInput;
             if (int.TryParse(input, out intInput))
