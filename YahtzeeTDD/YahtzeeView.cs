@@ -27,5 +27,10 @@ namespace YahtzeeTDD
         {
             throw new NotImplementedException();
         }
+
+        public virtual void ShowView(CurrentView currentView)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
