@@ -53,5 +53,18 @@ namespace YahtzeeTDDTest
             MockView.Verify(m => m.ShowLogo(), Times.Once);
             MockView.Verify(m => m.ShowView(MockLogic.Object.CurrentView), Times.Once);
         }
+
+        [TestMethod]
+        public void LoopShouldCallViewReadInputAfterShowView()
+        {
+            int orderOfCalls = 0;
+            MockView.Setup(m => m.ShowView(MockLogic.Object.CurrentView)).Callback(() => Assert.AreEqual(orderOfCalls++, 0));
+            MockView.Setup(m => m.ReadInput()).Returns("").Callback(() => Assert.AreEqual(orderOfCalls++, 1));
+
+            sut.Loop();
+
+            MockView.Verify(m => m.ShowView(MockLogic.Object.CurrentView), Times.Once);
+            MockView.Verify(m => m.ReadInput(), Times.Once);
+        }
     }
 }

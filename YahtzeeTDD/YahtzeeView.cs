@@ -32,5 +32,10 @@ namespace YahtzeeTDD
         {
             throw new NotImplementedException();
         }
+
+        public virtual string ReadInput()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
