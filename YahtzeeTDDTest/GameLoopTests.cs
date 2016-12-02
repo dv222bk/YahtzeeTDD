@@ -85,5 +85,29 @@ namespace YahtzeeTDDTest
             MockLogic.Verify(m => m.ReactToSaveDieInput(It.IsAny<String>()), Times.Once);
             MockLogic.Verify(m => m.ReactToSavingInput(It.IsAny<String>()), Times.Once);
         }
+
+        [TestMethod]
+        public void LoopShouldOnlyRunOnceIfContinueGameIsFalse()
+        {
+            MockLogic.Object.continueGame = false;
+
+            sut.Loop();
+
+            MockLogic.Verify(m => m.ReactToStandardInput(It.IsAny<String>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void LoopShouldRunUntilContinueGameIsFalse()
+        {
+            int loops = 0;
+            // Loop 4 times
+            MockView.Setup(m => m.ReadInput())
+                .Returns(It.IsAny<String>())
+                .Callback(() => MockLogic.Object.continueGame = loops++ == 3 ? false : true);
+
+            sut.Loop();
+
+            MockView.Verify(m => m.ReadInput(), Times.Exactly(4));
+        }
     }
 }
