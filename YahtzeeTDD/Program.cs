@@ -10,6 +10,20 @@ namespace YahtzeeTDD
     {
         static void Main(string[] args)
         {
+            Dice[] dices = new Dice[5];
+            for (int i = 0; i < 5; i += 1)
+            {
+                dices[i] = new Dice(new Random());
+            }
+
+            YahtzeeSet diceSet = new YahtzeeSet(dices);
+            Score score = new Score(diceSet);
+            GameLogic logic = new GameLogic(diceSet, score);
+            UserConsole console = new UserConsole();
+            YahtzeeView view = new YahtzeeView(diceSet, score, console);
+            GameLoop gameLoop = new GameLoop(view, logic);
+
+            gameLoop.Loop();
         }
     }
 }
