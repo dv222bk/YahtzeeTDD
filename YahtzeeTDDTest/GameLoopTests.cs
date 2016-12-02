@@ -18,6 +18,7 @@ namespace YahtzeeTDDTest
             MockView = new Mock<YahtzeeView>(new YahtzeeSet(new Dice[5]), new Score(new YahtzeeSet(new Dice[5])), new UserConsole());
             MockLogic = new Mock<GameLogic>(new YahtzeeSet(new Dice[5]), new Score(new YahtzeeSet(new Dice[5])));
             sut = new GameLoop(MockView.Object, MockLogic.Object);
+            MockLogic.Object.continueGame = false; // Disable looping
         }
 
         [TestMethod]
@@ -89,15 +90,13 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void LoopShouldOnlyRunOnceIfContinueGameIsFalse()
         {
-            MockLogic.Object.continueGame = false;
-
             sut.Loop();
 
             MockLogic.Verify(m => m.ReactToStandardInput(It.IsAny<String>()), Times.Once);
         }
 
         [TestMethod]
-        public void LoopShouldRunUntilContinueGameIsFalse()
+        public void LoopShouldAsLongAsContinueGameIsTrue()
         {
             int loops = 0;
             // Loop 4 times

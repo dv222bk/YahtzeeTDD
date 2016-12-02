@@ -19,24 +19,27 @@ namespace YahtzeeTDD
 
         public void Loop()
         {
-            YahtzeeView.ClearConsole();
-            YahtzeeView.ShowLogo();
-            YahtzeeView.ShowView(GameLogic.CurrentView);
-            
-            string input = YahtzeeView.ReadInput();
-            GameLogic.ReactToStandardInput(input);
-            switch (GameLogic.State)
+            do
             {
-                case State.Playing:
-                    GameLogic.ReactToPlayingInput(input);
-                    break;
-                case State.Saving:
-                    GameLogic.ReactToSavingInput(input);
-                    break;
-                case State.SaveDie:
-                    GameLogic.ReactToSaveDieInput(input);
-                    break;
-            }
+                YahtzeeView.ClearConsole();
+                YahtzeeView.ShowLogo();
+                YahtzeeView.ShowView(GameLogic.CurrentView);
+
+                string input = YahtzeeView.ReadInput();
+                GameLogic.ReactToStandardInput(input);
+                switch (GameLogic.State)
+                {
+                    case State.Playing:
+                        GameLogic.ReactToPlayingInput(input);
+                        break;
+                    case State.Saving:
+                        GameLogic.ReactToSavingInput(input);
+                        break;
+                    case State.SaveDie:
+                        GameLogic.ReactToSaveDieInput(input);
+                        break;
+                }
+            } while (GameLogic.continueGame);
         }
     }
 }
