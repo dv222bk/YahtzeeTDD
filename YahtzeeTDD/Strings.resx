@@ -147,6 +147,9 @@
   <data name="SaveDieCommands" xml:space="preserve">
     <value>[1-5] Save or unsave die</value>
   </data>
+  <data name="SaveDieView" xml:space="preserve">
+    <value>Save or unsave which die?</value>
+  </data>
   <data name="SaveScoreCommands" xml:space="preserve">
     <value>[1-15] Save score</value>
   </data>

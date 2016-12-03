@@ -118,5 +118,28 @@ namespace YahtzeeTDDTest
                 mock.VerifyGet(m => m.Number);
             }
         }
+
+        [TestMethod]
+        public void ShowSaveDieShouldShowTheSaveDieView()
+        {
+            int orderOfCalls = 0;
+            MockConsole.Setup(m => m.WriteLine(Strings.SaveDieView)).Callback(() => Assert.AreEqual(orderOfCalls++, 0));
+            MockConsole.Setup(m => m.Write(new String(' ', Strings.Dice.Length)))
+                .Callback(() => Assert.IsTrue(orderOfCalls == 1 || orderOfCalls == 2));
+            MockConsole.Setup(m => m.Write(Strings.Dice)).Callback(() => Assert.AreEqual(orderOfCalls++, 2));
+
+            sut.ShowSaveDieView();
+
+            MockConsole.Verify(m => m.WriteLine(Strings.SaveDieView), Times.Once);
+            MockConsole.Verify(m => m.Write(new String(' ', Strings.Dice.Length)), Times.Exactly(2));
+            MockConsole.Verify(m => m.Write(Strings.Dice), Times.Once);
+            MockConsole.Verify(m => m.WriteLine(""), Times.Exactly(2));
+
+            foreach (Mock<Dice> mock in MockDiceSet)
+            {
+                mock.VerifyGet(m => m.Saved);
+                mock.VerifyGet(m => m.Number);
+            }
+        }
     }
 }

@@ -151,6 +151,15 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save or unsave which die?.
+        /// </summary>
+        public static string SaveDieView {
+            get {
+                return ResourceManager.GetString("SaveDieView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [1-15] Save score.
         /// </summary>
         public static string SaveScoreCommands {

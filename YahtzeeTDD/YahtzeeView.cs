@@ -106,5 +106,10 @@ namespace YahtzeeTDD
 
             UserConsole.WriteLine("");
         }
+
+        public void ShowSaveDieView()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
