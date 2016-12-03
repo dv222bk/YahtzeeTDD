@@ -138,6 +138,9 @@
   <data name="DiceNumberOutOfRange" xml:space="preserve">
     <value>Dice tried to save an invalid number.</value>
   </data>
+  <data name="Finish" xml:space="preserve">
+    <value>Game over! Nicely done! Play again?</value>
+  </data>
   <data name="Fives" xml:space="preserve">
     <value>{1,4} Fives{0,10}│{2,5}</value>
   </data>

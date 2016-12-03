@@ -124,6 +124,15 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Game over! Nicely done! Play again?.
+        /// </summary>
+        public static string Finish {
+            get {
+                return ResourceManager.GetString("Finish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {1,4} Fives{0,10}│{2,5}.
         /// </summary>
         public static string Fives {

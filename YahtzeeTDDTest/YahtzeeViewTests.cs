@@ -173,5 +173,15 @@ namespace YahtzeeTDDTest
             MockConsole.Verify(m => m.WriteLine(Strings.ScoreLine), Times.Exactly(19));
             MockConsole.Verify(m => m.WriteLine(Strings.RollView), Times.Once);
         }
+
+        [TestMethod]
+        public void ShowFinishViewShouldShowScoreAndFinishString()
+        {
+            sut.ShowFinishView();
+
+            MockConsole.Verify(m => m.WriteLine(Strings.ScoreLine), Times.Exactly(19));
+            MockConsole.Verify(m => m.WriteLine(Strings.Finish), Times.Once);
+            MockConsole.Verify(m => m.WriteLine(""), Times.Once);
+        }
     }
 }

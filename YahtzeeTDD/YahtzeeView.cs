@@ -154,6 +154,11 @@ namespace YahtzeeTDD
             ShowRollView();
         }
 
+        public void ShowFinishView()
+        {
+            throw new NotImplementedException();
+        }
+
         private void PrintDice()
         {
             UserConsole.Write(new String(' ', Strings.Dice.Length));
