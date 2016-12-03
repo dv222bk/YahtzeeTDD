@@ -156,7 +156,9 @@ namespace YahtzeeTDD
 
         public void ShowFinishView()
         {
-            throw new NotImplementedException();
+            ShowScore();
+            UserConsole.WriteLine(Strings.Finish);
+            UserConsole.WriteLine("");
         }
 
         private void PrintDice()

@@ -181,7 +181,7 @@ namespace YahtzeeTDDTest
 
             MockConsole.Verify(m => m.WriteLine(Strings.ScoreLine), Times.Exactly(19));
             MockConsole.Verify(m => m.WriteLine(Strings.Finish), Times.Once);
-            MockConsole.Verify(m => m.WriteLine(""), Times.Once);
+            MockConsole.Verify(m => m.WriteLine(""), Times.Exactly(2));
         }
     }
 }
