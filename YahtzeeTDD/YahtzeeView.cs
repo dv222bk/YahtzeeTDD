@@ -150,7 +150,8 @@ namespace YahtzeeTDD
 
         public void ShowCheckScoreView()
         {
-            throw new NotImplementedException();
+            ShowScore();
+            ShowRollView();
         }
 
         private void PrintDice()
