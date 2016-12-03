@@ -71,7 +71,40 @@ namespace YahtzeeTDD
 
         public void ShowRollView()
         {
-            throw new NotImplementedException();
+            UserConsole.WriteLine(Strings.RollView);
+            UserConsole.WriteLine("");
+
+            UserConsole.WriteLine(String.Format(Strings.CurrentRoll, YahtzeeSet.CurrentRoll.ToString()));
+            UserConsole.Write(new String(' ', Strings.Dice.Length));
+            for (int i = 0; i < YahtzeeSet.DiceSet.Length; i += 1)
+            {
+                YahtzeeSet.DiceSet[i].Saved = true;
+                string savedString = String.Format("{0,-5}", YahtzeeSet.DiceSet[i].Saved ? "(S)" : "   ");
+                if (i != YahtzeeSet.DiceSet.Length - 1)
+                {
+                    UserConsole.Write(savedString);
+                }
+                else
+                {
+                    UserConsole.WriteLine(savedString);
+                }
+            }
+
+            UserConsole.Write(Strings.Dice);
+            for (int i = 0; i < YahtzeeSet.DiceSet.Length; i += 1)
+            {
+                string diceString = String.Format("{0,1}{1,-4}", "", YahtzeeSet.DiceSet[i].Number.ToString());
+                if (i != YahtzeeSet.DiceSet.Length - 1)
+                {
+                    UserConsole.Write(diceString);
+                }
+                else
+                {
+                    UserConsole.WriteLine(diceString);
+                }
+            }
+
+            UserConsole.WriteLine("");
         }
     }
 }

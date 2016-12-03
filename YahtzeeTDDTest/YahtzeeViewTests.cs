@@ -100,20 +100,23 @@ namespace YahtzeeTDDTest
             MockConsole.Setup(m => m.WriteLine(Strings.RollView)).Callback(() => Assert.AreEqual(orderOfCalls++, 0));
             MockConsole.Setup(m => m.WriteLine(String.Format(Strings.CurrentRoll, MockYahtzeeSet.Object.CurrentRoll)))
                 .Callback(() => Assert.AreEqual(orderOfCalls++, 1));
-            MockConsole.Setup(m => m.Write(Strings.Dice)).Callback(() => Assert.AreEqual(orderOfCalls++, 2));
-            MockConsole.Setup(m => m.WriteLine("")).Callback(() => Assert.AreEqual(orderOfCalls++, 3));
+            MockConsole.Setup(m => m.Write(new String(' ', Strings.Dice.Length)))
+                .Callback(() => Assert.AreEqual(orderOfCalls++, 2));
+            MockConsole.Setup(m => m.Write(Strings.Dice)).Callback(() => Assert.AreEqual(orderOfCalls++, 3));
 
             sut.ShowRollView();
 
             MockConsole.Verify(m => m.WriteLine(Strings.RollView), Times.Once);
             MockConsole.Verify(m => m.WriteLine(String.Format(Strings.CurrentRoll, MockYahtzeeSet.Object.CurrentRoll)), Times.Once);
             MockConsole.Verify(m => m.Write(new String(' ', Strings.Dice.Length)), Times.Once);
-            MockConsole.Verify(m => m.Write(String.Format("{0,4}", MockDiceSet[It.IsAny<int>()].Object.Saved == true ? "(S)" : "   ")), Times.Exactly(4));
-            MockConsole.Verify(m => m.WriteLine(String.Format("{0,4}", MockDiceSet[4].Object.Saved == true ? "(S)" : "   ")), Times.Once);
             MockConsole.Verify(m => m.Write(Strings.Dice), Times.Once);
-            MockConsole.Verify(m => m.Write(String.Format("{0,4}", MockDiceSet[It.IsAny<int>()].Object.Number)), Times.Exactly(4));
-            MockConsole.Verify(m => m.WriteLine(String.Format("{0,4}", MockDiceSet[4].Object.Number)), Times.Once());
-            MockConsole.Verify(m => m.WriteLine(""), Times.Once());
+            MockConsole.Verify(m => m.WriteLine(""), Times.Exactly(2));
+
+            foreach (Mock<Dice> mock in MockDiceSet)
+            {
+                mock.VerifyGet(m => m.Saved);
+                mock.VerifyGet(m => m.Number);
+            }
         }
     }
 }

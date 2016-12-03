@@ -11,9 +11,10 @@ namespace YahtzeeTDD
         static void Main(string[] args)
         {
             Dice[] dices = new Dice[5];
+            Random random = new Random();
             for (int i = 0; i < 5; i += 1)
             {
-                dices[i] = new Dice(new Random());
+                dices[i] = new Dice(random);
             }
 
             YahtzeeSet diceSet = new YahtzeeSet(dices);
