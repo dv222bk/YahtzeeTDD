@@ -232,6 +232,15 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save your dice score!.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [1-5] Save or unsave die.
         /// </summary>
         public static string SaveDieCommands {

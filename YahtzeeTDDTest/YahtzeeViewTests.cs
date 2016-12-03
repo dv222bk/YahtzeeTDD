@@ -183,5 +183,15 @@ namespace YahtzeeTDDTest
             MockConsole.Verify(m => m.WriteLine(Strings.Finish), Times.Once);
             MockConsole.Verify(m => m.WriteLine(""), Times.Exactly(2));
         }
+
+        [TestMethod]
+        public void ShowSaveScoreViewShouldShowScoreAndSaveString()
+        {
+            sut.ShowSaveScoreView();
+
+            MockConsole.Verify(m => m.WriteLine(Strings.ScoreLine), Times.Exactly(19));
+            MockConsole.Verify(m => m.WriteLine(Strings.Save), Times.Once);
+            MockConsole.Verify(m => m.WriteLine(""), Times.Exactly(2));
+        }
     }
 }

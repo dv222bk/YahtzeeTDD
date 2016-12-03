@@ -161,6 +161,11 @@ namespace YahtzeeTDD
             UserConsole.WriteLine("");
         }
 
+        public void ShowSaveScoreView()
+        {
+            throw new NotImplementedException();
+        }
+
         private void PrintDice()
         {
             UserConsole.Write(new String(' ', Strings.Dice.Length));
