@@ -40,6 +40,16 @@ namespace YahtzeeTDDTest
             sut = new YahtzeeView(MockYahtzeeSet.Object, MockScore.Object, MockConsole.Object);
         }
 
+        private void TestDicePrint()
+        {
+            MockConsole.Verify(m => m.Write(Strings.Dice), Times.Once);
+            foreach (Mock<Dice> mock in MockDiceSet)
+            {
+                mock.VerifyGet(m => m.Saved);
+                mock.VerifyGet(m => m.Number);
+            }
+        }
+
         [TestMethod]
         public void ClearConsoleShouldCallUserConsoleClear()
         {
@@ -109,14 +119,9 @@ namespace YahtzeeTDDTest
             MockConsole.Verify(m => m.WriteLine(Strings.RollView), Times.Once);
             MockConsole.Verify(m => m.WriteLine(String.Format(Strings.CurrentRoll, MockYahtzeeSet.Object.CurrentRoll)), Times.Once);
             MockConsole.Verify(m => m.Write(new String(' ', Strings.Dice.Length)), Times.Once);
-            MockConsole.Verify(m => m.Write(Strings.Dice), Times.Once);
             MockConsole.Verify(m => m.WriteLine(""), Times.Exactly(2));
 
-            foreach (Mock<Dice> mock in MockDiceSet)
-            {
-                mock.VerifyGet(m => m.Saved);
-                mock.VerifyGet(m => m.Number);
-            }
+            TestDicePrint();
         }
 
         [TestMethod]
@@ -132,14 +137,9 @@ namespace YahtzeeTDDTest
 
             MockConsole.Verify(m => m.WriteLine(Strings.SaveDieView), Times.Once);
             MockConsole.Verify(m => m.Write(new String(' ', Strings.Dice.Length)), Times.Exactly(2));
-            MockConsole.Verify(m => m.Write(Strings.Dice), Times.Once);
             MockConsole.Verify(m => m.WriteLine(""), Times.Exactly(2));
 
-            foreach (Mock<Dice> mock in MockDiceSet)
-            {
-                mock.VerifyGet(m => m.Saved);
-                mock.VerifyGet(m => m.Number);
-            }
+            TestDicePrint();
         }
     }
 }
