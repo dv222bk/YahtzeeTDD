@@ -129,4 +129,16 @@
   <data name="LogoTop" xml:space="preserve">
     <value>╔═══════════╗</value>
   </data>
+  <data name="PlayingCommands" xml:space="preserve">
+    <value>[R]oll, [C]heck Score, [S]ave Die, [A]dd Score</value>
+  </data>
+  <data name="SaveDieCommands" xml:space="preserve">
+    <value>[1-5] Save or unsave die</value>
+  </data>
+  <data name="SaveScoreCommands" xml:space="preserve">
+    <value>[1-15] Save score</value>
+  </data>
+  <data name="StandardCommands" xml:space="preserve">
+    <value>[N]ew Game, [Q]uit</value>
+  </data>
 </root>

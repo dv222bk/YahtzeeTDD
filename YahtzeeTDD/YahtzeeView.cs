@@ -40,5 +40,10 @@ namespace YahtzeeTDD
         {
             throw new NotImplementedException();
         }
+
+        public void ShowCommands(CurrentView currentView)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

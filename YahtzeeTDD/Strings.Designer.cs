@@ -95,5 +95,41 @@ namespace YahtzeeTDD {
                 return ResourceManager.GetString("LogoTop", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [R]oll, [C]heck Score, [S]ave Die, [A]dd Score.
+        /// </summary>
+        public static string PlayingCommands {
+            get {
+                return ResourceManager.GetString("PlayingCommands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [1-5] Save or unsave die.
+        /// </summary>
+        public static string SaveDieCommands {
+            get {
+                return ResourceManager.GetString("SaveDieCommands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [1-15] Save score.
+        /// </summary>
+        public static string SaveScoreCommands {
+            get {
+                return ResourceManager.GetString("SaveScoreCommands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [N]ew Game, [Q]uit.
+        /// </summary>
+        public static string StandardCommands {
+            get {
+                return ResourceManager.GetString("StandardCommands", resourceCulture);
+            }
+        }
     }
 }

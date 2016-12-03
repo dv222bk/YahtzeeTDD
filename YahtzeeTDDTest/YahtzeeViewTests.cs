@@ -57,5 +57,25 @@ namespace YahtzeeTDDTest
 
             MockConsole.Verify(m => m.WriteLine(It.IsAny<String>()), Times.Exactly(4));
         }
+
+        [TestMethod]
+        public void ShowCommandsShouldShowTheCorrectSetOfCommandsForEachView()
+        {
+            int orderOfCalls = 0;
+            MockConsole.Setup(m => m.WriteLine(Strings.StandardCommands)).Callback(() => orderOfCalls++);
+            MockConsole.Setup(m => m.WriteLine(Strings.PlayingCommands)).Callback(() => Assert.IsTrue(orderOfCalls++ == 1 || orderOfCalls++ == 3));
+            MockConsole.Setup(m => m.WriteLine(Strings.SaveScoreCommands)).Callback(() => Assert.AreEqual(orderOfCalls++, 5));
+            MockConsole.Setup(m => m.WriteLine(Strings.SaveDieCommands)).Callback(() => Assert.AreEqual(orderOfCalls++, 7));
+
+            for (int i = 0; i < Enum.GetNames(typeof(CurrentView)).Length; i += 1)
+            {
+                sut.ShowCommands((CurrentView)i);
+            }
+
+            MockConsole.Verify(m => m.WriteLine(Strings.StandardCommands), Times.Exactly(Enum.GetNames(typeof(CurrentView)).Length));
+            MockConsole.Verify(m => m.WriteLine(Strings.PlayingCommands), Times.Exactly(2));
+            MockConsole.Verify(m => m.WriteLine(Strings.SaveScoreCommands), Times.Once);
+            MockConsole.Verify(m => m.WriteLine(Strings.SaveDieCommands), Times.Once);
+        }
     }
 }
