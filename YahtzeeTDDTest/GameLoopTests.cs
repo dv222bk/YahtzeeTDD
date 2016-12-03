@@ -22,36 +22,16 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void LoopShouldCallViewClearConsole()
+        public void LoopShouldCallAllNecessaryMethods()
         {
             sut.Loop();
 
             MockView.Verify(m => m.ClearConsole(), Times.Once);
-        }
-
-        [TestMethod]
-        public void LoopShouldCallViewShowLogo()
-        {
-            sut.Loop();
-
             MockView.Verify(m => m.ShowLogo(), Times.Once);
-        }
-
-        [TestMethod]
-        public void LoopShouldCallViewShowView()
-        {
-            sut.Loop();
-
             MockView.Verify(m => m.ShowView(MockLogic.Object.CurrentView), Times.Once);
-        }
-
-        [TestMethod]
-        public void LoopShouldCallViewReadInput()
-        {
-            sut.Loop();
-
             MockView.Verify(m => m.ReadInput(), Times.Once);
         }
+
 
         [TestMethod]
         public void LoopShouldCallMethodsInTheProperOrder()
