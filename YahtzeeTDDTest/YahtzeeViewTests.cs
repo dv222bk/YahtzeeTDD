@@ -193,5 +193,21 @@ namespace YahtzeeTDDTest
             MockConsole.Verify(m => m.WriteLine(Strings.Save), Times.Once);
             MockConsole.Verify(m => m.WriteLine(""), Times.Exactly(2));
         }
+
+        [TestMethod]
+        public void ShowViewCanShowAllPossibleViews()
+        {
+            for (int i = 0; i < Enum.GetNames(typeof(CurrentView)).Length; i += 1)
+            {
+                sut.ShowCommands((CurrentView)i);
+            }
+
+            MockConsole.Verify(m => m.WriteLine(Strings.StartView), Times.Once);
+            MockConsole.Verify(m => m.WriteLine(Strings.RollView), Times.Exactly(2));
+            MockConsole.Verify(m => m.WriteLine(Strings.ScoreLine), Times.AtLeastOnce);
+            MockConsole.Verify(m => m.WriteLine(Strings.Save), Times.Once);
+            MockConsole.Verify(m => m.WriteLine(Strings.SaveDieView), Times.Once);
+            MockConsole.Verify(m => m.WriteLine(Strings.Finish), Times.Once);
+        }
     }
 }
