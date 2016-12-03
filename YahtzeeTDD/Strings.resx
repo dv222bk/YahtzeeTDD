@@ -120,6 +120,12 @@
   <data name="CommandsHeader" xml:space="preserve">
     <value>Commands:</value>
   </data>
+  <data name="CurrentRoll" xml:space="preserve">
+    <value>Current roll: {0}</value>
+  </data>
+  <data name="Dice" xml:space="preserve">
+    <value>Dice: </value>
+  </data>
   <data name="DiceNumberOutOfRange" xml:space="preserve">
     <value>Dice tried to save an invalid number.</value>
   </data>
@@ -134,6 +140,9 @@
   </data>
   <data name="PlayingCommands" xml:space="preserve">
     <value>[R]oll, [C]heck Score, [S]ave Die, [A]dd Score</value>
+  </data>
+  <data name="RollView" xml:space="preserve">
+    <value>You are currently playing a game of Yahtzee!</value>
   </data>
   <data name="SaveDieCommands" xml:space="preserve">
     <value>[1-5] Save or unsave die</value>

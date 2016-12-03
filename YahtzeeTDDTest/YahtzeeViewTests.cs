@@ -21,6 +21,10 @@ namespace YahtzeeTDDTest
             for (int i = 0; i < 5; i += 1)
             {
                 MockDiceSet[i] = new Mock<Dice>(new Random());
+                if (i % 2 == 0)
+                {
+                    MockDiceSet[i].SetupGet(m => m.Saved).Returns(true);
+                }
             }
             MockYahtzeeSet.Object.DiceSet = new Dice[] 
             { 
@@ -87,6 +91,29 @@ namespace YahtzeeTDDTest
 
             MockConsole.Verify(m => m.WriteLine(Strings.StartView), Times.Once);
             MockConsole.Verify(m => m.WriteLine(""), Times.Once);
+        }
+
+        [TestMethod]
+        public void ShowRollViewShouldShowTheRollView()
+        {
+            int orderOfCalls = 0;
+            MockConsole.Setup(m => m.WriteLine(Strings.RollView)).Callback(() => Assert.AreEqual(orderOfCalls++, 0));
+            MockConsole.Setup(m => m.WriteLine(String.Format(Strings.CurrentRoll, MockYahtzeeSet.Object.CurrentRoll)))
+                .Callback(() => Assert.AreEqual(orderOfCalls++, 1));
+            MockConsole.Setup(m => m.Write(Strings.Dice)).Callback(() => Assert.AreEqual(orderOfCalls++, 2));
+            MockConsole.Setup(m => m.WriteLine("")).Callback(() => Assert.AreEqual(orderOfCalls++, 3));
+
+            sut.ShowRollView();
+
+            MockConsole.Verify(m => m.WriteLine(Strings.RollView), Times.Once);
+            MockConsole.Verify(m => m.WriteLine(String.Format(Strings.CurrentRoll, MockYahtzeeSet.Object.CurrentRoll)), Times.Once);
+            MockConsole.Verify(m => m.Write(new String(' ', Strings.Dice.Length)), Times.Once);
+            MockConsole.Verify(m => m.Write(String.Format("{0,4}", MockDiceSet[It.IsAny<int>()].Object.Saved == true ? "(S)" : "   ")), Times.Exactly(4));
+            MockConsole.Verify(m => m.WriteLine(String.Format("{0,4}", MockDiceSet[4].Object.Saved == true ? "(S)" : "   ")), Times.Once);
+            MockConsole.Verify(m => m.Write(Strings.Dice), Times.Once);
+            MockConsole.Verify(m => m.Write(String.Format("{0,4}", MockDiceSet[It.IsAny<int>()].Object.Number)), Times.Exactly(4));
+            MockConsole.Verify(m => m.WriteLine(String.Format("{0,4}", MockDiceSet[4].Object.Number)), Times.Once());
+            MockConsole.Verify(m => m.WriteLine(""), Times.Once());
         }
     }
 }

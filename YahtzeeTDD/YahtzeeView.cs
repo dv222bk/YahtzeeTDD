@@ -68,5 +68,10 @@ namespace YahtzeeTDD
             UserConsole.WriteLine(Strings.StartView);
             UserConsole.WriteLine("");
         }
+
+        public void ShowRollView()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

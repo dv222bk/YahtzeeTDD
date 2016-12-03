@@ -70,6 +70,24 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current roll: {0}.
+        /// </summary>
+        public static string CurrentRoll {
+            get {
+                return ResourceManager.GetString("CurrentRoll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dice: .
+        /// </summary>
+        public static string Dice {
+            get {
+                return ResourceManager.GetString("Dice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dice tried to save an invalid number..
         /// </summary>
         public static string DiceNumberOutOfRange {
@@ -111,6 +129,15 @@ namespace YahtzeeTDD {
         public static string PlayingCommands {
             get {
                 return ResourceManager.GetString("PlayingCommands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are currently playing a game of Yahtzee!.
+        /// </summary>
+        public static string RollView {
+            get {
+                return ResourceManager.GetString("RollView", resourceCulture);
             }
         }
         
