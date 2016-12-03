@@ -33,7 +33,27 @@ namespace YahtzeeTDD
 
         public virtual void ShowView(CurrentView currentView)
         {
-            throw new NotImplementedException();
+            switch (currentView)
+            {
+                case CurrentView.Start:
+                    ShowStartView();
+                    break;
+                case CurrentView.Roll:
+                    ShowRollView();
+                    break;
+                case CurrentView.CheckScore:
+                    ShowCheckScoreView();
+                    break;
+                case CurrentView.SaveScore:
+                    ShowSaveScoreView();
+                    break;
+                case CurrentView.SaveDie:
+                    ShowSaveDieView();
+                    break;
+                case CurrentView.Finish:
+                    ShowFinishView();
+                    break;
+            }
         }
 
         public virtual string ReadInput()

@@ -199,7 +199,7 @@ namespace YahtzeeTDDTest
         {
             for (int i = 0; i < Enum.GetNames(typeof(CurrentView)).Length; i += 1)
             {
-                sut.ShowCommands((CurrentView)i);
+                sut.ShowView((CurrentView)i);
             }
 
             MockConsole.Verify(m => m.WriteLine(Strings.StartView), Times.Once);
