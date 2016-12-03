@@ -141,5 +141,36 @@ namespace YahtzeeTDDTest
 
             TestDicePrint();
         }
+
+        [TestMethod]
+        public void ShowScoreShouldShowScoreBoard()
+        {
+            int orderOfCalls = 0;
+            MockConsole.Setup(m => m.WriteLine(Strings.ScoreLine)).Callback(() => orderOfCalls++);
+            MockConsole.Setup(m => m.WriteLine(Strings.ScoreHeader)).Callback(() => Assert.AreEqual(orderOfCalls++, 0));
+            MockConsole.Setup(m => m.WriteLine(Strings.Aces)).Callback(() => Assert.AreEqual(orderOfCalls++, 2));
+            MockConsole.Setup(m => m.WriteLine(Strings.Twos)).Callback(() => Assert.AreEqual(orderOfCalls++, 4));
+            MockConsole.Setup(m => m.WriteLine(Strings.Threes)).Callback(() => Assert.AreEqual(orderOfCalls++, 6));
+            MockConsole.Setup(m => m.WriteLine(Strings.Fours)).Callback(() => Assert.AreEqual(orderOfCalls++, 8));
+            MockConsole.Setup(m => m.WriteLine(Strings.Fives)).Callback(() => Assert.AreEqual(orderOfCalls++, 10));
+            MockConsole.Setup(m => m.WriteLine(Strings.Sixes)).Callback(() => Assert.AreEqual(orderOfCalls++, 12));
+            MockConsole.Setup(m => m.WriteLine(Strings.Bonus)).Callback(() => Assert.AreEqual(orderOfCalls++, 14));
+            MockConsole.Setup(m => m.WriteLine(Strings.TotalScore)).Callback(() => Assert.AreEqual(orderOfCalls++, 16));
+            MockConsole.Setup(m => m.WriteLine(Strings.OnePair)).Callback(() => Assert.AreEqual(orderOfCalls++, 18));
+            MockConsole.Setup(m => m.WriteLine(Strings.TwoPair)).Callback(() => Assert.AreEqual(orderOfCalls++, 20));
+            MockConsole.Setup(m => m.WriteLine(Strings.ToaK)).Callback(() => Assert.AreEqual(orderOfCalls++, 22));
+            MockConsole.Setup(m => m.WriteLine(Strings.FoaK)).Callback(() => Assert.AreEqual(orderOfCalls++, 24));
+            MockConsole.Setup(m => m.WriteLine(Strings.SmallStraight)).Callback(() => Assert.AreEqual(orderOfCalls++, 26));
+            MockConsole.Setup(m => m.WriteLine(Strings.LargeStraight)).Callback(() => Assert.AreEqual(orderOfCalls++, 28));
+            MockConsole.Setup(m => m.WriteLine(Strings.FullHouse)).Callback(() => Assert.AreEqual(orderOfCalls++, 30));
+            MockConsole.Setup(m => m.WriteLine(Strings.Chance)).Callback(() => Assert.AreEqual(orderOfCalls++, 32));
+            MockConsole.Setup(m => m.WriteLine(Strings.Yahtzee)).Callback(() => Assert.AreEqual(orderOfCalls++, 34));
+            MockConsole.Setup(m => m.WriteLine(Strings.TotalScore)).Callback(() => Assert.AreEqual(orderOfCalls++, 36));
+            MockConsole.Setup(m => m.WriteLine("")).Callback(() => Assert.AreEqual(orderOfCalls++, 38));
+
+            sut.ShowScore();
+
+            MockConsole.Verify(m => m.WriteLine(It.IsAny<string>()), Times.Exactly(38));
+        }
     }
 }
