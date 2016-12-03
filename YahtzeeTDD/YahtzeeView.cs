@@ -41,7 +41,7 @@ namespace YahtzeeTDD
             return UserConsole.ReadLine();
         }
 
-        public void ShowCommands(CurrentView currentView)
+        public virtual void ShowCommands(CurrentView currentView)
         {
             UserConsole.WriteLine(Strings.CommandsHeader);
 

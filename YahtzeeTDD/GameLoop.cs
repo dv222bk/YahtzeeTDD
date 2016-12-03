@@ -24,6 +24,7 @@ namespace YahtzeeTDD
                 YahtzeeView.ClearConsole();
                 YahtzeeView.ShowLogo();
                 YahtzeeView.ShowView(GameLogic.CurrentView);
+                YahtzeeView.ShowCommands(GameLogic.CurrentView);
 
                 string input = YahtzeeView.ReadInput();
                 GameLogic.ReactToStandardInput(input);
