@@ -163,7 +163,9 @@ namespace YahtzeeTDD
 
         public void ShowSaveScoreView()
         {
-            throw new NotImplementedException();
+            ShowScore();
+            UserConsole.WriteLine(Strings.Save);
+            UserConsole.WriteLine("");
         }
 
         private void PrintDice()
