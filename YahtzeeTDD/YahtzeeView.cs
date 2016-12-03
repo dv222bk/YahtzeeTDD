@@ -109,7 +109,52 @@ namespace YahtzeeTDD
 
         public void ShowSaveDieView()
         {
-            throw new NotImplementedException();
+            UserConsole.WriteLine(Strings.SaveDieView);
+            UserConsole.WriteLine("");
+
+            UserConsole.Write(new String(' ', Strings.Dice.Length));
+            for (int i = 0; i < YahtzeeSet.DiceSet.Length; i += 1)
+            {
+                string savedString = String.Format("{0,-5}", YahtzeeSet.DiceSet[i].Saved ? "(S)" : "   ");
+                if (i != YahtzeeSet.DiceSet.Length - 1)
+                {
+                    UserConsole.Write(savedString);
+                }
+                else
+                {
+                    UserConsole.WriteLine(savedString);
+                }
+            }
+
+            UserConsole.Write(Strings.Dice);
+            for (int i = 0; i < YahtzeeSet.DiceSet.Length; i += 1)
+            {
+                string diceString = String.Format("{0,1}{1,-4}", "", YahtzeeSet.DiceSet[i].Number.ToString());
+                if (i != YahtzeeSet.DiceSet.Length - 1)
+                {
+                    UserConsole.Write(diceString);
+                }
+                else
+                {
+                    UserConsole.WriteLine(diceString);
+                }
+            }
+
+            UserConsole.Write(new String(' ', Strings.Dice.Length));
+            for (int i = 0; i < YahtzeeSet.DiceSet.Length; i += 1)
+            {
+                string commandString = String.Format("{0,-5}", YahtzeeSet.DiceSet[i].Saved ? "[" + i + "]" : "   ");
+                if (i != YahtzeeSet.DiceSet.Length - 1)
+                {
+                    UserConsole.Write(commandString);
+                }
+                else
+                {
+                    UserConsole.WriteLine(commandString);
+                }
+            }
+
+            UserConsole.WriteLine("");
         }
     }
 }

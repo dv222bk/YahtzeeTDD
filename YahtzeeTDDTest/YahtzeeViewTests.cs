@@ -126,7 +126,7 @@ namespace YahtzeeTDDTest
             MockConsole.Setup(m => m.WriteLine(Strings.SaveDieView)).Callback(() => Assert.AreEqual(orderOfCalls++, 0));
             MockConsole.Setup(m => m.Write(new String(' ', Strings.Dice.Length)))
                 .Callback(() => Assert.IsTrue(orderOfCalls == 1 || orderOfCalls == 2));
-            MockConsole.Setup(m => m.Write(Strings.Dice)).Callback(() => Assert.AreEqual(orderOfCalls++, 2));
+            MockConsole.Setup(m => m.Write(Strings.Dice)).Callback(() => Assert.AreEqual(orderOfCalls++, 1));
 
             sut.ShowSaveDieView();
 
