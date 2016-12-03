@@ -20,7 +20,7 @@ namespace YahtzeeTDD
 
         public virtual void ClearConsole()
         {
-            throw new NotImplementedException();
+            UserConsole.Clear();
         }
 
         public virtual void ShowLogo()
