@@ -61,6 +61,15 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Commands:.
+        /// </summary>
+        public static string CommandsHeader {
+            get {
+                return ResourceManager.GetString("CommandsHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dice tried to save an invalid number..
         /// </summary>
         public static string DiceNumberOutOfRange {

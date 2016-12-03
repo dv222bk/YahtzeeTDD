@@ -43,7 +43,23 @@ namespace YahtzeeTDD
 
         public void ShowCommands(CurrentView currentView)
         {
-            throw new NotImplementedException();
+            UserConsole.WriteLine(Strings.CommandsHeader);
+
+            switch (currentView)
+            {
+                case CurrentView.Roll:
+                case CurrentView.CheckScore:
+                    UserConsole.WriteLine(Strings.PlayingCommands);
+                    break;
+                case CurrentView.SaveScore:
+                    UserConsole.WriteLine(Strings.SaveScoreCommands);
+                    break;
+                case CurrentView.SaveDie:
+                    UserConsole.WriteLine(Strings.SaveDieCommands);
+                    break;
+            }
+
+            UserConsole.WriteLine(Strings.StandardCommands);
         }
     }
 }
