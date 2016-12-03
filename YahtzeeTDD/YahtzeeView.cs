@@ -38,7 +38,7 @@ namespace YahtzeeTDD
 
         public virtual string ReadInput()
         {
-            throw new NotImplementedException();
+            return UserConsole.ReadLine();
         }
 
         public void ShowCommands(CurrentView currentView)
