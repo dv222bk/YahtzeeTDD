@@ -144,4 +144,7 @@
   <data name="StandardCommands" xml:space="preserve">
     <value>[N]ew Game, [Q]uit</value>
   </data>
+  <data name="StartView" xml:space="preserve">
+    <value>Welcome! Let's play some Yahtzee!</value>
+  </data>
 </root>

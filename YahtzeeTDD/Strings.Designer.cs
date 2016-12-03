@@ -140,5 +140,14 @@ namespace YahtzeeTDD {
                 return ResourceManager.GetString("StandardCommands", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome! Let&apos;s play some Yahtzee!.
+        /// </summary>
+        public static string StartView {
+            get {
+                return ResourceManager.GetString("StartView", resourceCulture);
+            }
+        }
     }
 }

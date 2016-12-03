@@ -79,5 +79,14 @@ namespace YahtzeeTDDTest
             MockConsole.Verify(m => m.WriteLine(Strings.SaveDieCommands), Times.Once);
             MockConsole.Verify(m => m.WriteLine(""), Times.Exactly(Enum.GetNames(typeof(CurrentView)).Length));
         }
+
+        [TestMethod]
+        public void ShowStartViewShouldShowTheStartView()
+        {
+            sut.ShowStartView();
+
+            MockConsole.Verify(m => m.WriteLine(Strings.StartView), Times.Once);
+            MockConsole.Verify(m => m.WriteLine(""), Times.Once);
+        }
     }
 }

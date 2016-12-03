@@ -62,5 +62,11 @@ namespace YahtzeeTDD
             UserConsole.WriteLine(Strings.StandardCommands);
             UserConsole.WriteLine("");
         }
+
+        public void ShowStartView()
+        {
+            UserConsole.WriteLine(Strings.StartView);
+            UserConsole.WriteLine("");
+        }
     }
 }
