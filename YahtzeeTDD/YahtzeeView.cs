@@ -28,6 +28,7 @@ namespace YahtzeeTDD
             UserConsole.WriteLine(Strings.LogoTop);
             UserConsole.WriteLine(Strings.LogoText);
             UserConsole.WriteLine(Strings.LogoBottom);
+            UserConsole.WriteLine();
         }
 
         public virtual void ShowView(CurrentView currentView)

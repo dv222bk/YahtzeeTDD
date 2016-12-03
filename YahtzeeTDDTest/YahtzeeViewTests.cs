@@ -51,10 +51,11 @@ namespace YahtzeeTDDTest
             MockConsole.Setup(m => m.WriteLine(Strings.LogoTop)).Callback(() => Assert.AreEqual(orderOfCalls++, 0));
             MockConsole.Setup(m => m.WriteLine(Strings.LogoText)).Callback(() => Assert.AreEqual(orderOfCalls++, 1));
             MockConsole.Setup(m => m.WriteLine(Strings.LogoBottom)).Callback(() => Assert.AreEqual(orderOfCalls++, 2));
+            MockConsole.Setup(m => m.WriteLine(null)).Callback(() => Assert.AreEqual(orderOfCalls++, 3));
 
             sut.ShowLogo();
 
-            MockConsole.Verify(m => m.WriteLine(It.IsAny<String>()), Times.Exactly(3));
+            MockConsole.Verify(m => m.WriteLine(It.IsAny<String>()), Times.Exactly(4));
         }
     }
 }

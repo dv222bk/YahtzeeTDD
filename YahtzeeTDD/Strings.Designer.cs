@@ -70,7 +70,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ╚════════════╝.
+        ///   Looks up a localized string similar to ╚═══════════╝.
         /// </summary>
         public static string LogoBottom {
             get {
@@ -88,7 +88,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ╔════════════╗.
+        ///   Looks up a localized string similar to ╔═══════════╗.
         /// </summary>
         public static string LogoTop {
             get {
