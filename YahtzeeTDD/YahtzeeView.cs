@@ -25,7 +25,9 @@ namespace YahtzeeTDD
 
         public virtual void ShowLogo()
         {
-            throw new NotImplementedException();
+            UserConsole.WriteLine(Strings.LogoTop);
+            UserConsole.WriteLine(Strings.LogoText);
+            UserConsole.WriteLine(Strings.LogoBottom);
         }
 
         public virtual void ShowView(CurrentView currentView)
