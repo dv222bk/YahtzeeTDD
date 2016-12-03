@@ -8,7 +8,6 @@ namespace YahtzeeTDDTest
     [TestClass]
     public class GameLogicTests
     {
-
         private Mock<Dice>[] MockDiceSet = new Mock<Dice>[5];
         private Mock<YahtzeeSet> MockYahtzeeSet;
         private Mock<Score> MockScore;

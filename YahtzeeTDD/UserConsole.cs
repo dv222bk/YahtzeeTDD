@@ -8,19 +8,24 @@ namespace YahtzeeTDD
 {
     public class UserConsole
     {
-        public string ReadLine()
+        public virtual string ReadLine()
         {
             return Console.ReadLine();
         }
 
-        public void Write(string output)
+        public virtual void Write(string output)
         {
             Console.Write(output);
         }
 
-        public void WriteLine(string output)
+        public virtual void WriteLine(string output)
         {
             Console.WriteLine(output);
+        }
+
+        public virtual void Clear()
+        {
+            Console.Clear();
         }
     }
 }
