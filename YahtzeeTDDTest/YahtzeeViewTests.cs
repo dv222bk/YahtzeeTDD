@@ -164,5 +164,14 @@ namespace YahtzeeTDDTest
             MockConsole.Verify(m => m.ReadLine(), Times.Once);
             Assert.AreEqual("a String", output);
         }
+
+        [TestMethod]
+        public void ShowCheckScoreViewShouldShowScoreAndRollView()
+        {
+            sut.ShowCheckScoreView();
+
+            MockConsole.Verify(m => m.WriteLine(Strings.ScoreLine), Times.Exactly(19));
+            MockConsole.Verify(m => m.WriteLine(Strings.RollView), Times.Once);
+        }
     }
 }
