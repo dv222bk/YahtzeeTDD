@@ -153,5 +153,16 @@ namespace YahtzeeTDDTest
 
             MockConsole.Verify(m => m.WriteLine(It.IsAny<string>()), Times.Exactly(39));
         }
+
+        [TestMethod]
+        public void ReadInputShouldReadInputFromTheUse()
+        {
+            MockConsole.Setup(m => m.ReadLine()).Returns("a String");
+
+            string output = sut.ReadInput();
+
+            MockConsole.Verify(m => m.ReadLine(), Times.Once);
+            Assert.AreEqual("a String", output);
+        }
     }
 }
