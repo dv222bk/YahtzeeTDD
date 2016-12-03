@@ -13,12 +13,12 @@ namespace YahtzeeTDD
             return Console.ReadLine();
         }
 
-        public virtual void Write(string output = "")
+        public virtual void Write(string output)
         {
             Console.Write(output);
         }
 
-        public virtual void WriteLine(string output = "")
+        public virtual void WriteLine(string output)
         {
             Console.WriteLine(output);
         }
