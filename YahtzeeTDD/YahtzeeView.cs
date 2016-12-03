@@ -60,6 +60,7 @@ namespace YahtzeeTDD
             }
 
             UserConsole.WriteLine(Strings.StandardCommands);
+            UserConsole.WriteLine("");
         }
     }
 }

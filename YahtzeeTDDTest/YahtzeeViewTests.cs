@@ -77,6 +77,7 @@ namespace YahtzeeTDDTest
             MockConsole.Verify(m => m.WriteLine(Strings.PlayingCommands), Times.Exactly(2));
             MockConsole.Verify(m => m.WriteLine(Strings.SaveScoreCommands), Times.Once);
             MockConsole.Verify(m => m.WriteLine(Strings.SaveDieCommands), Times.Once);
+            MockConsole.Verify(m => m.WriteLine(""), Times.Exactly(Enum.GetNames(typeof(CurrentView)).Length));
         }
     }
 }
