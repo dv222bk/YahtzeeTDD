@@ -68,5 +68,32 @@ namespace YahtzeeTDD {
                 return ResourceManager.GetString("DiceNumberOutOfRange", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ╚════════════╝.
+        /// </summary>
+        public static string LogoBottom {
+            get {
+                return ResourceManager.GetString("LogoBottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ║TDD Yahtzee║.
+        /// </summary>
+        public static string LogoText {
+            get {
+                return ResourceManager.GetString("LogoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ╔════════════╗.
+        /// </summary>
+        public static string LogoTop {
+            get {
+                return ResourceManager.GetString("LogoTop", resourceCulture);
+            }
+        }
     }
 }
