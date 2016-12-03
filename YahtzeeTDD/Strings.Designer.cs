@@ -61,7 +61,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {1,-4} Aces{0,11}│{2,5}.
+        ///   Looks up a localized string similar to {1,4} Aces{0,11}│{2,5}.
         /// </summary>
         public static string Aces {
             get {
@@ -70,7 +70,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bonus{0,15}│{1,5}.
+        ///   Looks up a localized string similar to {0,4} Bonus{0,10}│{1,5}.
         /// </summary>
         public static string Bonus {
             get {
@@ -79,7 +79,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {1,-4} Chance{0,9}│{2,5}.
+        ///   Looks up a localized string similar to {1,4} Chance{0,9}│{2,5}.
         /// </summary>
         public static string Chance {
             get {
@@ -124,7 +124,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {1,-4} Fives{0,10}│{2,5}.
+        ///   Looks up a localized string similar to {1,4} Fives{0,10}│{2,5}.
         /// </summary>
         public static string Fives {
             get {
@@ -133,7 +133,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0,-4} Four of a Kind │{1,5}.
+        ///   Looks up a localized string similar to {0,4} Four of a Kind │{1,5}.
         /// </summary>
         public static string FoaK {
             get {
@@ -142,7 +142,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {1,-4} Fours{0,10}│{2,5}.
+        ///   Looks up a localized string similar to {1,4} Fours{0,10}│{2,5}.
         /// </summary>
         public static string Fours {
             get {
@@ -151,7 +151,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {1,-4} Full House{0,5}│{2,5}.
+        ///   Looks up a localized string similar to {1,4} Full House{0,5}│{2,5}.
         /// </summary>
         public static string FullHouse {
             get {
@@ -160,7 +160,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0,-4} Large Straight │{2,5}.
+        ///   Looks up a localized string similar to {0,4} Large Straight │{1,5}.
         /// </summary>
         public static string LargeStraight {
             get {
@@ -169,7 +169,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ╚═══════════╝.
+        ///   Looks up a localized string similar to ╚═══════════════════════════╝.
         /// </summary>
         public static string LogoBottom {
             get {
@@ -178,7 +178,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ║TDD Yahtzee║.
+        ///   Looks up a localized string similar to ╠═══════ TDD Yahtzee ═══════╣.
         /// </summary>
         public static string LogoText {
             get {
@@ -187,7 +187,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ╔═══════════╗.
+        ///   Looks up a localized string similar to ╔═══════════════════════════╗.
         /// </summary>
         public static string LogoTop {
             get {
@@ -196,7 +196,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {1,-4} One Pair{0,7}│{2,5}.
+        ///   Looks up a localized string similar to {1,4} One Pair{0,7}│{2,5}.
         /// </summary>
         public static string OnePair {
             get {
@@ -268,7 +268,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {1,-4} Sixes{0,10}│{2,5}.
+        ///   Looks up a localized string similar to {1,4} Sixes{0,10}│{2,5}.
         /// </summary>
         public static string Sixes {
             get {
@@ -277,7 +277,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0,-4} Small Straight │{2,5}.
+        ///   Looks up a localized string similar to {0,4} Small Straight │{1,5}.
         /// </summary>
         public static string SmallStraight {
             get {
@@ -304,7 +304,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {1,-4} Threes{0,9}│{2,5}.
+        ///   Looks up a localized string similar to {1,4} Threes{0,9}│{2,5}.
         /// </summary>
         public static string Threes {
             get {
@@ -313,7 +313,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0,-4} Three of a Kind│{1,5}.
+        ///   Looks up a localized string similar to {0,4} Three of a Kind│{1,5}.
         /// </summary>
         public static string ToaK {
             get {
@@ -322,7 +322,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Score{0,9}│{2,5}.
+        ///   Looks up a localized string similar to {0,4} Total Score{0,4}│{1,5}.
         /// </summary>
         public static string TotalScore {
             get {
@@ -331,7 +331,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {1,-4} Two Pair{0,7}│{2,5}.
+        ///   Looks up a localized string similar to {1,4} Two Pair{0,7}│{2,5}.
         /// </summary>
         public static string TwoPair {
             get {
@@ -340,7 +340,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {1,-4} Twos{0,11}│{2,5}.
+        ///   Looks up a localized string similar to {1,4} Twos{0,11}│{2,5}.
         /// </summary>
         public static string Twos {
             get {
@@ -349,7 +349,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Upper Score{0,9}│{1,5}.
+        ///   Looks up a localized string similar to {0,4} Upper Score{0,4}│{1,5}.
         /// </summary>
         public static string UpperScore {
             get {
@@ -358,7 +358,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {1,-4} Yahtzee{0,8}│{2,5}.
+        ///   Looks up a localized string similar to {1,4} Yahtzee{0,8}│{2,5}.
         /// </summary>
         public static string Yahtzee {
             get {

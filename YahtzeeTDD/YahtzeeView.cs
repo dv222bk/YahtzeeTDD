@@ -136,9 +136,67 @@ namespace YahtzeeTDD
             }
         }
 
+        private void WriteScoreString(string format, int commandNumber, int? score, bool pad = true)
+        {
+            if (pad && commandNumber != 0)
+            {
+                UserConsole.WriteLine(String.Format(format, "", 
+                    score == null ? "[" + commandNumber + "]" : commandNumber.ToString(),
+                    score.ToString()));
+            }
+            else if (!pad)
+            {
+                UserConsole.WriteLine(String.Format(format,
+                    score == null ? "[" + commandNumber + "]" : commandNumber.ToString(),
+                    score.ToString()));
+            }
+            else
+            {
+                UserConsole.WriteLine(String.Format(format, "", score.ToString()));
+            }
+        }
+
         public void ShowScore()
         {
-            throw new NotImplementedException();
+            UserConsole.WriteLine(String.Format(Strings.ScoreHeader, ""));
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.Aces, 1, Score.aces);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.Twos, 2, Score.twos);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.Threes, 3, Score.threes);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.Fours, 4, Score.fours);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.Fives, 5, Score.fives);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.Sixes, 6, Score.sixes);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.Bonus, 0, Score.UpperBonus);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.UpperScore, 0, Score.UpperScore);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.OnePair, 7, Score.onePair);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.TwoPair, 8, Score.twoPair);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.ToaK, 9, Score.toak, false);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.FoaK, 10, Score.foak, false);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.SmallStraight, 11, Score.smallStraight, false);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.LargeStraight, 12, Score.largeStraight, false);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.FullHouse, 13, Score.fullHouse);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.Chance, 14, Score.chance);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.Yahtzee, 15, Score.yahtzee);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            WriteScoreString(Strings.TotalScore, 0, Score.TotalScore);
+            UserConsole.WriteLine(Strings.ScoreLine);
+            UserConsole.WriteLine("");
         }
     }
 }
