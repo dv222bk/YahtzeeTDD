@@ -29,6 +29,7 @@ namespace YahtzeeTDDTest
             MockView.Verify(m => m.ClearConsole(), Times.Once);
             MockView.Verify(m => m.ShowLogo(), Times.Once);
             MockView.Verify(m => m.ShowView(MockLogic.Object.CurrentView), Times.Once);
+            MockView.Verify(m => m.ShowCommands(MockLogic.Object.CurrentView), Times.Once);
             MockView.Verify(m => m.ReadInput(), Times.Once);
         }
 
@@ -41,7 +42,8 @@ namespace YahtzeeTDDTest
             MockView.Setup(m => m.ShowLogo()).Callback(() => Assert.AreEqual(orderOfCalls++, 1));
             MockView.Setup(m => m.ShowView(MockLogic.Object.CurrentView)).Callback(() => Assert.AreEqual(orderOfCalls++, 2));
             MockView.Setup(m => m.ReadInput()).Returns(It.IsAny<String>()).Callback(() => Assert.AreEqual(orderOfCalls++, 3));
-            MockLogic.Setup(m => m.ReactToStandardInput(It.IsAny<String>())).Callback(() => Assert.AreEqual(orderOfCalls++, 4));
+            MockView.Setup(m => m.ShowCommands(MockLogic.Object.CurrentView)).Callback(() => Assert.AreEqual(orderOfCalls++, 4));
+            MockLogic.Setup(m => m.ReactToStandardInput(It.IsAny<String>())).Callback(() => Assert.AreEqual(orderOfCalls++, 5));
 
             sut.Loop();
         }
