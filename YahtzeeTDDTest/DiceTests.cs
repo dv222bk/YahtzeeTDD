@@ -13,14 +13,14 @@ namespace YahtzeeTDDTest
 
         public DiceTests()
         {
-            mock.Setup(m => m.Next(1, 6)).Returns(1);
+            mock.Setup(m => m.Next(1, 7)).Returns(1);
         }
         
         [TestMethod]
         public void RollShouldGenerateValidRandomNumbers()
         {
             sut.Roll();
-            mock.Verify(m => m.Next(1, 6), Times.Once());
+            mock.Verify(m => m.Next(1, 7), Times.Once());
         }
 
         // Due to how ExpectedException works, I cannot combine the following three tests

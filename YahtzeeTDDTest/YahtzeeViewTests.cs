@@ -185,13 +185,14 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void ShowSaveScoreViewShouldShowScoreAndSaveString()
+        public void ShowSaveScoreViewShouldShowScoreAndSaveStringAndDice()
         {
             sut.ShowSaveScoreView();
 
             MockConsole.Verify(m => m.WriteLine(Strings.ScoreLine), Times.Exactly(19));
             MockConsole.Verify(m => m.WriteLine(Strings.Save), Times.Once);
-            MockConsole.Verify(m => m.WriteLine(""), Times.Exactly(2));
+            TestDicePrint();
+            MockConsole.Verify(m => m.WriteLine(""), Times.Exactly(3));
         }
 
         [TestMethod]

@@ -18,7 +18,7 @@ namespace YahtzeeTDD
 
         public virtual void Roll()
         {
-            Number = Random.Next(1, 6);
+            Number = Random.Next(1, 7);
         }
 
         public virtual int? Number

@@ -111,7 +111,7 @@ namespace YahtzeeTDD
             UserConsole.Write(new String(' ', Strings.Dice.Length));
             for (int i = 0; i < YahtzeeSet.DiceSet.Length; i += 1)
             {
-                string commandString = String.Format("{0,-5}", YahtzeeSet.DiceSet[i].Saved ? "[" + i + "]" : "   ");
+                string commandString = String.Format("{0,-5}", "[" + i + "]");
                 if (i != YahtzeeSet.DiceSet.Length - 1)
                 {
                     UserConsole.Write(commandString);
@@ -185,6 +185,8 @@ namespace YahtzeeTDD
         {
             ShowScore();
             UserConsole.WriteLine(Strings.Save);
+            UserConsole.WriteLine("");
+            PrintDice();
             UserConsole.WriteLine("");
         }
 

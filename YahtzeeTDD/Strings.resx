@@ -169,7 +169,7 @@
     <value>{1,4} One Pair{0,7}│{2,5}</value>
   </data>
   <data name="PlayingCommands" xml:space="preserve">
-    <value>[R]oll, [C]heck Score, [S]ave Die, [A]dd Score</value>
+    <value>[R]oll, [C]heck Score, [H]ide Score, [S]ave Die, [A]dd Score</value>
   </data>
   <data name="RollView" xml:space="preserve">
     <value>You are currently playing a game of Yahtzee!</value>
@@ -178,7 +178,7 @@
     <value>Save your dice score!</value>
   </data>
   <data name="SaveDieCommands" xml:space="preserve">
-    <value>[1-5] Save or unsave die</value>
+    <value>[0-4] Save or unsave die</value>
   </data>
   <data name="SaveDieView" xml:space="preserve">
     <value>Save or unsave which die?</value>

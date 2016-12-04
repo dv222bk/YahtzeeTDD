@@ -214,7 +214,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [R]oll, [C]heck Score, [S]ave Die, [A]dd Score.
+        ///   Looks up a localized string similar to [R]oll, [C]heck Score, [H]ide Score, [S]ave Die, [A]dd Score.
         /// </summary>
         public static string PlayingCommands {
             get {
@@ -241,7 +241,7 @@ namespace YahtzeeTDD {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [1-5] Save or unsave die.
+        ///   Looks up a localized string similar to [0-4] Save or unsave die.
         /// </summary>
         public static string SaveDieCommands {
             get {
