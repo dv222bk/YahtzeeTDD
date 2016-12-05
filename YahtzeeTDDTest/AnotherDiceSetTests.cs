@@ -54,5 +54,15 @@ namespace YahtzeeTDDTest
             sut.RollAll();
             Assert.AreEqual(2, sut.CurrentRoll);
         }
+
+        [TestMethod]
+        public void UnsaveAllShouldUnsaveAllDice()
+        {
+            sut.UnsaveAll();
+            foreach (Mock<Dice> mock in MockDiceSet)
+            {
+                mock.VerifySet(m => m.Saved = false);
+            }
+        }
     }
 }

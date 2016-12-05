@@ -29,5 +29,10 @@ namespace YahtzeeTDD
                 CurrentRoll += 1;
             }
         }
+
+        public void UnsaveAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
