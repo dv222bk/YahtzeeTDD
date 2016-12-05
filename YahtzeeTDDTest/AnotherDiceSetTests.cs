@@ -128,8 +128,14 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void CanRollShouldReturnTrueIfThePlayerCanRollTheDices()
         {
-            sut.DiceSet = MockDiceObjectSet;
             Assert.IsTrue(sut.CanRoll);
+        }
+
+        [TestMethod]
+        public void CanRollShouldReturnFalseIfThePlayerCannotRollTheDices()
+        {
+            sut.CurrentRoll = 3;
+            Assert.IsFalse(sut.CanRoll);
         }
     }
 }
