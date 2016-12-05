@@ -62,6 +62,7 @@
     <Compile Include="GameLogicTests.cs" />
     <Compile Include="TestFunctions.cs" />
     <Compile Include="GameLoopTests.cs" />
+    <Compile Include="DiceFactoryTests.cs" />
     <Compile Include="YahtzeeViewTests.cs" />
     <Compile Include="YahtzeeSetTests.cs" />
   </ItemGroup>
