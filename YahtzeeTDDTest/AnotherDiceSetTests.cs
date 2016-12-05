@@ -111,6 +111,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void RollUnsavedShouldIncreaseCurrentRollIfSuccessful()
         {
+            sut.DiceSet = MockDiceObjectSet;
             sut.RollUnsaved();
             Assert.AreEqual(2, sut.CurrentRoll);
         }
