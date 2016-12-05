@@ -37,5 +37,13 @@ namespace YahtzeeTDDTest
             mockFactory.Verify(m => m.CreateDice(), Times.Exactly(5));
             CollectionAssert.AreEqual(expected, sut.DiceSet);
         }
+        
+        [TestMethod]
+        public void RollAllShouldNotFillDiceSetIfCurrentRollEqualsMaxRoll()
+        {
+            sut.CurrentRoll = 3;
+            sut.RollAll();
+            mockFactory.Verify(m => m.CreateDice(), Times.Never);
+        }
     }
 }
