@@ -7,21 +7,15 @@ namespace YahtzeeTDDTest
     [TestClass]
     public class DiceFactoryTests
     {
-        Random random = new Random();
         DiceFactory sut = new DiceFactory(new Random());
-
-        public DiceFactoryTests()
-        {
-            sut = new DiceFactory(random);
-        }
 
         [TestMethod]
         public void CreateDiceShouldReturnADiceObject()
         {
-            var expected = new Dice(random);
+            var expected = new Dice(new Random());
             var actual = sut.CreateDice();
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.GetType(), actual.GetType());
         }
     }
 }

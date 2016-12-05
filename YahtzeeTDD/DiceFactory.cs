@@ -15,9 +15,9 @@ namespace YahtzeeTDD
             Random = random;
         }
 
-        public object CreateDice()
+        public Dice CreateDice()
         {
-            throw new NotImplementedException();
+            return new Dice(Random);
         }
     }
 }
