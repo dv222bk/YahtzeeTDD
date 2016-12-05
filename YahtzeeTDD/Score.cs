@@ -109,10 +109,11 @@ namespace YahtzeeTDD
             Dice[] sortedDice = SortDices();
             for (int i = 0; i < sortedDice.Length - 1; i += 1)
             {
-                if (
-                    (i == 0 && sortedDice[i].Number != start) || 
-                    (sortedDice[i].Number != sortedDice[i + 1].Number - 1)
-                   )
+                if (i == 0 && sortedDice[i].Number != start)
+                {
+                    return false;
+                }
+                else if (sortedDice[i].Number != sortedDice[i + 1].Number - 1)
                 {
                     return false;
                 }

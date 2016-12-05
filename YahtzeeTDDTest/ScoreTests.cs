@@ -422,7 +422,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void SaveSmallStraightShouldSaveZeroIfNoSmallStraightExists()
         {
-            testFunctions.SetupMockDice(MockDiceSet, new int[] { 1, 2, 2, 4, 6 });
+            testFunctions.SetupMockDice(MockDiceSet, new int[] { 1, 2, 3, 3, 6 });
             Assert.IsTrue(sut.SaveSmallStraight());
 
             VerifyDiceNumberGet();

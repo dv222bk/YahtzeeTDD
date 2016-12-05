@@ -190,6 +190,26 @@ namespace YahtzeeTDD
             UserConsole.WriteLine("");
         }
 
+        public void WriteScoreString(string format, int commandNumber, int? score, bool pad = true)
+        {
+            if (pad && commandNumber != 0)
+            {
+                UserConsole.WriteLine(String.Format(format, "",
+                    score == null ? "[" + commandNumber + "]" : commandNumber.ToString(),
+                    score.ToString()));
+            }
+            else if (!pad)
+            {
+                UserConsole.WriteLine(String.Format(format,
+                    score == null ? "[" + commandNumber + "]" : commandNumber.ToString(),
+                    score.ToString()));
+            }
+            else
+            {
+                UserConsole.WriteLine(String.Format(format, "", score.ToString()));
+            }
+        }
+
         private void PrintDice()
         {
             UserConsole.Write(new String(' ', Strings.Dice.Length));
@@ -218,26 +238,6 @@ namespace YahtzeeTDD
                 {
                     UserConsole.WriteLine(diceString);
                 }
-            }
-        }
-
-        private void WriteScoreString(string format, int commandNumber, int? score, bool pad = true)
-        {
-            if (pad && commandNumber != 0)
-            {
-                UserConsole.WriteLine(String.Format(format, "", 
-                    score == null ? "[" + commandNumber + "]" : commandNumber.ToString(),
-                    score.ToString()));
-            }
-            else if (!pad)
-            {
-                UserConsole.WriteLine(String.Format(format,
-                    score == null ? "[" + commandNumber + "]" : commandNumber.ToString(),
-                    score.ToString()));
-            }
-            else
-            {
-                UserConsole.WriteLine(String.Format(format, "", score.ToString()));
             }
         }
     }

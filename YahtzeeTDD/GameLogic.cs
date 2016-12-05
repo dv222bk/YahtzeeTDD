@@ -95,11 +95,14 @@ namespace YahtzeeTDD
             int intInput;
             if (int.TryParse(input, out intInput))
             {
-                if (intInput >= 0 && intInput < YahtzeeSet.DiceSet.Length)
+                if (intInput >= 0)
                 {
-                    YahtzeeSet.DiceSet[intInput].Saved ^= true; // True c# magic
-                    CurrentView = CurrentView.Roll;
-                    State = State.Playing;
+                    if (intInput < YahtzeeSet.DiceSet.Length)
+                    {
+                        YahtzeeSet.DiceSet[intInput].Saved ^= true; // True c# magic
+                        CurrentView = CurrentView.Roll;
+                        State = State.Playing;
+                    }
                 }
             }
         }
