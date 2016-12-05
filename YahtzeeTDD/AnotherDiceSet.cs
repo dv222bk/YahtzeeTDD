@@ -32,7 +32,10 @@ namespace YahtzeeTDD
 
         public void UnsaveAll()
         {
-            throw new NotImplementedException();
+            foreach (Dice dice in DiceSet)
+            {
+                dice.Saved = false;
+            }
         }
     }
 }

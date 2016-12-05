@@ -23,6 +23,11 @@ namespace YahtzeeTDDTest
             sut = new AnotherDiceSet(mockFactory.Object);
         }
 
+        public void SetupSutDiceSet()
+        {
+            sut.DiceSet = MockDiceObjectSet;
+        }
+
         [TestMethod]
         public void RollAllShouldFillDiceSetWithNewDice()
         {
@@ -58,6 +63,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void UnsaveAllShouldUnsaveAllDice()
         {
+            sut.DiceSet = MockDiceObjectSet;
             sut.UnsaveAll();
             foreach (Mock<Dice> mock in MockDiceSet)
             {
