@@ -46,5 +46,12 @@ namespace YahtzeeTDDTest
             mockFactory.Verify(m => m.CreateDice(), Times.Never);
             Assert.AreEqual(3, sut.CurrentRoll);
         }
+
+        [TestMethod]
+        public void RollAllShouldIncreaseCurrentRollIsLessThanMaxRolls()
+        {
+            sut.RollAll();
+            Assert.AreEqual(2, sut.CurrentRoll);
+        }
     }
 }
