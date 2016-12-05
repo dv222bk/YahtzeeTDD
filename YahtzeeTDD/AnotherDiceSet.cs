@@ -40,7 +40,13 @@ namespace YahtzeeTDD
 
         public void RollUnsaved()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < DiceSet.Length; i += 1)
+            {
+                if (!DiceSet[i].Saved)
+                {
+                    DiceSet[i] = DiceFactory.CreateDice();
+                }
+            }
         }
     }
 }
