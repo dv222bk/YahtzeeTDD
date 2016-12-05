@@ -7,5 +7,17 @@ namespace YahtzeeTDD
 {
     public class AnotherDiceSet
     {
+        public Dice[] diceset;
+        public DiceFactory DiceFactory;
+
+        public AnotherDiceSet(DiceFactory diceFactory)
+        {
+            DiceFactory = diceFactory;
+        }
+
+        public void RollAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

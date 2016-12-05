@@ -15,7 +15,7 @@ namespace YahtzeeTDD
             Random = random;
         }
 
-        public Dice CreateDice()
+        public virtual Dice CreateDice()
         {
             return new Dice(Random);
         }

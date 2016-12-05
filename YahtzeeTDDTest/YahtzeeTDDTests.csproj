@@ -63,6 +63,7 @@
     <Compile Include="TestFunctions.cs" />
     <Compile Include="GameLoopTests.cs" />
     <Compile Include="DiceFactoryTests.cs" />
+    <Compile Include="AnotherDiceSetTests.cs" />
     <Compile Include="YahtzeeViewTests.cs" />
     <Compile Include="YahtzeeSetTests.cs" />
   </ItemGroup>
