@@ -118,13 +118,13 @@ namespace YahtzeeTDDTest
         }
 
         [TestMethod]
-        public void CanThrowShouldReturnTrueIfThePlayerCanRollTheDices()
+        public void CanRollShouldReturnTrueIfThePlayerCanRollTheDices()
         {
             Assert.IsTrue(sut.CanRoll);
         }
 
         [TestMethod]
-        public void CanThrowShouldReturnFalseIfThePlayerCannotRollTheDices()
+        public void CanRollShouldReturnFalseIfThePlayerCannotRollTheDices()
         {
             sut.CurrentRoll = 3;
             Assert.IsFalse(sut.CanRoll);

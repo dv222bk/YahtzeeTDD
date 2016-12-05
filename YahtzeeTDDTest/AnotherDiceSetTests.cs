@@ -124,5 +124,12 @@ namespace YahtzeeTDDTest
             Assert.AreEqual(1, sut.CurrentRoll);
             MockFactory.Verify(m => m.CreateDice(), Times.Exactly(5));
         }
+
+        [TestMethod]
+        public void CanRollShouldReturnTrueIfThePlayerCanRollTheDices()
+        {
+            sut.DiceSet = MockDiceObjectSet;
+            Assert.IsTrue(sut.CanRoll);
+        }
     }
 }

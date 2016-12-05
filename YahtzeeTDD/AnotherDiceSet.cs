@@ -58,5 +58,7 @@ namespace YahtzeeTDD
             CurrentRoll = 0;
             RollAll();
         }
+
+        public bool CanRoll { get; set; }
     }
 }
