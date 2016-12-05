@@ -19,10 +19,13 @@ namespace YahtzeeTDD
 
         public void RollAll()
         {
-            DiceSet = new Dice[5];
-            for (int i = 0; i < DiceSet.Length; i += 1)
+            if (CurrentRoll != MaxRolls)
             {
-                DiceSet[i] = DiceFactory.CreateDice();
+                DiceSet = new Dice[5];
+                for (int i = 0; i < DiceSet.Length; i += 1)
+                {
+                    DiceSet[i] = DiceFactory.CreateDice();
+                }
             }
         }
     }

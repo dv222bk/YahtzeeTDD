@@ -44,6 +44,7 @@ namespace YahtzeeTDDTest
             sut.CurrentRoll = 3;
             sut.RollAll();
             mockFactory.Verify(m => m.CreateDice(), Times.Never);
+            Assert.AreEqual(3, sut.CurrentRoll);
         }
     }
 }
