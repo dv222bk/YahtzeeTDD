@@ -107,5 +107,12 @@ namespace YahtzeeTDDTest
             MockFactory.Verify(m => m.CreateDice(), Times.Never);
             Assert.AreEqual(3, sut.CurrentRoll);
         }
+
+        [TestMethod]
+        public void RollUnsavedShouldIncreaseCurrentRollIfSuccessful()
+        {
+            sut.RollUnsaved();
+            Assert.AreEqual(2, sut.CurrentRoll);
+        }
     }
 }
