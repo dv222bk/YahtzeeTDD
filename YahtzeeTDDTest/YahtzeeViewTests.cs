@@ -210,5 +210,30 @@ namespace YahtzeeTDDTest
             MockConsole.Verify(m => m.WriteLine(Strings.SaveDieView), Times.Once);
             MockConsole.Verify(m => m.WriteLine(Strings.Finish), Times.Once);
         }
+
+        [TestMethod]
+        public void WriteScoreStringShouldCreateCorrectFormatedStrings()
+        {
+            string[] formats = { "{0,3}{1}{2}", "{0}{1}", "{0,3}{1}" };
+            int commandNumber = 5;
+            int? score = null;
+
+            sut.WriteScoreString(formats[0], commandNumber, score);
+            sut.WriteScoreString(formats[1], commandNumber, score, false);
+
+            score = 5;
+            sut.WriteScoreString(formats[0], commandNumber, score);
+            sut.WriteScoreString(formats[1], commandNumber, score, false);
+
+            commandNumber = 0;
+            sut.WriteScoreString(formats[2], commandNumber, score);
+            sut.WriteScoreString(formats[2], commandNumber, score);
+
+            MockConsole.Verify(m => m.WriteLine("   [5]"), Times.Once);
+            MockConsole.Verify(m => m.WriteLine("[5]"), Times.Once);
+            MockConsole.Verify(m => m.WriteLine("   55"), Times.Once);
+            MockConsole.Verify(m => m.WriteLine("55"), Times.Once);
+            MockConsole.Verify(m => m.WriteLine("   5"), Times.Exactly(2));
+        }
     }
 }
