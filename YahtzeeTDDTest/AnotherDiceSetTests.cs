@@ -19,17 +19,23 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void RollAllShouldFillDiceSetWithNewDice()
         {
-            sut.RollAll();
-
             Random random = new Random();
             Dice[] expected = new Dice[5];
             for (int i = 0; i < expected.Length; i += 1)
             {
                 expected[i] = new Dice(random);
             }
+            mockFactory.SetupSequence(m => m.CreateDice())
+                .Returns(expected[0])
+                .Returns(expected[1])
+                .Returns(expected[2])
+                .Returns(expected[3])
+                .Returns(expected[4]);
+
+            sut.RollAll();
 
             mockFactory.Verify(m => m.CreateDice(), Times.Exactly(5));
-            Assert.AreEqual(expected, sut.diceset);
+            CollectionAssert.AreEqual(expected, sut.DiceSet);
         }
     }
 }

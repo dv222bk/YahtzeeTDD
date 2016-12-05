@@ -7,8 +7,10 @@ namespace YahtzeeTDD
 {
     public class AnotherDiceSet
     {
-        public Dice[] diceset;
+        public Dice[] DiceSet;
         public DiceFactory DiceFactory;
+        public const int MaxRolls = 3;
+        public int CurrentRoll = 1;
 
         public AnotherDiceSet(DiceFactory diceFactory)
         {
@@ -17,7 +19,11 @@ namespace YahtzeeTDD
 
         public void RollAll()
         {
-            throw new NotImplementedException();
+            DiceSet = new Dice[5];
+            for (int i = 0; i < DiceSet.Length; i += 1)
+            {
+                DiceSet[i] = DiceFactory.CreateDice();
+            }
         }
     }
 }
