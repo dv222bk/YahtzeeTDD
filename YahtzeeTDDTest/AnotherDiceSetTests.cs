@@ -10,7 +10,7 @@ namespace YahtzeeTDDTest
     {
         Mock<Dice>[] MockDiceSet = new Mock<Dice>[5];
         Dice[] MockDiceObjectSet = new Dice[5];
-        Mock<DiceFactory> mockFactory = new Mock<DiceFactory>(new Random());
+        Mock<DiceFactory> MockFactory = new Mock<DiceFactory>(new Random());
         AnotherDiceSet sut;
 
         public AnotherDiceSetTests()
@@ -20,7 +20,7 @@ namespace YahtzeeTDDTest
                 MockDiceSet[i] = new Mock<Dice>(new Random());
                 MockDiceObjectSet[i] = MockDiceSet[i].Object;
             }
-            sut = new AnotherDiceSet(mockFactory.Object);
+            sut = new AnotherDiceSet(MockFactory.Object);
         }
 
         public void SetupSutDiceSet()
@@ -31,7 +31,7 @@ namespace YahtzeeTDDTest
         [TestMethod]
         public void RollAllShouldFillDiceSetWithNewDice()
         {
-            mockFactory.SetupSequence(m => m.CreateDice())
+            MockFactory.SetupSequence(m => m.CreateDice())
                 .Returns(MockDiceObjectSet[0])
                 .Returns(MockDiceObjectSet[1])
                 .Returns(MockDiceObjectSet[2])
@@ -40,7 +40,7 @@ namespace YahtzeeTDDTest
 
             sut.RollAll();
 
-            mockFactory.Verify(m => m.CreateDice(), Times.Exactly(5));
+            MockFactory.Verify(m => m.CreateDice(), Times.Exactly(5));
             CollectionAssert.AreEqual(MockDiceObjectSet, sut.DiceSet);
         }
         
@@ -49,7 +49,7 @@ namespace YahtzeeTDDTest
         {
             sut.CurrentRoll = 3;
             sut.RollAll();
-            mockFactory.Verify(m => m.CreateDice(), Times.Never);
+            MockFactory.Verify(m => m.CreateDice(), Times.Never);
             Assert.AreEqual(3, sut.CurrentRoll);
         }
 
@@ -69,6 +69,34 @@ namespace YahtzeeTDDTest
             {
                 mock.VerifySet(m => m.Saved = false);
             }
+        }
+
+        [TestMethod]
+        public void RollUnsavedShouldReplaceAllUnsavedDiceInDiceSetWithNewDice()
+        {
+            sut.DiceSet = MockDiceObjectSet;
+
+            MockDiceSet[1].SetupGet(m => m.Saved).Returns(true);
+            MockDiceSet[3].SetupGet(m => m.Saved).Returns(true);
+
+            MockFactory.SetupSequence(m => m.CreateDice())
+                .Returns(MockDiceObjectSet[4])
+                .Returns(MockDiceObjectSet[0])
+                .Returns(MockDiceObjectSet[2]);
+
+            Dice[] ExpectedDiceSet = new Dice[] 
+            {
+                MockDiceObjectSet[4],
+                MockDiceObjectSet[1],
+                MockDiceObjectSet[0],
+                MockDiceObjectSet[3],
+                MockDiceObjectSet[2]
+            };
+
+            sut.RollUnsaved();
+
+            MockFactory.Verify(m => m.CreateDice(), Times.Exactly(3));
+            CollectionAssert.AreEqual(ExpectedDiceSet, sut.DiceSet);
         }
     }
 }
