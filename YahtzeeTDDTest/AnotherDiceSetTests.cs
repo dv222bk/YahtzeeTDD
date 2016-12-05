@@ -23,9 +23,10 @@ namespace YahtzeeTDDTest
             sut = new AnotherDiceSet(MockFactory.Object);
         }
 
-        public void SetupSutDiceSet()
+        public void AssertRollmethodsDoNothing()
         {
-            sut.DiceSet = MockDiceObjectSet;
+            MockFactory.Verify(m => m.CreateDice(), Times.Never);
+            Assert.AreEqual(3, sut.CurrentRoll);
         }
 
         [TestMethod]
@@ -49,8 +50,7 @@ namespace YahtzeeTDDTest
         {
             sut.CurrentRoll = 3;
             sut.RollAll();
-            MockFactory.Verify(m => m.CreateDice(), Times.Never);
-            Assert.AreEqual(3, sut.CurrentRoll);
+            AssertRollmethodsDoNothing();
         }
 
         [TestMethod]
@@ -104,8 +104,7 @@ namespace YahtzeeTDDTest
         {
             sut.CurrentRoll = 3;
             sut.RollUnsaved();
-            MockFactory.Verify(m => m.CreateDice(), Times.Never);
-            Assert.AreEqual(3, sut.CurrentRoll);
+            AssertRollmethodsDoNothing();
         }
 
         [TestMethod]
