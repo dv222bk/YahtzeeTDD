@@ -26,6 +26,7 @@ namespace YahtzeeTDD
                 {
                     DiceSet[i] = DiceFactory.CreateDice();
                 }
+                CurrentRoll += 1;
             }
         }
     }
