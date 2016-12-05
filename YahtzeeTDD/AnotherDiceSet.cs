@@ -40,11 +40,14 @@ namespace YahtzeeTDD
 
         public void RollUnsaved()
         {
-            for (int i = 0; i < DiceSet.Length; i += 1)
+            if (CurrentRoll != MaxRolls)
             {
-                if (!DiceSet[i].Saved)
+                for (int i = 0; i < DiceSet.Length; i += 1)
                 {
-                    DiceSet[i] = DiceFactory.CreateDice();
+                    if (!DiceSet[i].Saved)
+                    {
+                        DiceSet[i] = DiceFactory.CreateDice();
+                    }
                 }
             }
         }
