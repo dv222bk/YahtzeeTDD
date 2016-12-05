@@ -115,5 +115,14 @@ namespace YahtzeeTDDTest
             sut.RollUnsaved();
             Assert.AreEqual(2, sut.CurrentRoll);
         }
+
+        [TestMethod]
+        public void ResetShouldSetCurrentRollToZeroAndRerollAllDice()
+        {
+            sut.CurrentRoll = 3;
+            sut.Reset();
+            Assert.AreEqual(1, sut.CurrentRoll);
+            MockFactory.Verify(m => m.CreateDice(), Times.Exactly(5));
+        }
     }
 }
